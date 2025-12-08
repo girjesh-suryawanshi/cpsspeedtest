@@ -23,34 +23,38 @@ interface LeaderboardProps {
 export function Leaderboard({ game, title }: LeaderboardProps) {
     const { firestore } = useFirebase();
     const [scores, setScores] = useState<Score[]>([]);
-    const [loading, setLoading] = useState(true);
+    // Initialize loading to true if firestore is not yet available.
+    const [loading, setLoading] = useState(!firestore);
 
     useEffect(() => {
         if (!firestore) {
-            // Firestore is not yet available, wait for it.
-            // The loading state is already true, so we just return.
+            // Firestore is not yet available, set loading and wait.
+            setLoading(true);
             return;
         }
 
+        // Firestore is available, start the query.
         setLoading(true);
         const scoresCollection = collection(firestore, 'leaderboard');
-        const scoresQuery = query(scoresCollection, orderBy('score', 'desc'), limit(50));
+        const scoresQuery = query(
+            scoresCollection, 
+            where('game', '==', game), 
+            orderBy('score', 'desc'), 
+            limit(10)
+        );
 
         const unsubscribe = onSnapshot(scoresQuery, (querySnapshot) => {
-            const allScores: Score[] = [];
+            const gameScores: Score[] = [];
             querySnapshot.forEach((doc) => {
-                allScores.push({ id: doc.id, ...doc.data() } as Score);
+                gameScores.push({ id: doc.id, ...doc.data() } as Score);
             });
             
-            // Filter by game on the client
-            const gameScores = allScores.filter(score => score.game === game).slice(0, 10);
-
             setScores(gameScores);
-            setLoading(false);
+            setLoading(false); // Set loading to false after data is fetched.
         }, (error) => {
             console.error("Error fetching leaderboard scores:", error);
             setScores([]);
-            setLoading(false);
+            setLoading(false); // Also set loading to false on error.
         });
 
         return () => unsubscribe();
