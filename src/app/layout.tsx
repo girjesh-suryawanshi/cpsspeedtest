@@ -4,8 +4,9 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy } from 'lucide-react';
+import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2 } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
+import { Button } from '@/components/ui/button';
 
 const siteUrl = 'https://www.cpssprint.com'; // Replace with your actual domain
 
@@ -132,9 +133,9 @@ export default function RootLayout({
                   </SidebarMenuItem>
                    <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href="/blog">
-                        <Rss />
-                        Blog
+                      <Link href="/games">
+                        <Gamepad2 />
+                        Games
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -400,12 +401,20 @@ export default function RootLayout({
               </SidebarContent>
             </Sidebar>
             <SidebarInset className="flex-1">
-              <header className="flex h-12 items-center justify-between border-b bg-background/50 px-4 md:hidden">
-                <Link href="/" className="flex items-center gap-2">
-                    <Zap className="h-6 w-6 text-primary" />
-                    <span className="font-bold">CpsSpeedTest</span>
-                </Link>
-                <SidebarTrigger />
+              <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b bg-background/80 backdrop-blur-sm px-4">
+                  <div className="flex items-center gap-4">
+                    <SidebarTrigger className="md:hidden" />
+                    <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+                      <Zap className="h-6 w-6 text-primary" />
+                      <span className="hidden sm:inline">CpsSpeedTest</span>
+                    </Link>
+                  </div>
+                  <nav className="hidden md:flex items-center gap-2">
+                      <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
+                      <Button variant="ghost" asChild><Link href="/games">Games</Link></Button>
+                      <Button variant="ghost" asChild><Link href="/leaderboard">Leaderboard</Link></Button>
+                      <Button variant="ghost" asChild><Link href="/blog">Blog</Link></Button>
+                  </nav>
               </header>
               <main className="flex-1 p-4 sm:p-6 flex flex-col items-center">
                 {children}
