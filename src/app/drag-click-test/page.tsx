@@ -43,7 +43,7 @@ export default function DragClickTestPage() {
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-                <AccordionTrigger className="text-xl font-bold">Is drag clicking safe for my mouse?</AccordionTrigger>
+                <AccordionTrigger className="text-xl font-bold">Is drag clicking safe for your mouse?</AccordionTrigger>
                 <AccordionContent className="text-base text-muted-foreground">
                     <p>Drag clicking puts significantly more stress on mouse switches than normal clicking. It can wear them out much faster. It's recommended to only use this technique on mice built for it (often with specific switch types) and to be aware of the potential for reduced lifespan of your device.</p>
                 </AccordionContent>
