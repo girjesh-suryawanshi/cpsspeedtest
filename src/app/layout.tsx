@@ -415,18 +415,24 @@ export default function RootLayout({
                   <p className="text-sm text-muted-foreground">
                     &copy; {new Date().getFullYear()} CpsSpeedTest. All rights reserved.
                   </p>
-                  <nav className="flex items-center gap-4 sm:gap-6">
+                  <nav className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
                     <Link href="/about" className="text-sm hover:underline">
-                      About Us
+                      About
                     </Link>
                      <Link href="/blog" className="text-sm hover:underline">
                       Blog
                     </Link>
-                    <Link href="/privacy" className="text-sm hover:underline">
-                      Privacy Policy
+                     <Link href="/contact" className="text-sm hover:underline">
+                      Contact
                     </Link>
-                    <Link href="/contact" className="text-sm hover:underline">
-                      Contact Us
+                    <Link href="/privacy" className="text-sm hover:underline">
+                      Privacy
+                    </Link>
+                     <Link href="/terms" className="text-sm hover:underline">
+                      Terms
+                    </Link>
+                     <Link href="/disclaimer" className="text-sm hover:underline">
+                      Disclaimer
                     </Link>
                   </nav>
                 </div>
@@ -439,5 +445,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    
