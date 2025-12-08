@@ -1,4 +1,5 @@
 
+
 import CpsTestUltimateGuide, { frontmatter as CpsTestFrontmatter } from '@/app/blog/content/cps-test-ultimate-guide.mdx';
 import JitterClickTestGuide, { frontmatter as JitterClickFrontmatter } from '@/app/blog/content/jitter-click-test-guide.mdx';
 import KohiClickTestGuide, { frontmatter as KohiClickFrontmatter } from '@/app/blog/content/kohi-click-test-guide.mdx';
@@ -24,6 +25,14 @@ import WordScrambleGuide, { frontmatter as WordScrambleFrontmatter } from '@/app
 import DrawingPadGuide, { frontmatter as DrawingPadFrontmatter } from '@/app/blog/content/drawing-pad-guide.mdx';
 import BlockBuilderGuide, { frontmatter as BlockBuilderFrontmatter } from '@/app/blog/content/block-builder-guide.mdx';
 import ConnectTheDotsGuide, { frontmatter as ConnectTheDotsFrontmatter } from '@/app/blog/content/connect-the-dots-guide.mdx';
+
+// New blog posts
+import WhatIsCpsBeginnerGuide, { frontmatter as WhatIsCpsFrontmatter } from '@/app/blog/content/what-is-cps-beginner-guide.mdx';
+import HowToIncreaseCps, { frontmatter as HowToIncreaseCpsFrontmatter } from '@/app/blog/content/how-to-increase-cps.mdx';
+import BestMouseForCps, { frontmatter as BestMouseForCpsFrontmatter } from '@/app/blog/content/best-mouse-for-cps-gaming.mdx';
+import DragVsButterfly, { frontmatter as DragVsButterflyFrontmatter } from '@/app/blog/content/drag-clicking-vs-butterfly-clicking.mdx';
+import AverageCps, { frontmatter as AverageCpsFrontmatter } from '@/app/blog/content/how-fast-is-average-cps.mdx';
+
 
 export interface Post {
     slug: string;
@@ -158,7 +167,32 @@ export const postMetas: Record<string, Omit<Post, 'slug' | 'content'>> = {
         title: ConnectTheDotsFrontmatter.title,
         description: ConnectTheDotsFrontmatter.description,
         date: '2024-08-22',
-    }
+    },
+    'what-is-cps-beginner-guide': {
+        title: WhatIsCpsFrontmatter.title,
+        description: WhatIsCpsFrontmatter.description,
+        date: '2024-08-23',
+    },
+    'how-to-increase-cps': {
+        title: HowToIncreaseCpsFrontmatter.title,
+        description: HowToIncreaseCpsFrontmatter.description,
+        date: '2024-08-24',
+    },
+    'best-mouse-for-cps-gaming': {
+        title: BestMouseForCpsFrontmatter.title,
+        description: BestMouseForCpsFrontmatter.description,
+        date: '2024-08-25',
+    },
+    'drag-clicking-vs-butterfly-clicking': {
+        title: DragVsButterflyFrontmatter.title,
+        description: DragVsButterflyFrontmatter.description,
+        date: '2024-08-26',
+    },
+    'how-fast-is-average-cps': {
+        title: AverageCpsFrontmatter.title,
+        description: AverageCpsFrontmatter.description,
+        date: '2024-08-27',
+    },
 };
 
 export const allPosts: Post[] = [
@@ -337,4 +371,40 @@ export const allPosts: Post[] = [
         date: postMetas['connect-the-dots-guide'].date,
         content: ConnectTheDotsGuide,
     },
+    {
+        slug: 'what-is-cps-beginner-guide',
+        title: postMetas['what-is-cps-beginner-guide'].title,
+        description: postMetas['what-is-cps-beginner-guide'].description,
+        date: postMetas['what-is-cps-beginner-guide'].date,
+        content: WhatIsCpsBeginnerGuide,
+    },
+    {
+        slug: 'how-to-increase-cps',
+        title: postMetas['how-to-increase-cps'].title,
+        description: postMetas['how-to-increase-cps'].description,
+        date: postMetas['how-to-increase-cps'].date,
+        content: HowToIncreaseCps,
+    },
+    {
+        slug: 'best-mouse-for-cps-gaming',
+        title: postMetas['best-mouse-for-cps-gaming'].title,
+        description: postMetas['best-mouse-for-cps-gaming'].description,
+        date: postMetas['best-mouse-for-cps-gaming'].date,
+        content: BestMouseForCps,
+    },
+    {
+        slug: 'drag-clicking-vs-butterfly-clicking',
+        title: postMetas['drag-clicking-vs-butterfly-clicking'].title,
+        description: postMetas['drag-clicking-vs-butterfly-clicking'].description,
+        date: postMetas['drag-clicking-vs-butterfly-clicking'].date,
+        content: DragVsButterfly,
+    },
+    {
+        slug: 'how-fast-is-average-cps',
+        title: postMetas['how-fast-is-average-cps'].title,
+        description: postMetas['how-fast-is-average-cps'].description,
+        date: postMetas['how-fast-is-average-cps'].date,
+        content: AverageCps,
+    },
 ];
+
