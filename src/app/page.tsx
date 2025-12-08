@@ -180,9 +180,11 @@ export default function Home() {
                 Start CPS Test
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="w-full text-base">
-              View Leaderboard
-            </Button>
+            <Link href="/leaderboard" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full text-base">
+                View Leaderboard
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-center -mt-8 md:mt-0">
@@ -304,3 +306,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

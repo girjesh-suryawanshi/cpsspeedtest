@@ -1,9 +1,10 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss } from 'lucide-react';
+import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
 
 const siteUrl = 'https://www.cpssprint.com'; // Replace with your actual domain
@@ -118,6 +119,14 @@ export default function RootLayout({
                       <Link href="/">
                         <HomeIcon />
                         Home
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href="/leaderboard">
+                        <Trophy />
+                        Leaderboard
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -430,3 +439,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    
