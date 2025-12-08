@@ -27,8 +27,8 @@ export function Leaderboard({ game, title }: LeaderboardProps) {
 
     useEffect(() => {
         if (!firestore) {
-            // Keep loading if firestore is not yet available
-            setLoading(true);
+            // Firestore is not yet available, wait for it.
+            // The loading state is already true, so we just return.
             return;
         }
 
