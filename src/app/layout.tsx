@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent } from '@/components/ui/sidebar';
+import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2 } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
@@ -141,6 +141,8 @@ export default function RootLayout({
                   </SidebarMenuItem>
                 </SidebarMenu>
                 
+                <SidebarSeparator />
+
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><MousePointerClick /> Clicking Skills</SidebarGroupLabel>
                   <SidebarMenu>
@@ -195,6 +197,8 @@ export default function RootLayout({
                   </SidebarMenu>
                 </SidebarGroup>
 
+                <SidebarSeparator />
+
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Keyboard /> Keyboard Skills</SidebarGroupLabel>
                   <SidebarMenu>
@@ -233,6 +237,8 @@ export default function RootLayout({
                   </SidebarMenu>
                 </SidebarGroup>
 
+                <SidebarSeparator />
+
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Puzzle /> Strategy & Puzzle</SidebarGroupLabel>
                   <SidebarMenu>
@@ -270,6 +276,8 @@ export default function RootLayout({
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
+
+                <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Brain /> Memory & Reflex</SidebarGroupLabel>
@@ -340,6 +348,8 @@ export default function RootLayout({
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
+
+                <SidebarSeparator />
                 
                  <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><GraduationCap /> Educational</SidebarGroupLabel>
@@ -355,6 +365,8 @@ export default function RootLayout({
                    </SidebarMenu>
                  </SidebarGroup>
 
+                 <SidebarSeparator />
+
                  <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Languages /> Language</SidebarGroupLabel>
                    <SidebarMenu>
@@ -368,6 +380,8 @@ export default function RootLayout({
                       </SidebarMenuItem>
                    </SidebarMenu>
                  </SidebarGroup>
+
+                 <SidebarSeparator />
 
                  <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Paintbrush /> Creative</SidebarGroupLabel>
