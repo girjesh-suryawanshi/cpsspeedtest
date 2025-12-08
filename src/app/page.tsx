@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Zap, ShieldCheck, Target, Search, ArrowRight, Gamepad2, Type, BrainCircuit, Grip, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Blocks, Share2, GraduationCap, Languages, Wind, Keyboard, Disc, Timer, MousePointerClick } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
 const JitterClickIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -263,11 +264,39 @@ export default function Home() {
 
        <section className="w-full max-w-6xl mx-auto">
          <Card className="bg-card/50 border-border/20 backdrop-blur-sm">
-            <CardContent className="p-6">
-                 <Link href="#" className="flex justify-between items-center group">
-                    <h2 className="text-2xl font-bold group-hover:text-primary">How it works</h2>
-                    <ArrowRight className="text-muted-foreground group-hover:text-primary" />
-                </Link>
+            <CardContent className="p-0">
+               <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="p-6 text-2xl font-bold hover:no-underline group-hover:text-primary">How does the CPS Test work?</AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 text-base text-muted-foreground">
+                    The Clicks Per Second (CPS) test is a simple timed challenge. When you start the test, a timer begins (usually 5 seconds). Your goal is to click the designated area as many times as you can before the time runs out. Your score is calculated by dividing the total number of clicks by the duration of the test.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger className="p-6 text-2xl font-bold hover:no-underline group-hover:text-primary">How are the Ranks Calculated?</AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 text-base text-muted-foreground">
+                    Your rank is determined by your CPS score. It provides a fun way to gauge your clicking speed against common benchmarks:
+                    <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li><b>Turtle 🐢 (0-4 CPS):</b> A relaxed, casual clicking speed.</li>
+                        <li><b>Rabbit 🐇 (4-7 CPS):</b> An above-average speed, common for regular computer users.</li>
+                        <li><b>Cheetah 🐆 (7-10 CPS):</b> A very fast speed, often seen in experienced gamers.</li>
+                        <li><b>Falcon 🦅 (10+ CPS):</b> An elite clicking speed, typical of competitive gamers.</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3" className="border-b-0">
+                  <AccordionTrigger className="p-6 text-2xl font-bold hover:no-underline group-hover:text-primary">How do the other games help?</AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 text-base text-muted-foreground">
+                    While the CPS test measures raw click speed, our other games are designed to improve different, but related, skills:
+                    <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li><b>Aim Trainer:</b> Improves mouse precision and accuracy, crucial for FPS games.</li>
+                        <li><b>Typing Test:</b> Boosts your keyboard speed and accuracy for communication and coding.</li>
+                        <li><b>Memory Games:</b> Enhance your cognitive skills like short-term memory and pattern recognition.</li>
+                        <li><b>Strategy Games:</b> Challenge your problem-solving and decision-making abilities.</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </CardContent>
          </Card>
        </section>
