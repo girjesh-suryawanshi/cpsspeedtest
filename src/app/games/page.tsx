@@ -2,7 +2,7 @@
 import { GameCard } from '@/components/game-card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Zap, Wind, Target, Keyboard, Type, Timer, Disc, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss } from "lucide-react";
+import { Search, Zap, Wind, Target, Keyboard, Type, Timer, Disc, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Mouse, Palette } from "lucide-react";
 
 const CupcakeIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -17,14 +17,20 @@ const CupcakeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const ButterflyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M14 10h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"/><path d="M10 10H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4"/><path d="m5 11 1-1-1-1"/><path d="m19 11-1-1 1-1"/><path d="m12 10 2-3h-4l2 3z"/><path d="m12 14-2 3h4l-2-3z"/></svg>
-)
+);
+
+const DragClickIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M12 5V2"/><path d="M12 10v3"/><path d="M12 18v-3"/><path d="m15 8-3-3-3 3"/><path d="M9 16.5 12 22l3-5.5"/><rect width="18" height="20" x="3" y="2" rx="4"/><path d="M12 10a2.5 2.5 0 0 1-2.5-2.5V5h5v2.5A2.5 2.5 0 0 1 12 10Z"/></svg>
+);
 
 const allGames = [
     { title: 'CPS Test', description: 'Test your clicking speed.', href: '/cps-test', icon: <Zap />, category: 'Clicking' },
-    { title: 'CPS Test (1s)', description: 'A quick 1-second burst test.', href: '/cps-test-1s', icon: <Zap />, category: 'Clicking' },
+    { title: 'Minecraft CPS Test', description: 'Click speed for PvP battles.', href: '/minecraft-cps-test', icon: <Mouse />, category: 'Clicking', badge: 'NEW' },
     { title: 'Jitter Click Test', description: 'Master the jitter technique.', href: '/jitter-click-test', icon: <Wind />, category: 'Clicking' },
     { title: 'Kohi Click Test', description: 'The classic Minecraft challenge.', href: '/kohi-click-test', icon: <Target />, category: 'Clicking' },
     { title: 'Butterfly Click Test', description: 'Alternate fingers for max speed.', href: '/butterfly-click-test', icon: <ButterflyIcon />, category: 'Clicking' },
+    { title: 'Drag Clicking Test', description: 'Measure your drag clicking CPS.', href: '/drag-click-test', icon: <DragClickIcon />, category: 'Clicking', badge: 'NEW' },
+    { title: 'Double Click Test', description: 'Check for mouse hardware issues.', href: '/double-click-test', icon: <MousePointerClick />, category: 'Clicking', badge: 'NEW' },
     { title: 'Aim Trainer', description: 'Improve your mouse accuracy.', href: '/aim-trainer', icon: <MousePointerClick />, category: 'Clicking', badge: 'Trending' },
     { title: 'Spacebar Clicker', description: 'How fast can you hit space?', href: '/spacebar-clicker', icon: <Keyboard />, category: 'Typing' },
     { title: 'Stimulation Clicker', description: 'A 30-second spacebar challenge.', href: '/stimulation-clicker', icon: <Keyboard />, category: 'Typing' },
@@ -35,6 +41,7 @@ const allGames = [
     { title: 'Jigsaw Puzzle', description: 'Piece together the image.', href: '/jigsaw-puzzle', icon: <Grip />, category: 'Strategy' },
     { title: 'Sliding Puzzle', description: 'Arrange tiles in order.', href: '/sliding-puzzle', icon: <Puzzle />, category: 'Strategy' },
     { title: 'Reaction Time Test', description: 'Test your reflexes.', href: '/reaction-time-test', icon: <Timer />, category: 'Memory' },
+    { title: 'Stroop Test', description: 'Test your cognitive control.', href: '/stroop-test', icon: <Palette />, category: 'Memory', badge: 'NEW' },
     { title: 'Memory Game', description: 'Find all the matching pairs.', href: '/memory-game', icon: <BrainCircuit />, category: 'Memory' },
     { title: 'Number Memory', description: 'Memorize the growing number.', href: '/number-memory-test', icon: <Brain />, category: 'Memory', badge: 'New' },
     { title: 'Sequence Memory', description: 'Repeat the flashing sequence.', href: '/sequence-memory-test', icon: <BrainCircuit />, category: 'Memory' },

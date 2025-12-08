@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 import { allPosts } from '@/lib/blog';
 
@@ -7,6 +8,10 @@ const games = [
     '/jitter-click-test',
     '/kohi-click-test',
     '/butterfly-click-test',
+    '/drag-click-test',
+    '/double-click-test',
+    '/minecraft-cps-test',
+    '/stroop-test',
     '/aim-trainer',
     '/spacebar-clicker',
     '/stimulation-clicker',
@@ -54,6 +59,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${siteUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${siteUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${siteUrl}/terms`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${siteUrl}/disclaimer`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
   ];
 
   return [...staticPages, ...gamePages, ...blogPages];

@@ -4,7 +4,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2 } from 'lucide-react';
+import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
 import { Button } from '@/components/ui/button';
 
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
+    shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
 };
@@ -78,6 +78,10 @@ const CupcakeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const ButterflyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M14 10h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"/><path d="M10 10H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4"/><path d="m5 11 1-1-1-1"/><path d="m19 11-1-1 1-1"/><path d="m12 10 2-3h-4l2 3z"/><path d="m12 14-2 3h4l-2-3z"/></svg>
 )
+
+const DragClickIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M12 5V2"/><path d="M12 10v3"/><path d="M12 18v-3"/><path d="m15 8-3-3-3 3"/><path d="M9 16.5 12 22l3-5.5"/><rect width="18" height="20" x="3" y="2" rx="4"/><path d="M12 10a2.5 2.5 0 0 1-2.5-2.5V5h5v2.5A2.5 2.5 0 0 1 12 10Z"/></svg>
+);
 
 
 export default function RootLayout({
@@ -161,9 +165,9 @@ export default function RootLayout({
                     </SidebarMenuItem>
                      <SidebarMenuItem>
                       <SidebarMenuButton asChild>
-                        <Link href="/cps-test-1s">
-                          <Zap />
-                          CPS Test (1s)
+                        <Link href="/minecraft-cps-test">
+                          <Mouse />
+                          Minecraft CPS
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -187,7 +191,23 @@ export default function RootLayout({
                       <SidebarMenuButton asChild>
                         <Link href="/butterfly-click-test">
                           <ButterflyIcon />
-                          Butterfly Click Test
+                          Butterfly Click
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                      <SidebarMenuItem>
+                      <SidebarMenuButton asChild>
+                        <Link href="/drag-click-test">
+                          <DragClickIcon />
+                          Drag Click Test
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                     <SidebarMenuItem>
+                      <SidebarMenuButton asChild>
+                        <Link href="/double-click-test">
+                          <MousePointerClick />
+                          Double Click Test
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -348,6 +368,14 @@ export default function RootLayout({
                         <Link href="/word-memory-test">
                           <FileText />
                           Word Memory
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton asChild>
+                        <Link href="/stroop-test">
+                          <Palette />
+                          Stroop Test
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
