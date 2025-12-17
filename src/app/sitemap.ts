@@ -38,7 +38,7 @@ const games = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = 'https://www.cpssprint.com'; // Replace with your actual domain
+  const siteUrl = 'https://www.cpsspeedtest.com'; // Replace with your actual domain
 
   const gamePages = games.map((game) => ({
     url: `${siteUrl}${game}`,

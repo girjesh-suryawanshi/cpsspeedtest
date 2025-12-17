@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {};
   }
   
-  const siteUrl = 'https://www.cpssprint.com';
+  const siteUrl = 'https://www.cpsspeedtest.com';
   const fullUrl = `${siteUrl}/blog/${post.slug}`;
 
   return {
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 const JsonLd = ({ post }: { post: any }) => {
-    const siteUrl = 'https://www.cpssprint.com';
+    const siteUrl = 'https://www.cpsspeedtest.com';
     const fullUrl = `${siteUrl}/blog/${post.slug}`;
     const structuredData = {
         "@context": "https://schema.org",

@@ -8,7 +8,7 @@ import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, Br
 import { FirebaseProvider } from '@/components/firebase-provider';
 import { Button } from '@/components/ui/button';
 
-const siteUrl = 'https://www.cpssprint.com'; // Replace with your actual domain
+const siteUrl = 'https://www.cpsspeedtest.com'; // Replace with your actual domain
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
