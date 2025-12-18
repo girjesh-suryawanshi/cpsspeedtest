@@ -8,7 +8,7 @@ To run this project on your local machine, please follow these steps.
 
 ### 1. Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) version 20.x or higher installed on your computer.
+Make sure you have [Node.js](https://nodejs.org/) version 20.x or higher installed on your computer.2
 
 ### 2. Install Dependencies
 
