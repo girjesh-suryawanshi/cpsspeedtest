@@ -1,5 +1,6 @@
 
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
@@ -91,12 +92,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = headers().get('x-pathname') || '';
+  const isAdminRoute = pathname.startsWith('/admin');
+
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
         {/* Google AdSense — uncomment and replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID after approval */}
         {/* <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" /> */}
         <script
@@ -110,9 +114,12 @@ export default function RootLayout({
           }) }}
         />
       </head>
-      <body className="antialiased flex flex-col">
-        <FirebaseProvider>
-          <SidebarProvider>
+      <body className="antialiased flex flex-col min-h-screen">
+        {isAdminRoute ? (
+          children
+        ) : (
+          <FirebaseProvider>
+            <SidebarProvider>
             <Sidebar>
               <SidebarHeader>
                 <Link href="/" className="flex items-center gap-3 p-2 hover:opacity-90 transition-opacity">
@@ -430,6 +437,7 @@ export default function RootLayout({
             </SidebarInset>
           </SidebarProvider>
         </FirebaseProvider>
+        )}
         <Toaster />
         <CookieConsent />
       </body>

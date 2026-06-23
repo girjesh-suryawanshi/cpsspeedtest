@@ -1,68 +1,43 @@
-
-
 import { MetadataRoute } from 'next';
-import { allPosts } from '@/lib/blog';
+import { prisma } from '@/lib/prisma';
 
-const games = [
-    '/cps-test',
-    '/cps-test-1s',
-    '/jitter-click-test',
-    '/kohi-click-test',
-    '/butterfly-click-test',
-    '/drag-click-test',
-    '/double-click-test',
-    '/minecraft-cps-test',
-    '/stroop-test',
-    '/aim-trainer',
-    '/spacebar-clicker',
-    '/stimulation-clicker',
-    '/typing-test',
-    '/typing-test-30s',
-    '/coreball-game',
-    '/cupcake-2048',
-    '/jigsaw-puzzle',
-    '/sliding-puzzle',
-    '/reaction-time-test',
-    '/memory-game',
-    '/number-memory-test',
-    '/sequence-memory-test',
-    '/chimp-test',
-    '/verbal-memory-test',
-    '/visual-memory-test',
-    '/word-memory-test',
-    '/math-quiz',
-    '/word-scramble',
-    '/drawing-pad',
-    '/block-builder',
-    '/connect-the-dots',
-];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = "https://www.cpsspeedtest.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = 'https://www.cpsspeedtest.com'; // Replace with your actual domain
-
-  const gamePages = games.map((game) => ({
-    url: `${siteUrl}${game}`,
+  // 1. Static Pages
+  const staticRoutes = [
+    '',
+    '/games',
+    '/leaderboard',
+    '/about',
+    '/contact',
+    '/privacy',
+    '/terms',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.9,
-  }));
-
-  const blogPages = allPosts.map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
     changeFrequency: 'weekly' as const,
-    priority: 0.8,
+    priority: route === '' ? 1.0 : 0.8,
   }));
 
-  const staticPages = [
-    { url: siteUrl, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1.0 },
-    { url: `${siteUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${siteUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${siteUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${siteUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${siteUrl}/terms`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${siteUrl}/disclaimer`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
-  ];
+  // 2. Dynamic Blog Posts
+  let blogRoutes: MetadataRoute.Sitemap = [];
+  
+  try {
+    const posts = await prisma.blogPost.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true },
+    });
 
-  return [...staticPages, ...gamePages, ...blogPages];
+    blogRoutes = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.updatedAt,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error("Sitemap: Error fetching blog posts. Is Prisma DB accessible?", error);
+  }
+
+  return [...staticRoutes, ...blogRoutes];
 }

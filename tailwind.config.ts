@@ -25,7 +25,8 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        headline: ['Outfit', 'sans-serif'],
+        serif: ['Lora', 'Georgia', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

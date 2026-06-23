@@ -5,8 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Trophy } from 'lucide-react';
 import { Skeleton } from './ui/skeleton';
-import { useFirebase } from '@/components/firebase-provider';
-import { collection, query, orderBy, limit, onSnapshot, where } from 'firebase/firestore';
+import { getTopScores } from '@/app/actions/leaderboard';
 
 interface Score {
     id: string;
@@ -21,44 +20,36 @@ interface LeaderboardProps {
 }
 
 export function Leaderboard({ game, title }: LeaderboardProps) {
-    const { firestore } = useFirebase();
     const [scores, setScores] = useState<Score[]>([]);
-    // Initialize loading to true if firestore is not yet available.
-    const [loading, setLoading] = useState(!firestore);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!firestore) {
-            // Firestore is not yet available, set loading and wait.
+        let mounted = true;
+        
+        async function fetchScores() {
             setLoading(true);
-            return;
+            try {
+                const data = await getTopScores(game);
+                if (mounted) {
+                    setScores(data as unknown as Score[]);
+                }
+            } catch (error) {
+                console.error("Error fetching leaderboard scores:", error);
+            } finally {
+                if (mounted) setLoading(false);
+            }
         }
 
-        // Firestore is available, start the query.
-        setLoading(true);
-        const scoresCollection = collection(firestore, 'leaderboard');
-        const scoresQuery = query(
-            scoresCollection, 
-            where('game', '==', game), 
-            orderBy('score', 'desc'), 
-            limit(10)
-        );
+        fetchScores();
+        
+        // Polling every 10 seconds to simulate realtime
+        const interval = setInterval(fetchScores, 10000);
 
-        const unsubscribe = onSnapshot(scoresQuery, (querySnapshot) => {
-            const gameScores: Score[] = [];
-            querySnapshot.forEach((doc) => {
-                gameScores.push({ id: doc.id, ...doc.data() } as Score);
-            });
-            
-            setScores(gameScores);
-            setLoading(false); // Set loading to false after data is fetched.
-        }, (error) => {
-            console.error("Error fetching leaderboard scores:", error);
-            setScores([]);
-            setLoading(false); // Also set loading to false on error.
-        });
-
-        return () => unsubscribe();
-    }, [firestore, game]);
+        return () => {
+            mounted = false;
+            clearInterval(interval);
+        };
+    }, [game]);
 
     const getRankIcon = (index: number) => {
         if (index === 0) return <Trophy className="w-5 h-5 text-yellow-400" />;

@@ -10,8 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-import { useFirebase } from '@/components/firebase-provider';
-import { collection, addDoc, serverTimestamp, Firestore } from 'firebase/firestore';
+import { saveScore } from '@/app/actions/leaderboard';
 
 const WAIT_DURATION = 3; // seconds
 
@@ -36,7 +35,7 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
   const [startTime, setStartTime] = useState<number>(0);
   const { toast } = useToast();
 
-  const { firestore } = useFirebase();
+
 
   const [showSubmitDialog, setShowSubmitDialog] = useState(false);
   const [playerName, setPlayerName] = useState('');
@@ -128,16 +127,8 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
     },
   };
 
-  const submitScore = async (db: Firestore, name: string) => {
-    const scoresCollection = collection(db, 'leaderboard');
-    await addDoc(scoresCollection, {
-      name: name.trim(),
-      score: Number(cps),
-      clickCount,
-      gameDuration,
-      game: 'cps-test',
-      createdAt: serverTimestamp(),
-    });
+  const submitScore = async (name: string) => {
+    await saveScore('cps-test', name.trim(), Number(cps));
   };
 
   // ensure we don't update state after unmount
@@ -163,7 +154,7 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
     setIsSubmitting(true);
 
     try {
-      await submitScore(firestore, playerName);
+      await submitScore(playerName);
 
       // immediate UI feedback
       toast({ title: 'Score submitted!', description: 'Your score has been added to the leaderboard.' });

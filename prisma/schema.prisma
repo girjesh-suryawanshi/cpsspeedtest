@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model BlogPost {
+  id                  String   @id @default(cuid())
+  slug                String   @unique
+  title               String
+  excerpt             String?
+  content             String   @db.Text
+  category            String
+  tags                String[]
+  cover_image         String?
+  cover_image_alt     String?
+  cover_image_caption String?
+  author_name         String
+  reading_time        Int?
+
+  // Traditional SEO
+  seo_title           String?
+  seo_description     String?
+  seo_keywords        String?
+  canonical_url       String?
+  indexing            String   @default("index")
+  follow              String   @default("follow")
+
+  // Social Sharing
+  og_title            String?
+  og_description      String?
+  og_image            String?
+  twitter_card        String   @default("summary_large_image")
+
+  // AI/AEO Schema
+  schema_type         String   @default("BlogPosting")
+  faq                 Json?
+  how_to              Json?
+
+  // Settings
+  toc_enabled         Boolean  @default(true)
+  cta_type            String?
+  
+  // Publishing & Timestamps
+  published           Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Leaderboard {
+  id        String   @id @default(cuid())
+  game      String
+  name      String
+  score     Float
+  createdAt DateTime @default(now())
+}
+
+model BlogCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+}

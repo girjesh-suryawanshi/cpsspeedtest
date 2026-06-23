@@ -1,47 +1,76 @@
-import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { allPosts, Post } from '@/lib/blog';
-import { Rss } from 'lucide-react';
-import {format} from 'date-fns';
+import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { format } from "date-fns";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-export default function BlogPage() {
-  const sortedPosts = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export const metadata = {
+  title: "Blog - CPS Speed Test",
+  description: "Read the latest tips, guides, and tutorials to improve your click speed and gaming performance.",
+};
+
+export default async function BlogIndexPage() {
+  const posts = await prisma.blogPost.findMany({
+    where: { published: true },
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <header className="py-8 sm:py-12">
-        <div className="flex items-center gap-4">
-            <Rss className="h-10 w-10 text-primary" />
-            <div>
-                 <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-                    CpsSpeedTest Blog
-                </h1>
-                <p className="mt-2 text-lg text-muted-foreground">
-                    Tips, tricks, and insights to improve your clicking skills.
-                </p>
-            </div>
-        </div>
+    <div className="w-full max-w-5xl mx-auto py-8 px-4">
+      <header className="mb-12 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">Latest Articles</h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Expert guides and tips to enhance your gaming performance and click speed.
+        </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedPosts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-            <Card className="h-full overflow-hidden transition-shadow duration-300 group-hover:shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl leading-tight group-hover:text-primary transition-colors">
-                  {post.title}
-                </CardTitle>
-                <CardDescription>
-                  {format(new Date(post.date), 'MMMM d, yyyy')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{post.description}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
+      {posts.length === 0 ? (
+        <div className="text-center py-20 bg-muted/20 rounded-xl border border-dashed border-border/50">
+          <h2 className="text-2xl font-semibold mb-2">No posts yet</h2>
+          <p className="text-muted-foreground">Check back later for new content!</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <Link key={post.id} href={`/blog/${post.slug}`} className="group block h-full">
+              <Card className="h-full flex flex-col hover:border-primary/50 transition-colors overflow-hidden">
+                {post.og_image && (
+                  <div className="w-full h-48 relative overflow-hidden bg-muted">
+                    <img 
+                      src={post.og_image} 
+                      alt={post.title}
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <CardHeader>
+                  <div className="text-xs font-semibold text-primary mb-2 uppercase tracking-wider">
+                    {post.category}
+                  </div>
+                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="flex items-center gap-2 mt-2">
+                    <span>{post.author_name}</span>
+                    <span>•</span>
+                    <span>{format(new Date(post.createdAt), 'MMM d, yyyy')}</span>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <p className="text-muted-foreground line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </CardContent>
+                <CardFooter className="pt-0 border-t border-border/10 mt-auto flex items-center justify-between text-sm font-medium text-primary">
+                  <span className="py-4">Read Article</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </CardFooter>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
