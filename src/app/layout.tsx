@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
 import { Button } from '@/components/ui/button';
+import { CookieConsent } from '@/components/cookie-consent';
 
 const siteUrl = 'https://www.cpsspeedtest.com'; // Replace with your actual domain
 
@@ -94,7 +95,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+        {/* Google AdSense — uncomment and replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID after approval */}
+        {/* <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" /> */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -102,11 +105,7 @@ export default function RootLayout({
             "@type": "WebSite",
             "url": siteUrl,
             "name": "CpsSpeedTest",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": `${siteUrl}/search?q={search_term_string}`,
-              "query-input": "required name=search_term_string"
-            }
+            "description": "Test and improve your clicking speed, reaction time, typing skills, and cognitive abilities with 30+ free browser-based skill games."
           }) }}
         />
       </head>
@@ -115,12 +114,12 @@ export default function RootLayout({
           <SidebarProvider>
             <Sidebar>
               <SidebarHeader>
-                <div className="flex items-center gap-3 p-2">
+                <Link href="/" className="flex items-center gap-3 p-2 hover:opacity-90 transition-opacity">
                   <Zap className="h-8 w-8 text-primary"/>
-                  <h1 className="text-2xl font-bold text-foreground">
+                  <span className="text-2xl font-bold text-foreground">
                     CpsSpeedTest
-                  </h1>
-                </div>
+                  </span>
+                </Link>
               </SidebarHeader>
               <SidebarContent>
                 <SidebarMenu>
@@ -497,6 +496,7 @@ export default function RootLayout({
           </SidebarProvider>
         </FirebaseProvider>
         <Toaster />
+        <CookieConsent />
       </body>
     </html>
   );

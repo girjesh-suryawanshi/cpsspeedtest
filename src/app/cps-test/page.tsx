@@ -24,11 +24,7 @@ const JsonLd = () => {
             "@type": "Organization",
             "name": "CpsSpeedTest"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "15320"
-        }
+        "url": "https://www.cpsspeedtest.com/cps-test"
     };
     return (
         <script
