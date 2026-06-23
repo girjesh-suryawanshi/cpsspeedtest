@@ -224,9 +224,13 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
   return (
     <>
       <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8">
-        <Card className="w-full shadow-lg overflow-hidden">
+        <Card className="w-full shadow-xl overflow-hidden bg-card/60 backdrop-blur-sm border-border/20 transition-all duration-500 hover:border-primary/30 relative group">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           <CardContent
-            className={cn("p-0 cursor-pointer", gameState === 'running' && 'bg-primary/5')}
+            className={cn(
+              "p-0 cursor-pointer transition-all duration-300", 
+              gameState === 'running' && 'bg-primary/10 shadow-[inset_0_0_50px_rgba(var(--primary),0.2)]'
+            )}
             onClick={handleClick}
             onPointerDown={(e) => { /* keep default behaviour; onClick keeps working */ }}
           >
@@ -235,8 +239,8 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
             </div>
           </CardContent>
           {(gameState === 'idle' || gameState === 'finished') && (
-            <CardFooter className="flex-col sm:flex-row justify-center p-6 border-t bg-card gap-4">
-              <Button size="lg" onClick={handleStart} className="w-full sm:w-auto" type="button">
+            <CardFooter className="flex-col sm:flex-row justify-center p-6 border-t border-border/10 bg-background/30 gap-4 relative z-10">
+              <Button size="lg" onClick={handleStart} className="w-full sm:w-auto shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-0.5" type="button">
                 {gameState === 'idle' ? <Play className="mr-2" /> : <RefreshCw className="mr-2" />}
                 {gameState === 'idle' ? 'Start Test' : 'Try Again'}
               </Button>
@@ -251,7 +255,7 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
         </Card>
 
         {gameState === 'finished' && (
-          <Card className="w-full shadow-lg">
+          <Card className="w-full shadow-lg bg-card/60 backdrop-blur-sm border-border/20">
             <CardHeader>
               <CardTitle>Performance Analysis</CardTitle>
               <CardDescription>Your clicking performance over each second.</CardDescription>

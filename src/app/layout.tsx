@@ -2,7 +2,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
+import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
+import { SidebarNavLink } from '@/components/sidebar-nav-link';
 import Link from 'next/link';
 import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
@@ -124,28 +125,22 @@ export default function RootLayout({
               <SidebarContent>
                 <SidebarMenu>
                   <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/">
+                    <SidebarNavLink href="/">
                         <HomeIcon />
                         Home
-                      </Link>
-                    </SidebarMenuButton>
+                      </SidebarNavLink>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/leaderboard">
+                    <SidebarNavLink href="/leaderboard">
                         <Trophy />
                         Leaderboard
-                      </Link>
-                    </SidebarMenuButton>
+                      </SidebarNavLink>
                   </SidebarMenuItem>
                    <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/games">
+                    <SidebarNavLink href="/games">
                         <Gamepad2 />
                         Games
-                      </Link>
-                    </SidebarMenuButton>
+                      </SidebarNavLink>
                   </SidebarMenuItem>
                 </SidebarMenu>
                 
@@ -155,68 +150,52 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><MousePointerClick /> Clicking Skills</SidebarGroupLabel>
                   <SidebarMenu>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/cps-test">
+                      <SidebarNavLink href="/cps-test">
                           <Zap />
                           CPS Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/minecraft-cps-test">
+                      <SidebarNavLink href="/minecraft-cps-test">
                           <Mouse />
                           Minecraft CPS
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/jitter-click-test">
+                      <SidebarNavLink href="/jitter-click-test">
                           <Wind />
                           Jitter Click Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/kohi-click-test">
+                      <SidebarNavLink href="/kohi-click-test">
                           <Target />
                           Kohi Click Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/butterfly-click-test">
+                      <SidebarNavLink href="/butterfly-click-test">
                           <ButterflyIcon />
                           Butterfly Click
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                       <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/drag-click-test">
+                      <SidebarNavLink href="/drag-click-test">
                           <DragClickIcon />
                           Drag Click Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/double-click-test">
+                      <SidebarNavLink href="/double-click-test">
                           <MousePointerClick />
                           Double Click Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/aim-trainer">
+                      <SidebarNavLink href="/aim-trainer">
                           <Crosshair />
                           Aim Trainer
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
@@ -227,36 +206,28 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><Keyboard /> Keyboard Skills</SidebarGroupLabel>
                   <SidebarMenu>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/spacebar-clicker">
+                      <SidebarNavLink href="/spacebar-clicker">
                           <Keyboard />
                           Spacebar Clicker
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/stimulation-clicker">
+                      <SidebarNavLink href="/stimulation-clicker">
                           <Keyboard />
                           Stimulation Clicker
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/typing-test">
+                      <SidebarNavLink href="/typing-test">
                           <Type />
                           Typing Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/typing-test-30s">
+                      <SidebarNavLink href="/typing-test-30s">
                           <Type />
                           Typing Test (30s)
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
@@ -267,36 +238,28 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><Puzzle /> Strategy & Puzzle</SidebarGroupLabel>
                   <SidebarMenu>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/coreball-game">
+                      <SidebarNavLink href="/coreball-game">
                           <Disc />
                           Coreball Game
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/cupcake-2048">
+                      <SidebarNavLink href="/cupcake-2048">
                           <CupcakeIcon />
                           Cupcake 2048
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/jigsaw-puzzle">
+                      <SidebarNavLink href="/jigsaw-puzzle">
                           <Grip />
                           Jigsaw Puzzle
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/sliding-puzzle">
+                      <SidebarNavLink href="/sliding-puzzle">
                           <Puzzle />
                           Sliding Puzzle
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
@@ -307,76 +270,58 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><Brain /> Memory & Reflex</SidebarGroupLabel>
                   <SidebarMenu>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/reaction-time-test">
+                      <SidebarNavLink href="/reaction-time-test">
                           <Timer />
                           Reaction Time Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/memory-game">
+                      <SidebarNavLink href="/memory-game">
                           <BrainCircuit />
                           Memory Game
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/number-memory-test">
+                      <SidebarNavLink href="/number-memory-test">
                           <BrainCircuit />
                           Number Memory
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/sequence-memory-test">
+                      <SidebarNavLink href="/sequence-memory-test">
                           <BrainCircuit />
                           Sequence Memory
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/chimp-test">
+                      <SidebarNavLink href="/chimp-test">
                           <Brain />
                           Chimp Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/verbal-memory-test">
+                      <SidebarNavLink href="/verbal-memory-test">
                           <MessageSquare />
                           Verbal Memory
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/visual-memory-test">
+                      <SidebarNavLink href="/visual-memory-test">
                           <Eye />
                           Visual Memory
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                      <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/word-memory-test">
+                      <SidebarNavLink href="/word-memory-test">
                           <FileText />
                           Word Memory
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild>
-                        <Link href="/stroop-test">
+                      <SidebarNavLink href="/stroop-test">
                           <Palette />
                           Stroop Test
-                        </Link>
-                      </SidebarMenuButton>
+                        </SidebarNavLink>
                     </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroup>
@@ -387,12 +332,10 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><GraduationCap /> Educational</SidebarGroupLabel>
                    <SidebarMenu>
                       <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <Link href="/math-quiz">
+                        <SidebarNavLink href="/math-quiz">
                             <GraduationCap />
                             Math Quiz
-                          </Link>
-                        </SidebarMenuButton>
+                          </SidebarNavLink>
                       </SidebarMenuItem>
                    </SidebarMenu>
                  </SidebarGroup>
@@ -403,12 +346,10 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><Languages /> Language</SidebarGroupLabel>
                    <SidebarMenu>
                       <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <Link href="/word-scramble">
+                        <SidebarNavLink href="/word-scramble">
                             <Languages />
                             Word Scramble
-                          </Link>
-                        </SidebarMenuButton>
+                          </SidebarNavLink>
                       </SidebarMenuItem>
                    </SidebarMenu>
                  </SidebarGroup>
@@ -419,40 +360,34 @@ export default function RootLayout({
                   <SidebarGroupLabel className="flex items-center gap-2"><Paintbrush /> Creative</SidebarGroupLabel>
                    <SidebarMenu>
                       <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <Link href="/drawing-pad">
+                        <SidebarNavLink href="/drawing-pad">
                             <Paintbrush />
                             Drawing Pad
-                          </Link>
-                        </SidebarMenuButton>
+                          </SidebarNavLink>
                       </SidebarMenuItem>
                        <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <Link href="/block-builder">
+                        <SidebarNavLink href="/block-builder">
                             <Blocks />
                             Block Builder
-                          </Link>
-                        </SidebarMenuButton>
+                          </SidebarNavLink>
                       </SidebarMenuItem>
                        <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <Link href="/connect-the-dots">
+                        <SidebarNavLink href="/connect-the-dots">
                             <Share2 />
                             Connect the Dots
-                          </Link>
-                        </SidebarMenuButton>
+                          </SidebarNavLink>
                       </SidebarMenuItem>
                    </SidebarMenu>
                  </SidebarGroup>
               </SidebarContent>
             </Sidebar>
             <SidebarInset className="flex-1">
-              <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b bg-background/80 backdrop-blur-sm px-4">
+              <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border/20 bg-background/80 backdrop-blur-xl px-4 shadow-sm md:h-14">
                   <div className="flex items-center gap-4">
-                    <SidebarTrigger className="md:hidden" />
-                    <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-                      <Zap className="h-6 w-6 text-primary" />
-                      <span className="hidden sm:inline">CpsSpeedTest</span>
+                    <SidebarTrigger className="md:hidden h-10 w-10 shrink-0 text-primary bg-primary/5 hover:bg-primary/20 border border-border/50 shadow-sm rounded-md transition-colors" />
+                    <Link href="/" className="flex items-center gap-2 font-bold text-lg md:text-xl transition-opacity hover:opacity-80">
+                      <Zap className="h-6 w-6 md:h-7 md:w-7 text-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.5)]" />
+                      <span className="sm:inline">CpsSpeedTest</span>
                     </Link>
                   </div>
                   <nav className="hidden md:flex items-center gap-2">
@@ -462,7 +397,7 @@ export default function RootLayout({
                       <Button variant="ghost" asChild><Link href="/blog">Blog</Link></Button>
                   </nav>
               </header>
-              <main className="flex-1 p-4 sm:p-6 flex flex-col items-center">
+              <main className="flex-1 p-2 sm:p-4 md:p-6 flex flex-col items-center overflow-x-hidden">
                 {children}
               </main>
               <footer className="mt-auto border-t bg-background/50">

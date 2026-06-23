@@ -19,7 +19,7 @@ const IMAGE_URL = PlaceHolderImages.find(p => p.id === 'puzzle-1')?.imageUrl || 
 export function JigsawPuzzle() {
     const [gameState, setGameState] = useState<GameState>('idle');
     const [tiles, setTiles] = useState<Tile[]>([]);
-    const [draggingTile, setDraggingTile] = useState<number | null>(null);
+    const [selectedTile, setSelectedTile] = useState<number | null>(null);
 
     const initializeTiles = useCallback(() => {
         const initialTiles = Array.from({ length: GRID_SIZE * GRID_SIZE }, (_, i) => ({
@@ -47,27 +47,27 @@ export function JigsawPuzzle() {
     }, [gameState, initializeTiles]);
 
 
-    const handleDragStart = (index: number) => {
+    const handleTileClick = (index: number) => {
         if (gameState !== 'playing') return;
-        setDraggingTile(index);
-    };
 
-    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-    };
-
-    const handleDrop = (targetIndex: number) => {
-        if (draggingTile === null || draggingTile === targetIndex || gameState !== 'playing') return;
-
-        const newTiles = [...tiles];
-        const draggedItem = newTiles[draggingTile];
-        newTiles.splice(draggingTile, 1);
-        newTiles.splice(targetIndex, 0, draggedItem);
-        
-        setTiles(newTiles);
-        setDraggingTile(null);
-        
-        checkSolution(newTiles);
+        if (selectedTile === null) {
+            // Select first tile
+            setSelectedTile(index);
+        } else if (selectedTile === index) {
+            // Deselect if clicking the same tile
+            setSelectedTile(null);
+        } else {
+            // Swap tiles
+            const newTiles = [...tiles];
+            const temp = newTiles[selectedTile];
+            newTiles[selectedTile] = newTiles[index];
+            newTiles[index] = temp;
+            
+            setTiles(newTiles);
+            setSelectedTile(null);
+            
+            checkSolution(newTiles);
+        }
     };
 
     const checkSolution = (currentTiles: Tile[]) => {
@@ -104,18 +104,15 @@ export function JigsawPuzzle() {
         return (
             <div
                 className="p-1 grid grid-cols-4 gap-1 bg-muted rounded-lg"
-                onDragOver={handleDragOver}
             >
                 {tiles.map((tile, index) => (
                     <div
                         key={tile.id}
-                        draggable={gameState === 'playing'}
-                        onDragStart={() => handleDragStart(index)}
-                        onDrop={() => handleDrop(index)}
+                        onClick={() => handleTileClick(index)}
                         className={cn(
                             "aspect-square bg-cover bg-center rounded-sm transition-all duration-300",
-                             gameState === 'playing' && "cursor-move",
-                             draggingTile === index && "opacity-50 scale-95"
+                             gameState === 'playing' && "cursor-pointer hover:opacity-80",
+                             selectedTile === index && "opacity-60 scale-95 ring-4 ring-primary ring-inset z-10"
                         )}
                         style={getTileStyle(tile.originalIndex)}
                     />
@@ -139,7 +136,7 @@ export function JigsawPuzzle() {
                          {gameState === 'idle' && (
                             <div className="absolute inset-0 bg-background/80 flex flex-col items-center justify-center text-center rounded-lg">
                                 <h2 className="text-2xl font-semibold">Jigsaw Puzzle</h2>
-                                <p className="text-muted-foreground">Drag and drop the pieces to solve.</p>
+                                <p className="text-muted-foreground mt-2">Tap two pieces to swap their positions.</p>
                             </div>
                         )}
                     </div>

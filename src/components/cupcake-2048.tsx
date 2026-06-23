@@ -12,17 +12,15 @@ const GRID_SIZE = 4;
 
 type Tile = {
   value: number;
-  id: number;
+  id: string;
   merged?: boolean;
 };
 
 type Grid = (Tile | null)[][];
 
-let tileIdCounter = 1;
-
 const createNewTile = (value: number): Tile => ({
   value,
-  id: tileIdCounter++,
+  id: Math.random().toString(36).substring(2, 11),
 });
 
 const getEmptyGrid = (): Grid => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null));
@@ -127,7 +125,6 @@ export function Cupcake2048() {
   const [isClient, setIsClient] = useState(false);
 
   const initializeGame = useCallback(() => {
-    tileIdCounter = 1;
     let newGrid = getEmptyGrid();
     newGrid = addRandomTile(newGrid);
     newGrid = addRandomTile(newGrid);

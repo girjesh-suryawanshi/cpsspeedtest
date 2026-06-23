@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Play, RefreshCw } from 'lucide-react';
@@ -43,6 +43,13 @@ export function MemoryGame() {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [timer, setTimer] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (gameState === 'playing') {
@@ -85,7 +92,8 @@ export function MemoryGame() {
         );
         setFlippedCards([]);
       } else {
-        setTimeout(() => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
           setCards(prevCards =>
             prevCards.map(card =>
               newFlippedCards.includes(card.id) ? { ...card, isFlipped: false } : card
@@ -105,8 +113,9 @@ export function MemoryGame() {
 
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8">
-      <Card className="w-full shadow-lg">
-        <CardContent className="p-6">
+      <Card className="w-full shadow-xl overflow-hidden bg-card/60 backdrop-blur-sm border-border/20 transition-all duration-500 hover:border-primary/30 relative group">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <CardContent className="p-6 relative z-10">
           {gameState === 'playing' || gameState === 'finished' ? (
             <>
               <div className="flex justify-between items-center mb-4">
@@ -117,14 +126,14 @@ export function MemoryGame() {
                 {cards.map(card => (
                   <div key={card.id} onClick={() => handleCardClick(card.id)} className="perspective-1000">
                     <div className={cn(
-                      "w-full h-24 rounded-lg transform-style-3d transition-transform duration-500 cursor-pointer",
-                      card.isFlipped || card.isMatched ? 'rotate-y-180' : ''
+                      "w-full h-24 rounded-xl transform-style-3d transition-transform duration-500 cursor-pointer",
+                      card.isFlipped || card.isMatched ? 'rotate-y-180' : 'hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20'
                     )}>
-                      <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-primary rounded-lg">
+                      <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-gradient-to-br from-primary to-primary/60 rounded-xl shadow-md border border-white/10">
                         
                       </div>
-                      <div className="absolute w-full h-full backface-hidden rotate-y-180 flex items-center justify-center bg-accent rounded-lg">
-                         <card.icon className={cn("w-12 h-12", card.isMatched ? "text-green-400" : "text-accent-foreground")} />
+                      <div className="absolute w-full h-full backface-hidden rotate-y-180 flex items-center justify-center bg-card rounded-xl shadow-inner border border-border/50">
+                         <card.icon className={cn("w-12 h-12", card.isMatched ? "text-green-400" : "text-primary")} />
                       </div>
                     </div>
                   </div>
@@ -146,8 +155,8 @@ export function MemoryGame() {
           )}
         </CardContent>
         {(gameState === 'idle' || gameState === 'finished') && (
-          <CardFooter className="flex justify-center p-6 border-t bg-card">
-            <Button size="lg" onClick={startGame} className="w-full sm:w-auto">
+          <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10">
+            <Button size="lg" onClick={startGame} className="w-full sm:w-auto shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
               {gameState === 'idle' ? <Play className="mr-2" /> : <RefreshCw className="mr-2" />}
               {gameState === 'idle' ? 'Start Game' : 'Play Again'}
             </Button>

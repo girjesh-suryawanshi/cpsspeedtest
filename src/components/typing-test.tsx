@@ -124,8 +124,9 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto flex flex-col items-center gap-8">
-      <Card className="w-full shadow-lg">
-        <CardHeader>
+      <Card className="w-full shadow-xl overflow-hidden bg-card/60 backdrop-blur-sm border-border/20 transition-all duration-500 hover:border-primary/30 relative group">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <CardHeader className="relative z-10">
            <div className="flex justify-between items-center">
              <CardTitle>Typing Test</CardTitle>
              <div className="flex items-center gap-4">
@@ -146,11 +147,11 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
              </div>
            </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="relative z-10">
           {gameState !== 'finished' ? (
             <div className="relative">
               <div
-                className="text-2xl font-mono tracking-wide leading-relaxed break-words p-4 rounded-lg bg-background border h-64 overflow-hidden"
+                className="text-2xl font-mono tracking-wide leading-relaxed break-words p-6 rounded-lg bg-background/50 backdrop-blur-md border border-border/20 shadow-inner h-64 overflow-hidden cursor-text transition-colors focus-within:border-primary/50"
                 onClick={() => inputRef.current?.focus()}
               >
                 {renderedText}
@@ -185,8 +186,8 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex justify-center p-6 border-t">
-          <Button size="lg" onClick={handleStart}>
+        <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10">
+          <Button size="lg" onClick={handleStart} className="shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
             <RefreshCw className="mr-2" />
             Restart Test
           </Button>

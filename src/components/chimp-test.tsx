@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Play, RefreshCw } from 'lucide-react';
@@ -18,6 +18,14 @@ export function ChimpTest() {
   const [lives, setLives] = useState(3);
   const [tiles, setTiles] = useState<Tile[]>([]);
   const [currentClick, setCurrentClick] = useState(1);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const generateTiles = useCallback(() => {
     const newTiles: Tile[] = [];
@@ -55,6 +63,7 @@ export function ChimpTest() {
   }, [level]);
 
   const startGame = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setLevel(4);
     setLives(3);
     setGameState('playing');
@@ -87,13 +96,15 @@ export function ChimpTest() {
 
         if (currentClick === level) { // Level complete
             setLevel(prev => prev + 1);
-            setTimeout(() => generateTiles(), 1000);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => generateTiles(), 1000);
         } else {
             setCurrentClick(prev => prev + 1);
         }
     } else { // Wrong click
         setLives(prev => prev - 1);
-        setTimeout(() => generateTiles(), 1000);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => generateTiles(), 1000);
     }
   };
 
