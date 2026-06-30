@@ -164,7 +164,7 @@ export default function RootLayout({
                 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2 text-primary font-bold"><TrendingUp className="text-primary" /> Trending (2026)</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                     <SidebarMenuItem>
                       <SidebarNavLink href="/time-guesser">
                           <Clock />
@@ -195,14 +195,14 @@ export default function RootLayout({
                           Speed Typer
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2 font-bold"><Brain className="text-blue-500" /> Brain & Education</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                     <SidebarMenuItem>
                       <SidebarNavLink href="/math-dash">
                           <Calculator />
@@ -221,14 +221,32 @@ export default function RootLayout({
                           Tower of Hanoi
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/sudoku">
+                          <Grid3x3 />
+                          Sudoku
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/word-master">
+                          <FileText />
+                          Word Master
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/hangman">
+                          <Type />
+                          Hangman
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2 font-bold"><GraduationCap className="text-primary" /> Student Favorites</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                     <SidebarMenuItem>
                       <SidebarNavLink href="/2048">
                           <Grid2x2 />
@@ -259,7 +277,7 @@ export default function RootLayout({
                           Tic-Tac-Toe
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />

@@ -215,6 +215,9 @@ export default function Home() {
     { title: 'Math Dash', description: 'Mental math sprint.', href: '/math-dash', icon: <Calculator />, badge: 'NEW', category: 'Education' },
     { title: 'Make 24', description: 'Logic arithmetic puzzle.', href: '/make-24', icon: <Brain />, badge: '', category: 'Education' },
     { title: 'Tower of Hanoi', description: 'Algorithmic puzzle.', href: '/tower-of-hanoi', icon: <Layers />, badge: '', category: 'Education' },
+    { title: 'Sudoku', description: 'Number logic puzzle.', href: '/sudoku', icon: <Grid3x3 />, badge: 'HOT', category: 'Education' },
+    { title: 'Word Master', description: 'Guess the hidden word.', href: '/word-master', icon: <FileText />, badge: '', category: 'Education' },
+    { title: 'Hangman', description: 'Classic word guess.', href: '/hangman', icon: <Type />, badge: '', category: 'Education' },
 
     { title: 'CPS Test', description: 'Measure your clicks per second.', href: '/cps-test', icon: <MousePointerClick />, badge: '', category: 'Clicking' },
     { title: 'Jitter Click Test', description: 'Try different clicking techniques.', href: '/jitter-click-test', icon: <JitterClickIcon />, badge: '', category: 'Clicking' },
