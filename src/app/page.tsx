@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 /* ─────────────────── Custom SVG Icons ─────────────────── */
@@ -200,14 +201,22 @@ export default function Home() {
   ];
 
   const featuredGames = [
-    { title: 'CPS Test', description: 'Click as fast as you can and measure your clicks per second score.', href: '/cps-test', icon: <MousePointerClick />, badge: '' },
-    { title: 'Jitter Click Test', description: 'Master the jitter technique to achieve superhuman clicking speeds.', href: '/jitter-click-test', icon: <JitterClickIcon />, badge: '' },
-    { title: 'Typing Test', description: 'Measure your words per minute and typing accuracy.', href: '/typing-test', icon: <Type />, badge: '' },
-    { title: 'Kohi Click Test', description: 'The classic 10-second Minecraft PvP clicking challenge.', href: '/kohi-click-test', icon: <Target />, badge: '' },
-    { title: 'Number Memory', description: 'How many digits can you remember? Test your working memory.', href: '/number-memory-test', icon: <Brain />, badge: '' },
-    { title: 'Chimp Test', description: 'Are you smarter than a chimpanzee? Test your short-term memory.', href: '/chimp-test', icon: <MonkeyIcon />, badge: 'TRENDING' },
-    { title: 'Block Builder', description: 'Create pixel art and build anything you can imagine.', href: '/block-builder', icon: <Blocks />, badge: 'TRENDING' },
-    { title: 'Aim Trainer', description: 'Sharpen your mouse precision and accuracy for FPS games.', href: '/aim-trainer', icon: <Target />, badge: 'NEW' },
+    { title: 'CPS Test', description: 'Measure your clicks per second.', href: '/cps-test', icon: <MousePointerClick />, badge: '', category: 'Clicking' },
+    { title: 'Jitter Click Test', description: 'Try different clicking techniques.', href: '/jitter-click-test', icon: <JitterClickIcon />, badge: '', category: 'Clicking' },
+    { title: 'Kohi Click Test', description: '10-second extended click test.', href: '/kohi-click-test', icon: <Target />, badge: '', category: 'Clicking' },
+    { title: 'Aim Trainer', description: 'Sharpen your mouse precision.', href: '/aim-trainer', icon: <Target />, badge: 'NEW', category: 'Clicking' },
+
+    { title: 'Typing Test', description: 'Measure your words per minute.', href: '/typing-test', icon: <Type />, badge: '', category: 'Typing' },
+    { title: 'Typing Test (30s)', description: 'Quick 30-second typing sprint.', href: '/typing-test-30s', icon: <Type />, badge: '', category: 'Typing' },
+    { title: 'Spacebar Clicker', description: 'Hit the spacebar per second.', href: '/spacebar-clicker', icon: <Keyboard />, badge: '', category: 'Typing' },
+    
+    { title: 'Number Memory', description: 'Test your working memory.', href: '/number-memory-test', icon: <Brain />, badge: '', category: 'Memory' },
+    { title: 'Chimp Test', description: 'Test your short-term memory.', href: '/chimp-test', icon: <MonkeyIcon />, badge: 'TRENDING', category: 'Memory' },
+    { title: 'Reaction Time Test', description: 'Test your reflexes and speed.', href: '/reaction-time-test', icon: <Timer />, badge: '', category: 'Memory' },
+    
+    { title: 'Block Builder', description: 'Build anything you can imagine.', href: '/block-builder', icon: <Blocks />, badge: 'TRENDING', category: 'Fun' },
+    { title: 'Drawing Pad', description: 'Unleash your creativity on canvas.', href: '/drawing-pad', icon: <Paintbrush />, badge: '', category: 'Fun' },
+    { title: 'Word Scramble', description: 'Unscramble jumbled words quickly.', href: '/word-scramble', icon: <Languages />, badge: '', category: 'Fun' },
   ];
 
   return (
@@ -218,16 +227,15 @@ export default function Home() {
         <div className="flex flex-col gap-6 text-center md:text-left items-center md:items-start">
           {/* Trust pill */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold">
-            <Star className="w-3.5 h-3.5 fill-primary" />
-            <span>Trusted by 1M+ Gamers Worldwide</span>
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span>1,240 tests completed today</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight">
-            Test Your{" "}
+            How fast can you{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Click Speed
-            </span>{" "}
-            &amp; Reflexes
+              click?
+            </span>
           </h1>
 
           <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -267,7 +275,7 @@ export default function Home() {
       <section className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 md:mb-20">
         <FeatureCard icon={<Zap />} title="Measure Your CPS" description="Accurately measure clicks per second across 1s, 5s, and 10s intervals with performance charting." />
         <FeatureCard icon={<TrendingUp />} title="Improve Your Skills" description="Practice aim training, typing, memory, and more — all designed to sharpen your real gaming performance." />
-        <FeatureCard icon={<ShieldCheck />} title="100% Free, No Ads" description="Enjoy a completely clean, uninterrupted gaming experience with zero advertisements. Always free." />
+        <FeatureCard icon={<Trophy />} title="Global Leaderboard" description="Compete with players worldwide and secure your spot at the top of the rankings." />
       </section>
 
       {/* ── Featured Games Grid ── */}
@@ -280,18 +288,37 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-3">
-          {featuredGames.map((game, index) => (
-            <GameCard
-              key={index}
-              title={game.title}
-              description={game.description}
-              href={game.href}
-              icon={game.icon}
-              badge={game.badge || undefined}
-            />
+        
+        <Tabs defaultValue="Clicking" className="w-full">
+          <TabsList className="flex flex-wrap gap-2 bg-transparent justify-start mb-6 overflow-x-auto p-0">
+            {['Clicking', 'Typing', 'Memory', 'Fun'].map(tab => (
+              <TabsTrigger 
+                key={tab} 
+                value={tab}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-5 py-2 font-semibold text-sm border shadow-sm border-border/20 data-[state=inactive]:bg-card"
+              >
+                {tab}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {['Clicking', 'Typing', 'Memory', 'Fun'].map(tab => (
+            <TabsContent key={tab} value={tab} className="mt-0 outline-none">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {featuredGames.filter(g => g.category === tab).map((game, index) => (
+                  <GameCard
+                    key={index}
+                    title={game.title}
+                    description={game.description}
+                    href={game.href}
+                    icon={game.icon}
+                    badge={game.badge || undefined}
+                  />
+                ))}
+              </div>
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </section>
 
       {/* ── Click Speed Ranks ── */}

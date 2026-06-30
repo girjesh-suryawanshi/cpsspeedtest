@@ -5,6 +5,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
 import { SidebarNavLink } from '@/components/sidebar-nav-link';
+import { CollapsibleMenu } from '@/components/sidebar-collapsible';
 import Link from 'next/link';
 import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
@@ -155,7 +156,7 @@ export default function RootLayout({
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><MousePointerClick /> Clicking Skills</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                     <SidebarMenuItem>
                       <SidebarNavLink href="/cps-test">
                           <Zap />
@@ -204,14 +205,14 @@ export default function RootLayout({
                           Aim Trainer
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Keyboard /> Keyboard Skills</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                      <SidebarMenuItem>
                       <SidebarNavLink href="/spacebar-clicker">
                           <Keyboard />
@@ -236,14 +237,14 @@ export default function RootLayout({
                           Typing Test (30s)
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Puzzle /> Strategy & Puzzle</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                      <SidebarMenuItem>
                       <SidebarNavLink href="/coreball-game">
                           <Disc />
@@ -268,14 +269,14 @@ export default function RootLayout({
                           Sliding Puzzle
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Brain /> Memory & Reflex</SidebarGroupLabel>
-                  <SidebarMenu>
+                  <CollapsibleMenu>
                      <SidebarMenuItem>
                       <SidebarNavLink href="/reaction-time-test">
                           <Timer />
@@ -330,7 +331,7 @@ export default function RootLayout({
                           Stroop Test
                         </SidebarNavLink>
                     </SidebarMenuItem>
-                  </SidebarMenu>
+                  </CollapsibleMenu>
                 </SidebarGroup>
 
                 <SidebarSeparator />
@@ -365,7 +366,7 @@ export default function RootLayout({
 
                  <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><Paintbrush /> Creative</SidebarGroupLabel>
-                   <SidebarMenu>
+                   <CollapsibleMenu>
                       <SidebarMenuItem>
                         <SidebarNavLink href="/drawing-pad">
                             <Paintbrush />
@@ -384,7 +385,7 @@ export default function RootLayout({
                             Connect the Dots
                           </SidebarNavLink>
                       </SidebarMenuItem>
-                   </SidebarMenu>
+                   </CollapsibleMenu>
                  </SidebarGroup>
               </SidebarContent>
             </Sidebar>
