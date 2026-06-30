@@ -9,7 +9,7 @@ import { CollapsibleMenu } from '@/components/sidebar-collapsible';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
-import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
+import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette, TrendingUp, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
 import { Button } from '@/components/ui/button';
 import { CookieConsent } from '@/components/cookie-consent';
@@ -161,6 +161,82 @@ export default function RootLayout({
                 </SidebarMenu>
                 
                 <SidebarSeparator />
+                
+                <SidebarGroup>
+                  <SidebarGroupLabel className="flex items-center gap-2 text-primary font-bold"><TrendingUp className="text-primary" /> Trending (2026)</SidebarGroupLabel>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/time-guesser">
+                          <Clock />
+                          Time Guesser
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/pop-it">
+                          <Hand />
+                          Pop-It Simulator
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/idle-clicker">
+                          <Coins />
+                          Idle Clicker
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/simon-says">
+                          <Brain />
+                          Simon Says
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/type-racer">
+                          <Keyboard />
+                          Speed Typer
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroup>
+
+                <SidebarSeparator />
+
+                <SidebarGroup>
+                  <SidebarGroupLabel className="flex items-center gap-2 font-bold"><GraduationCap className="text-primary" /> Student Favorites</SidebarGroupLabel>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/2048">
+                          <Grid2x2 />
+                          2048
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/dino-run">
+                          <Bird />
+                          Dino Run
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/minesweeper">
+                          <Bomb />
+                          Minesweeper
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/snake">
+                          <Gamepad2 />
+                          Classic Snake
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/tic-tac-toe">
+                          <Grid3x3 />
+                          Tic-Tac-Toe
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroup>
+
+                <SidebarSeparator />
 
                 <SidebarGroup>
                   <SidebarGroupLabel className="flex items-center gap-2"><MousePointerClick /> Clicking Skills</SidebarGroupLabel>
@@ -195,6 +271,7 @@ export default function RootLayout({
                           Butterfly Click
                         </SidebarNavLink>
                     </SidebarMenuItem>
+
                       <SidebarMenuItem>
                       <SidebarNavLink href="/drag-click-test">
                           <DragClickIcon />

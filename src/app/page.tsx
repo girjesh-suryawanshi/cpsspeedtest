@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -10,7 +9,7 @@ import {
   Zap, ShieldCheck, Target, Search, ArrowRight, Gamepad2, Type,
   BrainCircuit, Grip, Puzzle, Brain, Eye, MessageSquare, Paintbrush,
   FileText, Blocks, Share2, GraduationCap, Languages, Wind, Keyboard,
-  Disc, Timer, MousePointerClick, Star, Trophy, TrendingUp,
+  Disc, Timer, MousePointerClick, Star, Trophy, TrendingUp, Play, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -201,22 +200,31 @@ export default function Home() {
   ];
 
   const featuredGames = [
+    { title: 'Time Guesser', description: 'Stop exactly at 10s.', href: '/time-guesser', icon: <Clock />, badge: 'NEW', category: 'Trending Now' },
+    { title: 'Pop-It Simulator', description: 'ASMR bubble popping.', href: '/pop-it', icon: <Hand />, badge: 'VIRAL', category: 'Trending Now' },
+    { title: 'Idle Clicker', description: 'Cookie-clicker style game.', href: '/idle-clicker', icon: <Coins />, badge: 'HOT', category: 'Trending Now' },
+    { title: 'Simon Says', description: 'Audio-visual memory.', href: '/simon-says', icon: <Brain />, badge: 'NEW', category: 'Trending Now' },
+    { title: 'Speed Typer', description: '30s typing sprint.', href: '/type-racer', icon: <Keyboard />, badge: 'HOT', category: 'Trending Now' },
+
+    { title: '2048', description: 'Merge numbers to 2048.', href: '/2048', icon: <Grid2x2 />, badge: 'TRENDING', category: 'Classics' },
+    { title: 'Dino Run', description: 'Endless runner classic.', href: '/dino-run', icon: <Bird />, badge: 'HOT', category: 'Classics' },
+    { title: 'Classic Snake', description: 'Retro arcade legend.', href: '/snake', icon: <Gamepad2 />, badge: '', category: 'Classics' },
+    { title: 'Minesweeper', description: 'Logic puzzle.', href: '/minesweeper', icon: <Bomb />, badge: '', category: 'Classics' },
+    { title: 'Tic-Tac-Toe', description: 'Play against AI.', href: '/tic-tac-toe', icon: <Grid3x3 />, badge: '', category: 'Classics' },
+
+
     { title: 'CPS Test', description: 'Measure your clicks per second.', href: '/cps-test', icon: <MousePointerClick />, badge: '', category: 'Clicking' },
     { title: 'Jitter Click Test', description: 'Try different clicking techniques.', href: '/jitter-click-test', icon: <JitterClickIcon />, badge: '', category: 'Clicking' },
     { title: 'Kohi Click Test', description: '10-second extended click test.', href: '/kohi-click-test', icon: <Target />, badge: '', category: 'Clicking' },
-    { title: 'Aim Trainer', description: 'Sharpen your mouse precision.', href: '/aim-trainer', icon: <Target />, badge: 'NEW', category: 'Clicking' },
+    { title: 'Aim Trainer', description: 'Sharpen your mouse precision.', href: '/aim-trainer', icon: <Target />, badge: '', category: 'Clicking' },
 
     { title: 'Typing Test', description: 'Measure your words per minute.', href: '/typing-test', icon: <Type />, badge: '', category: 'Typing' },
     { title: 'Typing Test (30s)', description: 'Quick 30-second typing sprint.', href: '/typing-test-30s', icon: <Type />, badge: '', category: 'Typing' },
     { title: 'Spacebar Clicker', description: 'Hit the spacebar per second.', href: '/spacebar-clicker', icon: <Keyboard />, badge: '', category: 'Typing' },
     
     { title: 'Number Memory', description: 'Test your working memory.', href: '/number-memory-test', icon: <Brain />, badge: '', category: 'Memory' },
-    { title: 'Chimp Test', description: 'Test your short-term memory.', href: '/chimp-test', icon: <MonkeyIcon />, badge: 'TRENDING', category: 'Memory' },
+    { title: 'Chimp Test', description: 'Test your short-term memory.', href: '/chimp-test', icon: <MonkeyIcon />, badge: '', category: 'Memory' },
     { title: 'Reaction Time Test', description: 'Test your reflexes and speed.', href: '/reaction-time-test', icon: <Timer />, badge: '', category: 'Memory' },
-    
-    { title: 'Block Builder', description: 'Build anything you can imagine.', href: '/block-builder', icon: <Blocks />, badge: 'TRENDING', category: 'Fun' },
-    { title: 'Drawing Pad', description: 'Unleash your creativity on canvas.', href: '/drawing-pad', icon: <Paintbrush />, badge: '', category: 'Fun' },
-    { title: 'Word Scramble', description: 'Unscramble jumbled words quickly.', href: '/word-scramble', icon: <Languages />, badge: '', category: 'Fun' },
   ];
 
   return (
@@ -289,9 +297,9 @@ export default function Home() {
           </Link>
         </div>
         
-        <Tabs defaultValue="Clicking" className="w-full">
+        <Tabs defaultValue="Trending Now" className="w-full">
           <TabsList className="flex flex-wrap gap-2 bg-transparent justify-start mb-6 overflow-x-auto p-0">
-            {['Clicking', 'Typing', 'Memory', 'Fun'].map(tab => (
+            {['Trending Now', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
               <TabsTrigger 
                 key={tab} 
                 value={tab}
@@ -302,7 +310,7 @@ export default function Home() {
             ))}
           </TabsList>
 
-          {['Clicking', 'Typing', 'Memory', 'Fun'].map(tab => (
+          {['Trending Now', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
             <TabsContent key={tab} value={tab} className="mt-0 outline-none">
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 {featuredGames.filter(g => g.category === tab).map((game, index) => (
