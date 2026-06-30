@@ -14,9 +14,6 @@ services:
     depends_on:
       cpsspeedtest_db:
         condition: service_healthy
-    # We run the Prisma migrations before starting the Next.js server
-    # to ensure the database schema is up-to-date
-    command: sh -c "npx prisma migrate deploy && node server.js"
     logging:
       driver: "json-file"
       options:

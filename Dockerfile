@@ -9,7 +9,7 @@ WORKDIR /app
 # Install dependencies
 COPY package.json package-lock.json* ./
 COPY prisma ./prisma/
-RUN npm install --legacy-peer-deps && npm cache clean --force
+RUN npm install --legacy-peer-deps --no-audit --no-fund --maxsockets 1 --loglevel=error && npm cache clean --force
 
 # Generate Prisma client
 RUN npx prisma generate
@@ -22,7 +22,7 @@ COPY --from=deps /app/prisma ./prisma
 COPY . .
 
 # Next.js telemetry is disabled
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Note: In standalone mode, you don't need the database at build time 
 # UNLESS you are pre-rendering pages that require Prisma queries at build time.
@@ -33,8 +33,8 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -55,9 +55,9 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 # set hostname to localhost
-ENV HOSTNAME "0.0.0.0"
+ENV HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
