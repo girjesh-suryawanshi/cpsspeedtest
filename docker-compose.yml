@@ -17,6 +17,11 @@ services:
     # We run the Prisma migrations before starting the Next.js server
     # to ensure the database schema is up-to-date
     command: sh -c "npx prisma migrate deploy && node server.js"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   cpsspeedtest_db:
     image: postgres:15-alpine
@@ -35,6 +40,11 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   cpsspeedtest_pgdata:
