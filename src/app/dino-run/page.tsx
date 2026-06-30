@@ -5,6 +5,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Dino Run - Classic Endless Runner | CpsSpeedTest",
   description: "Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score.",
+  keywords: ['dino run', 'dinosaur game', 'endless runner', 'chrome dino', 'offline game'],
+  alternates: { canonical: '/dino-run' },
 };
 
 export default function DinoRunPage() {

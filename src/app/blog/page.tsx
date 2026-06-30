@@ -5,6 +5,9 @@ import { format } from "date-fns";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 
+// Uses Prisma — must opt out of static generation
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Blog - CPS Speed Test",
   description: "Read the latest tips, guides, and tutorials to improve your click speed and gaming performance.",

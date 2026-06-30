@@ -42,8 +42,8 @@ export function Leaderboard({ game, title }: LeaderboardProps) {
 
         fetchScores();
         
-        // Polling every 10 seconds to simulate realtime
-        const interval = setInterval(fetchScores, 10000);
+        // Poll every 30 seconds to refresh scores (reduced from 10s to lower DB load)
+        const interval = setInterval(fetchScores, 30000);
 
         return () => {
             mounted = false;

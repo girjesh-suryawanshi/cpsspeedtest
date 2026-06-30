@@ -5,6 +5,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Classic Snake Game - Retro Arcade | CpsSpeedTest",
   description: "Play the legendary Classic Snake game in your browser! Eat the apples, grow your snake, and don't hit the walls.",
+  keywords: ['snake game', 'classic snake', 'retro arcade', 'nokia snake', 'browser game'],
+  alternates: { canonical: '/snake' },
 };
 
 export default function SnakePage() {

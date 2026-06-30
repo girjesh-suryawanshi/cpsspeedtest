@@ -5,6 +5,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "2048 - Classic Number Merge Puzzle | CpsSpeedTest",
   description: "Play the classic 2048 puzzle game. Slide tiles, merge numbers, and try to reach the legendary 2048 tile!",
+  keywords: ['2048 game', 'number puzzle', 'merge tiles', '2048 online', 'math puzzle game'],
+  alternates: { canonical: '/2048' },
 };
 
 export default function Page2048() {

@@ -53,7 +53,7 @@ export function ScoreSubmitter({ game, score, isOpen, onClose, title = "New High
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[calc(100vw-2rem)] sm:max-w-md mx-auto rounded-2xl" aria-describedby={undefined}>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl font-bold">
             <Trophy className="text-yellow-500 w-6 h-6" />

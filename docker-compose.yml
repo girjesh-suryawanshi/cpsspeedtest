@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  cpsspeedtest_app:
+    build: .
+    container_name: cpsspeedtest_app
+    restart: always
+    ports:
+      - "127.0.0.1:4013:3000"
+    environment:
+      - NODE_ENV=production
+      # Important: Use the docker-compose service name 'cpsspeedtest_db' instead of 'localhost'
+      - DATABASE_URL=postgresql://postgres:deergh@cpsspeedtest_db:5432/cpstest?schema=public
+    depends_on:
+      cpsspeedtest_db:
+        condition: service_healthy
+    # We run the Prisma migrations before starting the Next.js server
+    # to ensure the database schema is up-to-date
+    command: sh -c "npx prisma migrate deploy && node server.js"
+
+  cpsspeedtest_db:
+    image: postgres:15-alpine
+    container_name: cpsspeedtest_db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=deergh
+      - POSTGRES_DB=cpstest
+    ports:
+      - "5439:5432"
+    volumes:
+      - cpsspeedtest_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d cpstest"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  cpsspeedtest_pgdata:

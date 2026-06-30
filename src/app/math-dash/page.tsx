@@ -3,9 +3,10 @@ import { MathDash } from "@/components/games/math-dash";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Math Dash - Speed Arithmetic Training | CPS Test",
+  title: "Math Dash - Speed Arithmetic Training | CpsSpeedTest",
   description: "Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students.",
   keywords: ["math dash", "mental math", "speed math", "brain training", "math game", "arithmetic practice"],
+  alternates: { canonical: '/math-dash' },
 };
 
 export default function MathDashPage() {

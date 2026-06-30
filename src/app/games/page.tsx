@@ -1,6 +1,6 @@
-import { GameSEO } from "@/components/game-seo";
-
 "use client";
+
+import { GameSEO } from "@/components/game-seo";
 
 import { useState, useMemo } from "react";
 import { GameCard } from '@/components/game-card';

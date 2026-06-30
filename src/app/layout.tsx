@@ -1,6 +1,11 @@
 
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
+import { Inter, Outfit, Lora } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 'swap' });
+const lora = Lora({ subsets: ['latin'], variable: '--font-lora', display: 'swap' });
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
@@ -101,9 +106,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
         {/* Google AdSense — uncomment and replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID after approval */}
         {/* <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" /> */}
         <script
@@ -117,7 +119,7 @@ export default function RootLayout({
           }) }}
         />
       </head>
-      <body className="antialiased flex flex-col min-h-screen">
+      <body className={`antialiased flex flex-col min-h-screen ${inter.variable} ${outfit.variable} ${lora.variable}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

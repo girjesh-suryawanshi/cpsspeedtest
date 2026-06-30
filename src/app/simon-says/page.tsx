@@ -5,6 +5,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Simon Says - Audio/Visual Memory Test | CpsSpeedTest",
   description: "Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?",
+  keywords: ['simon says', 'memory test', 'sequential memory', 'pattern game', 'brain training'],
+  alternates: { canonical: '/simon-says' },
 };
 
 export default function SimonSaysPage() {

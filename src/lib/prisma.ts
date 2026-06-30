@@ -4,7 +4,8 @@ import { Pool } from 'pg';
 
 const connectionString = process.env.DATABASE_URL;
 
-const pool = new Pool({ connectionString });
+// Limit pool to 10 connections max to prevent DB exhaustion under heavy traffic
+const pool = new Pool({ connectionString, max: 10 });
 const adapter = new PrismaPg(pool);
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
