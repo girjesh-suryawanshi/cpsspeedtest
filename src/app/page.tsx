@@ -9,7 +9,7 @@ import {
   Zap, ShieldCheck, Target, Search, ArrowRight, Gamepad2, Type,
   BrainCircuit, Grip, Puzzle, Brain, Eye, MessageSquare, Paintbrush,
   FileText, Blocks, Share2, GraduationCap, Languages, Wind, Keyboard,
-  Disc, Timer, MousePointerClick, Star, Trophy, TrendingUp, Play, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb
+  Disc, Timer, MousePointerClick, Star, Trophy, TrendingUp, Play, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb, Calculator, Layers
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -212,6 +212,9 @@ export default function Home() {
     { title: 'Minesweeper', description: 'Logic puzzle.', href: '/minesweeper', icon: <Bomb />, badge: '', category: 'Classics' },
     { title: 'Tic-Tac-Toe', description: 'Play against AI.', href: '/tic-tac-toe', icon: <Grid3x3 />, badge: '', category: 'Classics' },
 
+    { title: 'Math Dash', description: 'Mental math sprint.', href: '/math-dash', icon: <Calculator />, badge: 'NEW', category: 'Education' },
+    { title: 'Make 24', description: 'Logic arithmetic puzzle.', href: '/make-24', icon: <Brain />, badge: '', category: 'Education' },
+    { title: 'Tower of Hanoi', description: 'Algorithmic puzzle.', href: '/tower-of-hanoi', icon: <Layers />, badge: '', category: 'Education' },
 
     { title: 'CPS Test', description: 'Measure your clicks per second.', href: '/cps-test', icon: <MousePointerClick />, badge: '', category: 'Clicking' },
     { title: 'Jitter Click Test', description: 'Try different clicking techniques.', href: '/jitter-click-test', icon: <JitterClickIcon />, badge: '', category: 'Clicking' },
@@ -299,7 +302,7 @@ export default function Home() {
         
         <Tabs defaultValue="Trending Now" className="w-full">
           <TabsList className="flex flex-wrap gap-2 bg-transparent justify-start mb-6 overflow-x-auto p-0">
-            {['Trending Now', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
+            {['Trending Now', 'Education', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
               <TabsTrigger 
                 key={tab} 
                 value={tab}
@@ -310,7 +313,7 @@ export default function Home() {
             ))}
           </TabsList>
 
-          {['Trending Now', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
+          {['Trending Now', 'Education', 'Classics', 'Clicking', 'Typing', 'Memory'].map(tab => (
             <TabsContent key={tab} value={tab} className="mt-0 outline-none">
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 {featuredGames.filter(g => g.category === tab).map((game, index) => (

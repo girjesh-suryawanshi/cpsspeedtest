@@ -9,7 +9,7 @@ import { CollapsibleMenu } from '@/components/sidebar-collapsible';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
-import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette, TrendingUp, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb } from 'lucide-react';
+import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette, TrendingUp, Flame, Hand, Coins, Clock, Grid2x2, Grid3x3, Bird, Bomb, Calculator, Layers } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
 import { Button } from '@/components/ui/button';
 import { CookieConsent } from '@/components/cookie-consent';
@@ -193,6 +193,32 @@ export default function RootLayout({
                       <SidebarNavLink href="/type-racer">
                           <Keyboard />
                           Speed Typer
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroup>
+
+                <SidebarSeparator />
+
+                <SidebarGroup>
+                  <SidebarGroupLabel className="flex items-center gap-2 font-bold"><Brain className="text-blue-500" /> Brain & Education</SidebarGroupLabel>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/math-dash">
+                          <Calculator />
+                          Math Dash
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/make-24">
+                          <Brain />
+                          Make 24
+                        </SidebarNavLink>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarNavLink href="/tower-of-hanoi">
+                          <Layers />
+                          Tower of Hanoi
                         </SidebarNavLink>
                     </SidebarMenuItem>
                   </SidebarMenu>
