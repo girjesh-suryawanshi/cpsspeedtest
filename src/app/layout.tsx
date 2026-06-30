@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Sidebar, SidebarProvider, SidebarInset, SidebarTrigger, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarGroup, SidebarGroupLabel, SidebarContent, SidebarSeparator } from '@/components/ui/sidebar';
 import { SidebarNavLink } from '@/components/sidebar-nav-link';
 import { CollapsibleMenu } from '@/components/sidebar-collapsible';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
 import { Zap, HomeIcon, Wind, Target, Keyboard, Type, Timer, Disc, Crosshair, BrainCircuit, MousePointerClick, Puzzle, Brain, Eye, MessageSquare, Paintbrush, FileText, Grip, GraduationCap, Blocks, Languages, Share2, Rss, Trophy, Gamepad2, Mouse, Palette } from 'lucide-react';
 import { FirebaseProvider } from '@/components/firebase-provider';
@@ -97,7 +99,7 @@ export default function RootLayout({
   const isAdminRoute = pathname.startsWith('/admin');
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -116,6 +118,12 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
         {isAdminRoute ? (
           children
         ) : (
@@ -398,12 +406,15 @@ export default function RootLayout({
                       <span className="sm:inline">CpsSpeedTest</span>
                     </Link>
                   </div>
-                  <nav className="hidden md:flex items-center gap-2">
-                      <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
-                      <Button variant="ghost" asChild><Link href="/games">Games</Link></Button>
-                      <Button variant="ghost" asChild><Link href="/leaderboard">Leaderboard</Link></Button>
-                      <Button variant="ghost" asChild><Link href="/blog">Blog</Link></Button>
-                  </nav>
+                  <div className="flex items-center gap-2">
+                    <nav className="hidden md:flex items-center gap-2">
+                        <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
+                        <Button variant="ghost" asChild><Link href="/games">Games</Link></Button>
+                        <Button variant="ghost" asChild><Link href="/leaderboard">Leaderboard</Link></Button>
+                        <Button variant="ghost" asChild><Link href="/blog">Blog</Link></Button>
+                    </nav>
+                    <ThemeToggle />
+                  </div>
               </header>
               <main className="flex-1 p-2 sm:p-4 md:p-6 flex flex-col items-center overflow-x-hidden">
                 {children}
@@ -439,6 +450,7 @@ export default function RootLayout({
           </SidebarProvider>
         </FirebaseProvider>
         )}
+        </ThemeProvider>
         <Toaster />
         <CookieConsent />
       </body>

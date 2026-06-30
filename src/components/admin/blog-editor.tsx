@@ -17,11 +17,12 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ChevronDown, Plus, Upload, Loader2, CheckCircle, AlertCircle, Eye, Share2, Search, BrainCircuit, Trash2, Settings, Target, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import "react-quill/dist/quill.snow.css";
+import { useTheme } from "next-themes";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export function BlogEditor({ initialData, postId }: { initialData?: any, postId?: string }) {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     slug: initialData?.slug || "",
@@ -272,12 +273,25 @@ export function BlogEditor({ initialData, postId }: { initialData?: any, postId?
                 </div>
               </div>
               <div className="bg-background rounded-xl border shadow-sm overflow-hidden prose-editor prose prose-lg dark:prose-invert max-w-none prose-p:font-serif">
-                <ReactQuill 
-                  theme="snow" 
-                  value={formData.content} 
-                  onChange={handleContentChange} 
-                  className="min-h-[600px] font-serif"
-                  placeholder="Start writing something extraordinary..."
+                <JoditEditor
+                  value={formData.content}
+                  config={{
+                    theme: theme === 'dark' ? 'dark' : 'default',
+                    minHeight: 600,
+                    placeholder: 'Start writing something extraordinary...',
+                    buttons: [
+                      'source', '|',
+                      'bold', 'strikethrough', 'underline', 'italic', '|',
+                      'ul', 'ol', '|',
+                      'outdent', 'indent', '|',
+                      'font', 'fontsize', 'brush', 'paragraph', '|',
+                      'image', 'video', 'table', 'link', '|',
+                      'align', 'undo', 'redo', '|',
+                      'hr', 'eraser', 'copyformat', '|',
+                      'symbol', 'fullsize', 'print', 'about'
+                    ]
+                  }}
+                  onBlur={handleContentChange}
                 />
               </div>
             </div>
