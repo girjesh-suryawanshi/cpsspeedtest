@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { Game2048 } from "@/components/games/2048";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function Page2048() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="2048"
+        description="Play the classic 2048 puzzle game. Slide tiles, merge numbers, and try to reach the legendary 2048 tile!"
+        url="https://www.cpsspeedtest.com/2048"
+        faqs={[
+  {
+    "question": "What is 2048?",
+    "answer": "Play the classic 2048 puzzle game. Slide tiles, merge numbers, and try to reach the legendary 2048 tile!"
+  },
+  {
+    "question": "How do I play 2048?",
+    "answer": "You can play 2048 directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           2048
@@ -35,5 +52,6 @@ export default function Page2048() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

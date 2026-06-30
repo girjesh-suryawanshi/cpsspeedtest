@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { MathDash } from "@/components/games/math-dash";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function MathDashPage() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Math Dash"
+        description="Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students."
+        url="https://www.cpsspeedtest.com/math-dash"
+        faqs={[
+  {
+    "question": "What is Math Dash?",
+    "answer": "Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students."
+  },
+  {
+    "question": "How do I play Math Dash?",
+    "answer": "You can play Math Dash directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -42,5 +59,6 @@ export default function MathDashPage() {
 
       </div>
     </div>
+    </>
   );
 }

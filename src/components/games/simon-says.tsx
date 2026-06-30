@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Brain, Play, RotateCcw } from "lucide-react";
+import { Brain, Play, RotateCcw, Award } from "lucide-react";
+import { ScoreSubmitter } from "../score-submitter";
 
 const COLORS = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-yellow-500"];
 const HIGHLIGHTS = ["bg-red-300", "bg-blue-300", "bg-green-300", "bg-yellow-300"];
@@ -14,6 +15,7 @@ export function SimonSays() {
   const [playerIndex, setPlayerIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<number | null>(null);
   const [score, setScore] = useState(0);
+  const [showSubmit, setShowSubmit] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -22,6 +24,7 @@ export function SimonSays() {
     setPlayerIndex(0);
     setScore(0);
     setGameState("watching");
+    setShowSubmit(false);
   };
 
   const playSequence = async () => {
@@ -105,9 +108,14 @@ export function SimonSays() {
         {gameState === "finished" && (
           <div className="text-center animate-in zoom-in duration-300 w-full space-y-4">
             <h3 className="text-2xl font-bold text-destructive">Game Over!</h3>
-            <Button size="lg" variant="outline" className="w-full text-xl font-bold rounded-full" onClick={startGame}>
-              <RotateCcw className="mr-2" /> Play Again
-            </Button>
+            <div className="flex gap-2">
+              <Button size="lg" variant="outline" className="w-full text-xl font-bold rounded-full" onClick={startGame}>
+                <RotateCcw className="mr-2" /> Play Again
+              </Button>
+              <Button size="lg" variant="default" className="w-full text-xl font-bold rounded-full" onClick={() => setShowSubmit(true)}>
+                <Award className="mr-2" /> Submit Score
+              </Button>
+            </div>
           </div>
         )}
 
@@ -117,6 +125,15 @@ export function SimonSays() {
           </div>
         )}
       </CardContent>
+
+      <ScoreSubmitter
+        game="simon-says"
+        score={score}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Simon Says High Score!"
+        unit="Level"
+      />
     </Card>
   );
 }

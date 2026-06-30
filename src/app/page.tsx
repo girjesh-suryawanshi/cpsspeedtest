@@ -350,15 +350,17 @@ export default function Home() {
       <section className="w-full max-w-6xl mx-auto mb-14 md:mb-20">
         <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card/50 to-accent/5 p-8 text-center shadow-xl">
           <div className="absolute inset-0 bg-grid-primary/[0.02] [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]" />
-          <Trophy className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl font-extrabold mb-2">Compete Globally</h2>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">Submit your CPS score and see how you rank against players from around the world.</p>
-          <Link href="/leaderboard">
-            <Button size="lg" className="gap-2 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
-              <Trophy className="w-5 h-5" />
-              View Leaderboard
+          <div className="relative z-10">
+            <Trophy className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-2xl font-extrabold mb-2">Compete Globally</h2>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">Submit your CPS score and see how you rank against players from around the world.</p>
+            <Button asChild size="lg" className="gap-2 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
+              <Link href="/leaderboard">
+                <Trophy className="w-5 h-5" />
+                View Leaderboard
+              </Link>
             </Button>
-          </Link>
+          </div>
         </div>
       </section>
 

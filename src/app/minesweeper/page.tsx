@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { Minesweeper } from "@/components/games/minesweeper";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function MinesweeperPage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Minesweeper"
+        description="Play classic Minesweeper in your browser. Use logic to clear the board without detonating any hidden bombs!"
+        url="https://www.cpsspeedtest.com/minesweeper"
+        faqs={[
+  {
+    "question": "What is Minesweeper?",
+    "answer": "Play classic Minesweeper in your browser. Use logic to clear the board without detonating any hidden bombs!"
+  },
+  {
+    "question": "How do I play Minesweeper?",
+    "answer": "You can play Minesweeper directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Minesweeper
@@ -35,5 +52,6 @@ export default function MinesweeperPage() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

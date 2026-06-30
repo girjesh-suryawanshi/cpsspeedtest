@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 
 import { DragClickTest } from "@/components/drag-click-test";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +16,23 @@ export const metadata: Metadata = {
 
 export default function DragClickTestPage() {
   return (
-    <div className="w-full">
+    <>
+      <GameSEO 
+        name="Drag Clicking Test – Measure Your Drag CPS"
+        description="Test your drag clicking speed with our specialized test. Find out your true CPS with a drag-click-capable mouse and improve your gaming performance."
+        url="https://www.cpsspeedtest.com/drag-click-test"
+        faqs={[
+  {
+    "question": "What is Drag Clicking Test – Measure Your Drag CPS?",
+    "answer": "Test your drag clicking speed with our specialized test. Find out your true CPS with a drag-click-capable mouse and improve your gaming performance."
+  },
+  {
+    "question": "How do I play Drag Clicking Test – Measure Your Drag CPS?",
+    "answer": "You can play Drag Clicking Test – Measure Your Drag CPS directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">
         <h1 className="text-3xl font-bold text-foreground">
           Drag Clicking Test – Measure Your Drag CPS
@@ -52,5 +69,6 @@ export default function DragClickTestPage() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

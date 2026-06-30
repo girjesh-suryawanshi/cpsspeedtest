@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 
 import { MinecraftCpsTest } from "@/components/minecraft-cps-test";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +16,23 @@ export const metadata: Metadata = {
 
 export default function MinecraftCpsTestPage() {
   return (
-    <div className="w-full">
+    <>
+      <GameSEO 
+        name="Minecraft CPS Test – Click Speed for PvP"
+        description="Improve your Minecraft PvP skills with our dedicated CPS test. Practice jitter, butterfly, and drag clicking to dominate in combat and bridging."
+        url="https://www.cpsspeedtest.com/minecraft-cps-test"
+        faqs={[
+  {
+    "question": "What is Minecraft CPS Test – Click Speed for PvP?",
+    "answer": "Improve your Minecraft PvP skills with our dedicated CPS test. Practice jitter, butterfly, and drag clicking to dominate in combat and bridging."
+  },
+  {
+    "question": "How do I play Minecraft CPS Test – Click Speed for PvP?",
+    "answer": "You can play Minecraft CPS Test – Click Speed for PvP directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full">
       <header className="w-full max-w-2xl mx-auto mb-8">
         <h1 className="text-3xl font-bold text-foreground">
           Minecraft CPS Test – Click Speed for PvP
@@ -53,5 +70,6 @@ export default function MinecraftCpsTestPage() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

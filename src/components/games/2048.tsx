@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Grid2x2, RotateCcw } from "lucide-react";
+import { Grid2x2, RotateCcw, Award } from "lucide-react";
+import { ScoreSubmitter } from "../score-submitter";
 
 type Board = number[][];
 
@@ -51,6 +52,8 @@ export function Game2048() {
   const [board, setBoard] = useState<Board>(initializeBoard());
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [showSubmit, setShowSubmit] = useState(false);
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
 
@@ -58,6 +61,7 @@ export function Game2048() {
     setBoard(initializeBoard());
     setScore(0);
     setGameOver(false);
+    setShowSubmit(false);
     containerRef.current?.focus();
   };
 
@@ -196,7 +200,12 @@ export function Game2048() {
           {gameOver && (
             <div className="absolute inset-0 bg-black/50 z-10 rounded-xl flex flex-col items-center justify-center animate-in fade-in">
               <h2 className="text-4xl font-black text-white mb-4 drop-shadow-md">Game Over!</h2>
-              <Button onClick={resetGame} size="lg" className="font-bold shadow-lg">Try Again</Button>
+              <div className="flex gap-2">
+                <Button onClick={resetGame} size="lg" className="font-bold shadow-lg">Try Again</Button>
+                <Button variant="secondary" onClick={() => setShowSubmit(true)} size="lg" className="font-bold shadow-lg">
+                  <Award className="mr-2 w-4 h-4" /> Submit
+                </Button>
+              </div>
             </div>
           )}
           <div className="grid grid-cols-4 grid-rows-4 gap-2 sm:gap-3 w-full h-full">
@@ -217,6 +226,15 @@ export function Game2048() {
           Use your <strong>Arrow Keys</strong> or <strong>Swipe</strong> to move the tiles.
         </p>
       </CardContent>
+
+      <ScoreSubmitter
+        game="2048"
+        score={score}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="2048 High Score!"
+        unit="Points"
+      />
     </Card>
   );
 }

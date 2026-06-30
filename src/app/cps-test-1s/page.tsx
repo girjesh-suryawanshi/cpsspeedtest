@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { CpsTest } from "@/components/cps-test";
 import { Metadata } from 'next';
 
@@ -40,6 +41,22 @@ const JsonLd = () => {
 export default function CpsTest1sPage() {
   return (
     <>
+      <GameSEO 
+        name="1 Second CPS Test"
+        description="Take our 1-second burst CPS test to measure your maximum click speed. Perfect for a quick warm-up or to test your peak clicking ability."
+        url="https://www.cpsspeedtest.com/cps-test-1s"
+        faqs={[
+  {
+    "question": "What is 1 Second CPS Test?",
+    "answer": "Take our 1-second burst CPS test to measure your maximum click speed. Perfect for a quick warm-up or to test your peak clicking ability."
+  },
+  {
+    "question": "How do I play 1 Second CPS Test?",
+    "answer": "You can play 1 Second CPS Test directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+
       <JsonLd />
       <div className="w-full">
           <header className="w-full max-w-2xl mx-auto mb-8">

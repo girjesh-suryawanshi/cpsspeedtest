@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { TypeRacer } from "@/components/games/type-racer";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function TypeRacerPage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Speed Typer"
+        description="Test your typing speed! See how many Words Per Minute (WPM) you can type in this 30-second speed typing test."
+        url="https://www.cpsspeedtest.com/type-racer"
+        faqs={[
+  {
+    "question": "What is Speed Typer?",
+    "answer": "Test your typing speed! See how many Words Per Minute (WPM) you can type in this 30-second speed typing test."
+  },
+  {
+    "question": "How do I play Speed Typer?",
+    "answer": "You can play Speed Typer directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Speed Typer
@@ -35,5 +52,6 @@ export default function TypeRacerPage() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

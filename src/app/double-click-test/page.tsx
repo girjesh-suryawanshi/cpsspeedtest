@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 
 import { DoubleClickTest } from "@/components/double-click-test";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +16,23 @@ export const metadata: Metadata = {
 
 export default function DoubleClickTestPage() {
   return (
-    <div className="w-full">
+    <>
+      <GameSEO 
+        name="Double Click Test – Check Your Mouse for Issues"
+        description="Use our Double Click Test to check if your mouse is registering unintentional double clicks or to measure your double-clicking speed."
+        url="https://www.cpsspeedtest.com/double-click-test"
+        faqs={[
+  {
+    "question": "What is Double Click Test – Check Your Mouse for Issues?",
+    "answer": "Use our Double Click Test to check if your mouse is registering unintentional double clicks or to measure your double-clicking speed."
+  },
+  {
+    "question": "How do I play Double Click Test – Check Your Mouse for Issues?",
+    "answer": "You can play Double Click Test – Check Your Mouse for Issues directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">
         <h1 className="text-3xl font-bold text-foreground">
           Double Click Test
@@ -52,5 +69,6 @@ export default function DoubleClickTestPage() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

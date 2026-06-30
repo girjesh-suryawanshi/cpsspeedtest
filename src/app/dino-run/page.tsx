@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { DinoRun } from "@/components/games/dino-run";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function DinoRunPage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Dino Run"
+        description="Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score."
+        url="https://www.cpsspeedtest.com/dino-run"
+        faqs={[
+  {
+    "question": "What is Dino Run?",
+    "answer": "Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score."
+  },
+  {
+    "question": "How do I play Dino Run?",
+    "answer": "You can play Dino Run directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Dino Run
@@ -34,5 +51,6 @@ export default function DinoRunPage() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

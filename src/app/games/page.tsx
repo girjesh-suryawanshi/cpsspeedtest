@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 
 "use client";
 
@@ -95,7 +96,23 @@ export default function GamesPage() {
   }, [search, activeCategory]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <>
+      <GameSEO 
+        name="CPS Test"
+        description="Measure your clicks per second in a 5-second challenge."
+        url="https://www.cpsspeedtest.com/games"
+        faqs={[
+  {
+    "question": "What is CPS Test?",
+    "answer": "Measure your clicks per second in a 5-second challenge."
+  },
+  {
+    "question": "How do I play CPS Test?",
+    "answer": "You can play CPS Test directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full max-w-6xl mx-auto">
       <header className="py-8 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold mb-4">
           <Gamepad2 className="w-3.5 h-3.5" />
@@ -177,5 +194,6 @@ export default function GamesPage() {
         </div>
       )}
     </div>
+    </>
   );
 }

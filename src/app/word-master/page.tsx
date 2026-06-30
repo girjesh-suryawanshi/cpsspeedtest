@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { WordMaster } from "@/components/games/word-master";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function WordMasterPage() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Word Master"
+        description="Play Word Master, the popular 5-letter word guessing game. Test your vocabulary and deductive reasoning in 6 tries."
+        url="https://www.cpsspeedtest.com/word-master"
+        faqs={[
+  {
+    "question": "What is Word Master?",
+    "answer": "Play Word Master, the popular 5-letter word guessing game. Test your vocabulary and deductive reasoning in 6 tries."
+  },
+  {
+    "question": "How do I play Word Master?",
+    "answer": "You can play Word Master directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -44,5 +61,6 @@ export default function WordMasterPage() {
 
       </div>
     </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { AimTrainer } from "@/components/aim-trainer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Metadata } from 'next';
@@ -41,6 +42,22 @@ const JsonLd = () => {
 export default function AimTrainerPage() {
   return (
     <>
+      <GameSEO 
+        name="Aim Trainer"
+        description="Sharpen your FPS skills with our Aim Trainer. Click as many targets as you can in 30 seconds to improve your mouse precision, speed, and accuracy."
+        url="https://www.cpsspeedtest.com/aim-trainer"
+        faqs={[
+  {
+    "question": "What is Aim Trainer?",
+    "answer": "Sharpen your FPS skills with our Aim Trainer. Click as many targets as you can in 30 seconds to improve your mouse precision, speed, and accuracy."
+  },
+  {
+    "question": "How do I play Aim Trainer?",
+    "answer": "You can play Aim Trainer directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+
       <JsonLd />
       <div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">

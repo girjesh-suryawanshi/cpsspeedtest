@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { Hangman } from "@/components/games/hangman";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function HangmanPage() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Hangman"
+        description="Play the classic game of Hangman online. Guess the hidden word letter by letter before you run out of attempts."
+        url="https://www.cpsspeedtest.com/hangman"
+        faqs={[
+  {
+    "question": "What is Hangman?",
+    "answer": "Play the classic game of Hangman online. Guess the hidden word letter by letter before you run out of attempts."
+  },
+  {
+    "question": "How do I play Hangman?",
+    "answer": "You can play Hangman directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -43,5 +60,6 @@ export default function HangmanPage() {
 
       </div>
     </div>
+    </>
   );
 }

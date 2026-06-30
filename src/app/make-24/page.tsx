@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { Make24 } from "@/components/games/make-24";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function Make24Page() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Make 24 Math Puzzle"
+        description="Play the classic Make 24 math puzzle. Use addition, subtraction, multiplication, and division to make the number 24 from four given numbers."
+        url="https://www.cpsspeedtest.com/make-24"
+        faqs={[
+  {
+    "question": "What is Make 24 Math Puzzle?",
+    "answer": "Play the classic Make 24 math puzzle. Use addition, subtraction, multiplication, and division to make the number 24 from four given numbers."
+  },
+  {
+    "question": "How do I play Make 24 Math Puzzle?",
+    "answer": "You can play Make 24 Math Puzzle directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -43,5 +60,6 @@ export default function Make24Page() {
 
       </div>
     </div>
+    </>
   );
 }

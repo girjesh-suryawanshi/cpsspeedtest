@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-import { saveScore } from '@/app/actions/leaderboard';
+import { ScoreSubmitter } from './score-submitter';
 
 const WAIT_DURATION = 3; // seconds
 
@@ -38,8 +38,6 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
 
 
   const [showSubmitDialog, setShowSubmitDialog] = useState(false);
-  const [playerName, setPlayerName] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleStart = useCallback(() => {
     if (gameState === 'waiting' || gameState === 'running') return;
@@ -52,7 +50,6 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
     setStartTime(0);
     setGameTimer(gameDuration);
     setShowSubmitDialog(false);
-    setIsSubmitting(false);
   }, [gameDuration, gameState]);
 
   useEffect(() => {
@@ -127,54 +124,12 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
     },
   };
 
-  const submitScore = async (name: string) => {
-    await saveScore('cps-test', name.trim(), Number(cps));
-  };
-
   // ensure we don't update state after unmount
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
     return () => { mountedRef.current = false; };
   }, []);
-
-  const handleScoreSubmit = async () => {
-    console.log('[CPS] handleScoreSubmit called');
-
-    if (!firestore) {
-      toast({ title: 'Error', description: 'Firestore is not initialized.', variant: 'destructive'});
-      return;
-    }
-    if (!playerName || playerName.trim().length === 0) {
-      toast({ title: 'Enter a name', description: 'Please add a display name before submitting.', variant: 'destructive' });
-      return;
-    }
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-
-    try {
-      await submitScore(playerName);
-
-      // immediate UI feedback
-      toast({ title: 'Score submitted!', description: 'Your score has been added to the leaderboard.' });
-
-      // reset name optionally
-      // setPlayerName('');
-
-    } catch (err: any) {
-      console.error('Submit failed:', err);
-      toast({ title: 'Submission failed', description: err?.message || 'An unexpected error occurred.', variant: 'destructive' });
-    } finally {
-      // only update state if component still mounted
-      if (mountedRef.current) {
-        setIsSubmitting(false);
-        // Closing the dialog can be handled either by DialogClose wrapper or by state
-        setShowSubmitDialog(false);
-      }
-      console.log('[CPS] submit finished');
-    }
-  };
 
   const renderContent = () => {
     switch (gameState) {
@@ -236,7 +191,7 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
                 {gameState === 'idle' ? 'Start Test' : 'Try Again'}
               </Button>
               {gameState === 'finished' && (
-                <Button size="lg" variant="outline" onClick={() => setShowSubmitDialog(true)} disabled={!firestore} type="button">
+                <Button size="lg" variant="outline" onClick={() => setShowSubmitDialog(true)} type="button">
                   <Award className="mr-2" />
                   Submit to Leaderboard
                 </Button>
@@ -266,46 +221,14 @@ export function CpsTest({ gameDuration = 5 }: CpsTestProps) {
         )}
       </div>
 
-      <Dialog
-        open={showSubmitDialog}
-        onOpenChange={(open: boolean) => {
-          console.log('[CPS] Dialog onOpenChange:', open);
-          setShowSubmitDialog(!!open);
-          if (!open) {
-            setIsSubmitting(false);
-          }
-        }}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Submit Your Score</DialogTitle>
-            <DialogDescription>
-              Your CPS score is <strong className="text-primary">{cps}</strong>. Enter your name to appear on the leaderboard.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="grid gap-4 py-4">
-            <Input
-              id="name"
-              placeholder="Your Name"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              className="col-span-3"
-            />
-          </div>
-
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowSubmitDialog(false)} type="button">Cancel</Button>
-
-            {/* DialogClose ensures the dialog will close. asChild passes the close behavior to the child button */}
-            <DialogClose asChild>
-              <Button onClick={handleScoreSubmit} disabled={isSubmitting} type="button">
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </Button>
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <ScoreSubmitter
+        game="cps-test"
+        score={cps}
+        isOpen={showSubmitDialog}
+        onClose={() => setShowSubmitDialog(false)}
+        title="CPS Test High Score!"
+        unit="CPS"
+      />
     </>
   );
 }

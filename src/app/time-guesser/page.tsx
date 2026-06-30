@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { TimeGuesser } from "@/components/games/time-guesser";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function TimeGuesserPage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Time Guesser"
+        description="Test your internal clock and reflexes. Can you stop the timer at exactly 10.000 seconds? Try the Time Guesser now."
+        url="https://www.cpsspeedtest.com/time-guesser"
+        faqs={[
+  {
+    "question": "What is Time Guesser?",
+    "answer": "Test your internal clock and reflexes. Can you stop the timer at exactly 10.000 seconds? Try the Time Guesser now."
+  },
+  {
+    "question": "How do I play Time Guesser?",
+    "answer": "You can play Time Guesser directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Time Guesser
@@ -36,5 +53,6 @@ export default function TimeGuesserPage() {
         </ol>
       </div>
     </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { SimonSays } from "@/components/games/simon-says";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function SimonSaysPage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Simon Says"
+        description="Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?"
+        url="https://www.cpsspeedtest.com/simon-says"
+        faqs={[
+  {
+    "question": "What is Simon Says?",
+    "answer": "Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?"
+  },
+  {
+    "question": "How do I play Simon Says?",
+    "answer": "You can play Simon Says directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Simon Says
@@ -35,5 +52,6 @@ export default function SimonSaysPage() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

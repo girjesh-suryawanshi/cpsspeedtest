@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Play, RefreshCw, Hand } from 'lucide-react';
+import { Play, RefreshCw, Hand, Award } from 'lucide-react';
+import { ScoreSubmitter } from './score-submitter';
 
 type GameState = 'idle' | 'waiting' | 'ready' | 'finished' | 'tooSoon';
 
@@ -12,6 +13,7 @@ export function ReactionTimeTest() {
   const [result, setResult] = useState<number | null>(null);
   const startTimeRef = useRef<number>(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [showSubmit, setShowSubmit] = useState(false);
 
   const handleStart = useCallback(() => {
     setGameState('waiting');
@@ -19,6 +21,7 @@ export function ReactionTimeTest() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+    setShowSubmit(false);
     const randomDelay = Math.random() * 4000 + 2000; // 2-6 seconds
     timeoutRef.current = setTimeout(() => {
       setGameState('ready');
@@ -103,14 +106,29 @@ export function ReactionTimeTest() {
           </div>
         </CardContent>
         {(gameState === 'idle' || gameState === 'finished') && (
-            <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10">
+            <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10 gap-4">
               <Button size="lg" onClick={handleStart} className="w-full sm:w-auto shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
                 {gameState === 'idle' ? <Play className="mr-2"/> : <RefreshCw className="mr-2"/>}
                 {gameState === 'idle' ? 'Start Test' : 'Try Again'}
               </Button>
+              {gameState === 'finished' && result !== null && (
+                <Button size="lg" variant="outline" onClick={() => setShowSubmit(true)}>
+                  <Award className="mr-2" />
+                  Submit Score
+                </Button>
+              )}
             </CardFooter>
         )}
       </Card>
+
+      <ScoreSubmitter
+        game="reaction-time"
+        score={result || 0}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Reaction Time Score!"
+        unit="ms"
+      />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { CpsTest } from "@/components/cps-test";
 import { Card, CardContent } from "@/components/ui/card";
 import { Metadata } from 'next';
@@ -41,6 +42,22 @@ const JsonLd = () => {
 export default function JitterClickTestPage() {
   return (
     <>
+      <GameSEO 
+        name="Jitter Click Test"
+        description="Take our 10-second Jitter Click Test to practice and measure your jittering speed. Improve your CPS for competitive gaming."
+        url="https://www.cpsspeedtest.com/jitter-click-test"
+        faqs={[
+  {
+    "question": "What is Jitter Click Test?",
+    "answer": "Take our 10-second Jitter Click Test to practice and measure your jittering speed. Improve your CPS for competitive gaming."
+  },
+  {
+    "question": "How do I play Jitter Click Test?",
+    "answer": "You can play Jitter Click Test directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+
       <JsonLd />
       <div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">

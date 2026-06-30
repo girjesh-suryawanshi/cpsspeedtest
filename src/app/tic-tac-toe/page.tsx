@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { TicTacToe } from "@/components/games/tic-tac-toe";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function TicTacToePage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Tic-Tac-Toe"
+        description="Play the classic game of Tic-Tac-Toe against the computer. Can you outsmart the AI?"
+        url="https://www.cpsspeedtest.com/tic-tac-toe"
+        faqs={[
+  {
+    "question": "What is Tic-Tac-Toe?",
+    "answer": "Play the classic game of Tic-Tac-Toe against the computer. Can you outsmart the AI?"
+  },
+  {
+    "question": "How do I play Tic-Tac-Toe?",
+    "answer": "You can play Tic-Tac-Toe directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Tic-Tac-Toe
@@ -33,5 +50,6 @@ export default function TicTacToePage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

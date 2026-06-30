@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Play, RefreshCw, Keyboard } from 'lucide-react';
+import { Play, RefreshCw, Keyboard, Award } from 'lucide-react';
+import { ScoreSubmitter } from './score-submitter';
 
 const WAIT_DURATION = 3; // seconds
 
@@ -27,6 +28,7 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
   const [clickCount, setClickCount] = useState(0);
   const [clickTimestamps, setClickTimestamps] = useState<number[]>([]);
   const [startTime, setStartTime] = useState<number>(0);
+  const [showSubmit, setShowSubmit] = useState(false);
 
   const handleStart = useCallback(() => {
     setGameState('waiting');
@@ -35,6 +37,7 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
     setClickTimestamps([]);
     setStartTime(0);
     setGameTimer(gameDuration);
+    setShowSubmit(false);
   }, [gameDuration]);
 
   useEffect(() => {
@@ -156,11 +159,17 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
           </div>
         </CardContent>
         {(gameState === 'idle' || gameState === 'finished') && (
-            <CardFooter className="flex justify-center p-6 border-t bg-card">
+            <CardFooter className="flex justify-center p-6 border-t bg-card gap-4">
               <Button size="lg" onClick={handleStart} className="w-full sm:w-auto">
                 {gameState === 'idle' ? <Play className="mr-2"/> : <RefreshCw className="mr-2"/>}
                 {gameState === 'idle' ? 'Start Test' : 'Try Again'}
               </Button>
+              {gameState === 'finished' && (
+                <Button size="lg" variant="outline" onClick={() => setShowSubmit(true)}>
+                  <Award className="mr-2" />
+                  Submit Score
+                </Button>
+              )}
             </CardFooter>
         )}
       </Card>
@@ -187,6 +196,15 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
           </CardContent>
         </Card>
       )}
+      
+      <ScoreSubmitter
+        game="spacebar-clicker"
+        score={cps}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Spacebar Test Score!"
+        unit="HPS"
+      />
     </div>
   );
 }

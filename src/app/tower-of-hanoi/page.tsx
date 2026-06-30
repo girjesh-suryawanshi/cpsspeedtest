@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { TowerOfHanoi } from "@/components/games/tower-of-hanoi";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function TowerOfHanoiPage() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Tower of Hanoi"
+        description="Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and algorithmic reasoning by moving the disks to the final peg."
+        url="https://www.cpsspeedtest.com/tower-of-hanoi"
+        faqs={[
+  {
+    "question": "What is Tower of Hanoi?",
+    "answer": "Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and algorithmic reasoning by moving the disks to the final peg."
+  },
+  {
+    "question": "How do I play Tower of Hanoi?",
+    "answer": "You can play Tower of Hanoi directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -41,5 +58,6 @@ export default function TowerOfHanoiPage() {
 
       </div>
     </div>
+    </>
   );
 }

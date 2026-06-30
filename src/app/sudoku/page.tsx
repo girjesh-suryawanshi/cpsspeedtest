@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { Sudoku } from "@/components/games/sudoku";
 import { Metadata } from "next";
 
@@ -9,7 +10,23 @@ export const metadata: Metadata = {
 
 export default function SudokuPage() {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+    <>
+      <GameSEO 
+        name="Play Sudoku Free Online"
+        description="Play free online Sudoku. Exercise your brain, improve logical reasoning, and solve challenging number puzzles."
+        url="https://www.cpsspeedtest.com/sudoku"
+        faqs={[
+  {
+    "question": "What is Play Sudoku Free Online?",
+    "answer": "Play free online Sudoku. Exercise your brain, improve logical reasoning, and solve challenging number puzzles."
+  },
+  {
+    "question": "How do I play Play Sudoku Free Online?",
+    "answer": "You can play Play Sudoku Free Online directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">
         
         <div className="text-center space-y-4">
@@ -44,5 +61,6 @@ export default function SudokuPage() {
 
       </div>
     </div>
+    </>
   );
 }

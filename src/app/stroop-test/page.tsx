@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 
 import { StroopTest } from "@/components/stroop-test";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +16,23 @@ export const metadata: Metadata = {
 
 export default function StroopTestPage() {
   return (
-    <div className="w-full">
+    <>
+      <GameSEO 
+        name="Stroop Test – Color vs Text Challenge"
+        description="Take the classic Stroop Test to measure your cognitive control, focus, and mental processing speed. Can you click the color of the word, not the word itself?"
+        url="https://www.cpsspeedtest.com/stroop-test"
+        faqs={[
+  {
+    "question": "What is Stroop Test – Color vs Text Challenge?",
+    "answer": "Take the classic Stroop Test to measure your cognitive control, focus, and mental processing speed. Can you click the color of the word, not the word itself?"
+  },
+  {
+    "question": "How do I play Stroop Test – Color vs Text Challenge?",
+    "answer": "You can play Stroop Test – Color vs Text Challenge directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="w-full">
       <header className="w-full max-w-2xl mx-auto mb-8">
         <h1 className="text-3xl font-bold text-foreground">
           Stroop Test – Color vs Text Challenge
@@ -44,5 +61,6 @@ export default function StroopTestPage() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

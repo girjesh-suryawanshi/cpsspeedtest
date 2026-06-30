@@ -1,3 +1,4 @@
+import { GameSEO } from "@/components/game-seo";
 import { SnakeGame } from "@/components/games/snake";
 import { Metadata } from "next";
 
@@ -8,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function SnakePage() {
   return (
-    <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <GameSEO 
+        name="Classic Snake Game"
+        description="Play the legendary Classic Snake game in your browser! Eat the apples, grow your snake, and don"
+        url="https://www.cpsspeedtest.com/snake"
+        faqs={[
+  {
+    "question": "What is Classic Snake Game?",
+    "answer": "Play the legendary Classic Snake game in your browser! Eat the apples, grow your snake, and don"
+  },
+  {
+    "question": "How do I play Classic Snake Game?",
+    "answer": "You can play Classic Snake Game directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
+  }
+]}
+      />
+<div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
           Classic Snake
@@ -35,5 +52,6 @@ export default function SnakePage() {
         </ul>
       </div>
     </div>
+    </>
   );
 }

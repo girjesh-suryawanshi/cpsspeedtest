@@ -3,8 +3,9 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Award } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ScoreSubmitter } from './score-submitter';
 import {
   Select,
   SelectContent,
@@ -35,6 +36,7 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
   const [timeLeft, setTimeLeft] = useState(initialDuration);
   const [inputValue, setInputValue] = useState('');
   const [errorCount, setErrorCount] = useState(0);
+  const [showSubmit, setShowSubmit] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const sampleText = useMemo(() => TEXT_SAMPLES[textKey], [textKey]);
@@ -44,6 +46,7 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
     setInputValue('');
     setTimeLeft(gameDuration);
     setErrorCount(0);
+    setShowSubmit(false);
     const newKey = (Math.floor(Math.random() * Object.keys(TEXT_SAMPLES).length) + 1).toString() as TextKey;
     setTextKey(newKey);
     setTimeout(() => inputRef.current?.focus(), 0);
@@ -186,13 +189,28 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10">
+        <CardFooter className="flex justify-center p-6 border-t border-border/10 bg-background/30 relative z-10 gap-4">
           <Button size="lg" onClick={handleStart} className="shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-0.5">
             <RefreshCw className="mr-2" />
             Restart Test
           </Button>
+          {gameState === 'finished' && (
+            <Button size="lg" variant="outline" onClick={() => setShowSubmit(true)}>
+              <Award className="mr-2" />
+              Submit Score
+            </Button>
+          )}
         </CardFooter>
       </Card>
+
+      <ScoreSubmitter
+        game="typing-test"
+        score={wpm}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Typing Test Score!"
+        unit="WPM"
+      />
     </div>
   );
 }

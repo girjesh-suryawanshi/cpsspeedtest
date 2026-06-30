@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Gamepad2, Play, RotateCcw } from "lucide-react";
+import { Gamepad2, Play, RotateCcw, Award } from "lucide-react";
+import { ScoreSubmitter } from "../score-submitter";
 
 type Point = { x: number; y: number };
 
@@ -21,6 +22,7 @@ export function SnakeGame() {
   const directionRef = useRef(INITIAL_DIRECTION);
   const containerRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
+  const [showSubmit, setShowSubmit] = useState(false);
 
   const generateFood = useCallback((currentSnake: Point[]): Point => {
     let newFood: Point;
@@ -42,6 +44,7 @@ export function SnakeGame() {
     setFood(generateFood(INITIAL_SNAKE));
     setScore(0);
     setGameState("playing");
+    setShowSubmit(false);
     containerRef.current?.focus();
   };
 
@@ -200,7 +203,10 @@ export function SnakeGame() {
              <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center animate-in fade-in z-10">
                <h3 className="text-4xl font-black text-red-500 mb-2 drop-shadow-md">GAME OVER</h3>
                <p className="text-xl text-white font-bold mb-6">Final Score: {score}</p>
-               <Button size="lg" onClick={startGame} className="font-bold text-lg"><RotateCcw className="mr-2"/> Play Again</Button>
+               <div className="flex gap-2">
+                 <Button size="lg" onClick={startGame} className="font-bold text-lg"><RotateCcw className="mr-2"/> Play Again</Button>
+                 <Button size="lg" variant="secondary" onClick={() => setShowSubmit(true)} className="font-bold text-lg"><Award className="mr-2"/> Submit</Button>
+               </div>
              </div>
           )}
         </div>
@@ -210,6 +216,15 @@ export function SnakeGame() {
         </p>
 
       </CardContent>
+
+      <ScoreSubmitter
+        game="snake"
+        score={score}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Snake High Score!"
+        unit="Points"
+      />
     </Card>
   );
 }

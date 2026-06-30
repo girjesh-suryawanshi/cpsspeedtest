@@ -4,7 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Calculator, Play, RotateCcw, Brain, Timer } from "lucide-react";
+import { Calculator, Play, RotateCcw, Brain, Timer, Award } from "lucide-react";
+import { ScoreSubmitter } from "../score-submitter";
 
 type Operator = "+" | "-" | "×" | "÷";
 
@@ -63,6 +64,7 @@ export function MathDash() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [equation, setEquation] = useState<Equation | null>(null);
   const [inputVal, setInputVal] = useState("");
+  const [showSubmit, setShowSubmit] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const startGame = () => {
@@ -71,6 +73,7 @@ export function MathDash() {
     setGameState("playing");
     setEquation(generateEquation(0));
     setInputVal("");
+    setShowSubmit(false);
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
@@ -143,9 +146,14 @@ export function MathDash() {
               <h3 className="text-3xl font-black text-primary mb-2 tracking-wide">Time's Up!</h3>
               <p className="text-muted-foreground font-semibold mb-1">Final Score</p>
               <p className="text-6xl font-black text-foreground mb-6 drop-shadow-md">{score}</p>
-              <Button size="lg" variant="default" onClick={startGame} className="font-bold shadow-lg">
-                <RotateCcw className="mr-2" /> Play Again
-              </Button>
+              <div className="flex gap-2">
+                <Button size="lg" variant="default" onClick={startGame} className="font-bold shadow-lg">
+                  <RotateCcw className="mr-2" /> Play Again
+                </Button>
+                <Button size="lg" variant="outline" onClick={() => setShowSubmit(true)} className="font-bold shadow-lg">
+                  <Award className="mr-2" /> Submit Score
+                </Button>
+              </div>
             </div>
           )}
 
@@ -175,8 +183,16 @@ export function MathDash() {
         <p className="text-center text-sm text-muted-foreground">
           Press <strong>Enter</strong> to submit your answer quickly!
         </p>
-
       </CardContent>
+
+      <ScoreSubmitter
+        game="math-dash"
+        score={score}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Math Dash High Score!"
+        unit="Equations"
+      />
     </Card>
   );
 }

@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bird, Play, RotateCcw } from "lucide-react";
+import { Bird, Play, RotateCcw, Award } from "lucide-react";
+import { ScoreSubmitter } from "../score-submitter";
 
 export function DinoRun() {
   const [gameState, setGameState] = useState<"idle" | "playing" | "gameover">("idle");
@@ -12,6 +13,7 @@ export function DinoRun() {
   // Render states
   const [dinoY, setDinoY] = useState(0); 
   const [obstacleX, setObstacleX] = useState(100); 
+  const [showSubmit, setShowSubmit] = useState(false); 
   
   // Physics Refs (to avoid stale closures in requestAnimationFrame)
   const gameStateRef = useRef(gameState);
@@ -71,7 +73,9 @@ export function DinoRun() {
   }, []);
 
   const startGame = () => {
+    if (gameStateRef.current === "gameover") return;
     setGameState("playing");
+    gameStateRef.current = "playing";
     setScore(0);
     
     // Reset Physics
@@ -84,6 +88,9 @@ export function DinoRun() {
     setObstacleX(100);
     
     lastTimeRef.current = performance.now();
+    setShowSubmit(false);
+    
+    // Start game loop
     if (requestRef.current) cancelAnimationFrame(requestRef.current);
     requestRef.current = requestAnimationFrame(update);
     containerRef.current?.focus();
@@ -163,9 +170,14 @@ export function DinoRun() {
           {gameState === "gameover" && (
             <div className="absolute inset-0 bg-background/80 flex flex-col items-center justify-center animate-in fade-in">
               <h3 className="text-4xl font-black text-destructive mb-6 tracking-widest">GAME OVER</h3>
-              <Button size="lg" variant="outline" onClick={startGame} className="font-bold">
-                <RotateCcw className="mr-2" /> Try Again
-              </Button>
+              <div className="flex gap-2">
+                <Button size="lg" variant="outline" onClick={startGame} className="font-bold">
+                  <RotateCcw className="mr-2" /> Try Again
+                </Button>
+                <Button size="lg" variant="default" onClick={() => setShowSubmit(true)} className="font-bold">
+                  <Award className="mr-2" /> Submit Score
+                </Button>
+              </div>
             </div>
           )}
         </div>
@@ -175,6 +187,15 @@ export function DinoRun() {
         </p>
 
       </CardContent>
+
+      <ScoreSubmitter
+        game="dino-run"
+        score={Math.floor(score)}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Dino Run High Score!"
+        unit="Points"
+      />
     </Card>
   );
 }

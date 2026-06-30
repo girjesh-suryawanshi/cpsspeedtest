@@ -3,8 +3,9 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, RefreshCw, Crosshair } from 'lucide-react';
+import { Play, RefreshCw, Crosshair, Award } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ScoreSubmitter } from './score-submitter';
 
 type GameState = 'idle' | 'running' | 'finished';
 
@@ -23,6 +24,7 @@ export function AimTrainer() {
   const [score, setScore] = useState(0);
   const [misses, setMisses] = useState(0);
   const [targets, setTargets] = useState<Target[]>([]);
+  const [showSubmit, setShowSubmit] = useState(false);
 
   const handleStart = useCallback(() => {
     setGameState('running');
@@ -30,6 +32,7 @@ export function AimTrainer() {
     setScore(0);
     setMisses(0);
     setTargets([createTarget()]);
+    setShowSubmit(false);
   }, []);
 
   useEffect(() => {
@@ -159,14 +162,29 @@ export function AimTrainer() {
           </div>
         </CardContent>
         {(gameState === 'idle' || gameState === 'finished') && (
-          <CardFooter className="flex justify-center p-6 border-t bg-card">
+          <CardFooter className="flex justify-center p-6 border-t bg-card gap-4">
             <Button size="lg" onClick={handleStart} className="w-full sm:w-auto">
               {gameState === 'idle' ? <Play className="mr-2"/> : <RefreshCw className="mr-2"/>}
               {gameState === 'idle' ? 'Start Training' : 'Try Again'}
             </Button>
+            {gameState === 'finished' && (
+              <Button size="lg" variant="outline" onClick={() => setShowSubmit(true)}>
+                <Award className="mr-2" />
+                Submit Score
+              </Button>
+            )}
           </CardFooter>
         )}
       </Card>
+
+      <ScoreSubmitter
+        game="aim-trainer"
+        score={score}
+        isOpen={showSubmit}
+        onClose={() => setShowSubmit(false)}
+        title="Aim Trainer Score!"
+        unit="Targets"
+      />
     </div>
   );
 }
