@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, CheckCircle2 } from "lucide-react";
 import { submitContactForm } from "@/app/contact/actions";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useFormStatus } from "react-dom";
 
 function SubmitButton() {
