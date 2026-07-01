@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, MessageCircle, Clock } from "lucide-react";
 import { Metadata } from "next";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -75,46 +76,7 @@ export default function ContactPage() {
               <CardTitle className="text-xl">Send a Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form
-                action="https://formspree.io/f/YOUR_FORM_ID"
-                method="POST"
-                className="space-y-5"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="contact-name">Name <span className="text-destructive">*</span></Label>
-                    <Input id="contact-name" name="name" placeholder="Your Name" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="contact-email">Email <span className="text-destructive">*</span></Label>
-                    <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="contact-subject">Subject <span className="text-destructive">*</span></Label>
-                  <Input id="contact-subject" name="subject" placeholder="What is your message about?" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="contact-message">Message <span className="text-destructive">*</span></Label>
-                  <Textarea
-                    id="contact-message"
-                    name="message"
-                    placeholder="Write your message here..."
-                    className="min-h-[140px] resize-none"
-                    required
-                  />
-                </div>
-                {/* Honeypot for spam prevention */}
-                <input type="text" name="_gotcha" className="hidden" />
-                <Button type="submit" size="lg" className="w-full sm:w-auto gap-2 shadow-md shadow-primary/20">
-                  <Mail className="w-4 h-4" />
-                  Send Message
-                </Button>
-                <p className="text-xs text-muted-foreground">
-                  By submitting this form, you agree to our{" "}
-                  <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
-                </p>
-              </form>
+              <ContactForm />
             </CardContent>
           </Card>
         </div>

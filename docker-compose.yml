@@ -14,6 +14,8 @@ services:
     depends_on:
       cpsspeedtest_db:
         condition: service_healthy
+    volumes:
+      - cpsspeedtest_uploads:/app/public/uploads
     logging:
       driver: "json-file"
       options:
@@ -45,3 +47,4 @@ services:
 
 volumes:
   cpsspeedtest_pgdata:
+  cpsspeedtest_uploads:

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
-import { Zap, LayoutDashboard, FileText, Settings, LogOut, Tags } from "lucide-react";
+import { Zap, LayoutDashboard, FileText, Settings, LogOut, Tags, MessageSquare } from "lucide-react";
 import { headers } from "next/headers";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -29,6 +29,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           </Link>
           <Link href="/admin/blog/categories" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-muted-foreground text-sm hover:font-medium">
             <Tags className="h-4 w-4" /> Categories
+          </Link>
+          <Link href="/admin/messages" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-muted-foreground hover:font-medium">
+            <MessageSquare className="h-5 w-5" /> Messages
           </Link>
         </nav>
         <div className="p-4 border-t border-border/10">
