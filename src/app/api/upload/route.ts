@@ -18,8 +18,15 @@ export async function POST(request: Request) {
 
     // Create unique filename
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const filename = `${uniqueSuffix}-${originalName}`;
+    
+    // Attempt to parse extension from file name or fallback to file type
+    let ext = file.name.split('.').pop()?.toLowerCase();
+    if (!ext || ext === file.name.toLowerCase()) {
+      ext = file.type.split('/')[1] || 'png';
+    }
+    
+    const originalName = file.name.replace(/[^a-zA-Z0-9-]/g, '_').replace(`_${ext}`, '');
+    const filename = `${uniqueSuffix}-${originalName}.${ext}`;
     
     // Ensure uploads directory exists
     const uploadsDir = join(process.cwd(), 'public/uploads');
@@ -30,7 +37,7 @@ export async function POST(request: Request) {
     const path = join(uploadsDir, filename);
     await writeFile(path, buffer);
 
-    const fileUrl = `/uploads/${filename}`;
+    const fileUrl = `/api/uploads/${filename}`;
     
     return NextResponse.json({ success: true, url: fileUrl });
   } catch (error: any) {
