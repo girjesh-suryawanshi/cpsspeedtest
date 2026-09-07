@@ -84,7 +84,7 @@ export function MemoryGame() {
       const firstCard = cards.find(c => c.id === firstCardId);
       const secondCard = cards.find(c => c.id === secondCardId);
 
-      if (firstCard?.name === secondCard?.name) {
+      if (firstCard && secondCard && firstCard.name === secondCard.name) {
         setCards(prevCards =>
           prevCards.map(card =>
             card.name === firstCard.name ? { ...card, isMatched: true } : card

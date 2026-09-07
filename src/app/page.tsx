@@ -281,7 +281,7 @@ export default function Home() {
         <div className="grid grid-cols-3 gap-4 p-6 bg-card/50 rounded-2xl border border-border/20 shadow-lg backdrop-blur-sm">
           <StatBadge value="30+" label="Free Games" />
           <StatBadge value="1M+" label="Tests Taken" />
-          <StatBadge value="0" label="Ads · Free Forever" />
+          <StatBadge value="100%" label="Free Access · No Paywalls" />
         </div>
       </section>
 

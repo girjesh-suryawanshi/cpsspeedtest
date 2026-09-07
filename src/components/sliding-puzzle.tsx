@@ -67,7 +67,8 @@ export function SlidingPuzzle() {
 
         const emptyIndex = tiles.indexOf(null);
         const { row, col } = { row: Math.floor(index / GRID_SIZE), col: index % GRID_SIZE };
-        const { emptyRow, emptyCol } = { row: Math.floor(emptyIndex / GRID_SIZE), col: emptyIndex % GRID_SIZE };
+        const emptyRow = Math.floor(emptyIndex / GRID_SIZE);
+        const emptyCol = emptyIndex % GRID_SIZE;
 
         const isAdjacent = (Math.abs(row - emptyRow) === 1 && col === emptyCol) || (Math.abs(col - emptyCol) === 1 && row === emptyRow);
 

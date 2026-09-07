@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About CpsSpeedTest",
-  description: "Learn about the mission of CpsSpeedTest — the ultimate free destination for 30+ skill-based browser games. No ads, no signup, just play.",
+  description: "Learn about the mission of CpsSpeedTest — the ultimate free destination for 30+ skill-based browser games. Fast, accessible, and fun.",
   alternates: {
     canonical: "/about",
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const stats = [
   { value: "30+", label: "Free Games", icon: <Gamepad2 className="w-6 h-6 text-primary" /> },
   { value: "1M+", label: "Tests Taken", icon: <Zap className="w-6 h-6 text-primary" /> },
-  { value: "0", label: "Ads", icon: <Heart className="w-6 h-6 text-primary" /> },
+  { value: "100%", label: "Free Access", icon: <Heart className="w-6 h-6 text-primary" /> },
   { value: "6", label: "Game Categories", icon: <Star className="w-6 h-6 text-primary" /> },
 ];
 
@@ -82,10 +82,10 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="text-muted-foreground space-y-4 max-w-2xl mx-auto text-center leading-relaxed">
           <p>
-            We are a passionate team of developers and gamers who believe in the power of practice. CpsSpeedTest was founded in 2024 as a simple CPS tool and has grown into a vibrant platform with millions of tests completed and a growing global community.
+            We are a passionate team of developers and gamers who believe in the power of practice. CpsSpeedTest was founded as a simple CPS tool and has grown into a vibrant platform with millions of tests completed and a growing global community.
           </p>
           <p>
-            We are committed to keeping this platform completely free with no ads, no pop-ups, and no account required. Thank you for being a part of our journey — now, let the games begin!
+            We are committed to keeping this platform 100% free with no paywalls, no pop-ups, and no mandatory account required. Non-intrusive advertising helps support server costs and ongoing feature development. Thank you for being a part of our journey — now, let the games begin!
           </p>
         </CardContent>
       </Card>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             {[
               "Always free — no paywalls, no subscriptions",
               "No mandatory account creation",
-              "No intrusive advertising (though we may serve respectful ads in the future to sustain the platform)",
+              "Lightweight, non-intrusive advertising that respects your user experience",
               "Regular new games and improvements",
               "Fast, responsive, mobile-friendly design",
               "Honest, accurate skill measurement tools",
@@ -118,3 +118,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

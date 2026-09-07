@@ -165,7 +165,7 @@ export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
                 value={inputValue}
                 onChange={handleInputChange}
                 className="absolute inset-0 opacity-0 w-full h-full cursor-default"
-                disabled={gameState === 'finished'}
+                disabled={false}
                 autoFocus
               />
             </div>

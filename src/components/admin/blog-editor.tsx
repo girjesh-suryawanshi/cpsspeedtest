@@ -351,7 +351,7 @@ export function BlogEditor({ initialData, postId }: { initialData?: any, postId?
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    {formData.faq.map((item, i) => (
+                    {formData.faq.map((item: { question: string; answer: string }, i: number) => (
                       <div key={i} className="flex gap-4 p-5 border rounded-xl bg-muted/10 relative group hover:border-primary/50 transition-colors">
                         <div className="flex-1 space-y-3">
                           <Input placeholder="Question" value={item.question} onChange={(e) => updateFaq(i, "question", e.target.value)} className="font-semibold bg-background" />

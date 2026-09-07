@@ -109,8 +109,7 @@ export function SequenceMemoryTest() {
                         "aspect-square rounded-lg transition-colors duration-200",
                         "bg-muted hover:bg-muted/80",
                         gameState === 'playing' && "cursor-pointer",
-                        gameState === 'watching' && activeSquare === i && "bg-primary",
-                        gameState === 'finished' && sequence[playerSequence.length] === i && "!bg-destructive"
+                        gameState === 'watching' && activeSquare === i && "bg-primary"
                     )}
                 />
             ))}
