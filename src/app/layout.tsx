@@ -106,8 +106,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google AdSense — uncomment and replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID after approval */}
-        {/* <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" /> */}
+        <meta name="google-adsense-account" content="ca-pub-7316477328258550" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7316477328258550"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -518,6 +522,32 @@ export default function RootLayout({
                       </SidebarMenuItem>
                    </CollapsibleMenu>
                  </SidebarGroup>
+
+                 <SidebarSeparator />
+
+                 <SidebarGroup>
+                  <SidebarGroupLabel className="flex items-center gap-2"><FileText /> Company & Legal</SidebarGroupLabel>
+                   <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/about">About Us</SidebarNavLink>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/blog">Blog & Guides</SidebarNavLink>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/contact">Contact Us</SidebarNavLink>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/privacy">Privacy Policy</SidebarNavLink>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/terms">Terms of Use</SidebarNavLink>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarNavLink href="/disclaimer">Disclaimer</SidebarNavLink>
+                      </SidebarMenuItem>
+                   </SidebarMenu>
+                 </SidebarGroup>
               </SidebarContent>
             </Sidebar>
             <SidebarInset className="flex-1">
@@ -530,11 +560,16 @@ export default function RootLayout({
                     </Link>
                   </div>
                   <div className="flex items-center gap-2">
-                    <nav className="hidden md:flex items-center gap-2">
-                        <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
-                        <Button variant="ghost" asChild><Link href="/games">Games</Link></Button>
-                        <Button variant="ghost" asChild><Link href="/leaderboard">Leaderboard</Link></Button>
-                        <Button variant="ghost" asChild><Link href="/blog">Blog</Link></Button>
+                    <nav className="hidden md:flex items-center gap-0.5 lg:gap-1 text-xs sm:text-sm font-medium">
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/">Home</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/games">Games</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/leaderboard">Leaderboard</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/about">About</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/blog">Blog</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/contact">Contact</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/privacy">Privacy</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/terms">Terms</Link></Button>
+                        <Button variant="ghost" size="sm" className="px-2 lg:px-3 text-xs sm:text-sm" asChild><Link href="/disclaimer">Disclaimer</Link></Button>
                     </nav>
                     <ThemeToggle />
                   </div>

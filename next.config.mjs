@@ -41,17 +41,17 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
           // Force HTTPS for 1 year (enable only when on HTTPS/production)
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-          // Content Security Policy — allows scripts from self + Google Fonts + Firebase
+          // Content Security Policy — allows scripts from self + Google Fonts + Firebase + Google AdSense
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://apis.google.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://apis.google.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.googleadservices.com https://adservice.google.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https:",
-              "connect-src 'self' https://firestore.googleapis.com https://firebase.googleapis.com wss://*.firebaseio.com",
-              "frame-src 'self'",
+              "img-src 'self' data: blob: https: https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net",
+              "connect-src 'self' https://firestore.googleapis.com https://firebase.googleapis.com wss://*.firebaseio.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.googleadservices.com",
+              "frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.doubleclick.net https://tpc.googlesyndication.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
