@@ -3,9 +3,28 @@ import { PopIt } from "@/components/games/pop-it";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pop-It Simulator - ASMR Bubble Wrap | CpsSpeedTest",
-  description: "Pop the bubbles! A relaxing, hyper-casual ASMR Pop-It simulator to relieve stress and satisfy your clicking urge.",
+  title: "Pop-It Simulator - ASMR Bubble Wrap & Stress Relief | CpsSpeedTest",
+  description: "Pop the digital silicone bubbles! A relaxing, hyper-casual ASMR Pop-It simulator to relieve stress, practice mouse coordination, and satisfy clicking impulses.",
+  keywords: ['pop-it simulator', 'bubble wrap game', 'asmr clicker', 'stress relief game', 'fidget toy online'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/pop-it',
+  },
 };
+
+const popItFaqs = [
+  {
+    question: "What is the Pop-It Simulator?",
+    answer: "The Pop-It Simulator is an interactive sensory toy recreation that mimics the tactile and acoustic feedback of silicone bubble fidget toys directly in the web browser."
+  },
+  {
+    question: "Does the Pop-It game track lifetime pops?",
+    answer: "Yes, every popped bubble increments a counter preserved in browser local storage, providing visual feedback and relaxing sound cues with each press."
+  },
+  {
+    question: "How do I reset the Pop-It board?",
+    answer: "Once all bubbles on the board are popped, the grid automatically resets, allowing continuous fidgeting without navigating away."
+  }
+];
 
 export default function PopItPage() {
   return (
@@ -14,16 +33,8 @@ export default function PopItPage() {
         name="Pop-It Simulator"
         description="Pop the bubbles! A relaxing, hyper-casual ASMR Pop-It simulator to relieve stress and satisfy your clicking urge."
         url="https://www.cpsspeedtest.com/pop-it"
-        faqs={[
-  {
-    "question": "What is Pop-It Simulator?",
-    "answer": "Pop the bubbles! A relaxing, hyper-casual ASMR Pop-It simulator to relieve stress and satisfy your clicking urge."
-  },
-  {
-    "question": "How do I play Pop-It Simulator?",
-    "answer": "You can play Pop-It Simulator directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={popItFaqs}
+        category="CasualGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

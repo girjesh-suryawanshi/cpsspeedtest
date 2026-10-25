@@ -6,13 +6,28 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Drag Clicking Test – Measure Your Drag CPS',
-  description: 'Test your drag clicking speed with our specialized test. Find out your true CPS with a drag-click-capable mouse and improve your gaming performance.',
-  keywords: ['drag click test', 'drag cps', 'measure drag clicking', 'high cps mouse'],
-   alternates: {
-    canonical: '/drag-click-test',
+  title: 'Drag Clicking Test – Measure Drag CPS & Technique | CpsSpeedTest',
+  description: 'Test your drag clicking speed with our precision CPS test. Measure burst CPS across 1s, 5s, 10s, and 30s intervals with friction-capable mice.',
+  keywords: ['drag click test', 'drag cps', 'measure drag clicking', 'friction clicking', 'high cps mouse'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/drag-click-test',
   },
 };
+
+const dragClickFaqs = [
+  {
+    question: "What is drag clicking and how does it work?",
+    answer: "Drag clicking is an input technique where friction between a textured finger surface and a mouse button causes rapid microscopic vibrations. Each vibration actuates the mechanical switch repeatedly, achieving burst speeds exceeding 25 to 30+ CPS."
+  },
+  {
+    question: "Which mice are compatible with drag clicking?",
+    answer: "Mice with matte or textured surfaces and adjustable debounce time (such as Roccat Kone series, Bloody A70/A60, or Glorious Model O) are typically favored because their firmware allows low debounce thresholds (0-4ms) needed to register rapid switch rebounds."
+  },
+  {
+    question: "Does drag clicking increase switch wear?",
+    answer: "Yes. Rapid switch friction accelerates wear on mechanical spring contacts. Users practicing drag clicking frequently apply grip tape to maximize surface friction and minimize excessive downward physical pressure."
+  }
+];
 
 export default function DragClickTestPage() {
   return (
@@ -21,16 +36,8 @@ export default function DragClickTestPage() {
         name="Drag Clicking Test – Measure Your Drag CPS"
         description="Test your drag clicking speed with our specialized test. Find out your true CPS with a drag-click-capable mouse and improve your gaming performance."
         url="https://www.cpsspeedtest.com/drag-click-test"
-        faqs={[
-  {
-    "question": "What is Drag Clicking Test – Measure Your Drag CPS?",
-    "answer": "Test your drag clicking speed with our specialized test. Find out your true CPS with a drag-click-capable mouse and improve your gaming performance."
-  },
-  {
-    "question": "How do I play Drag Clicking Test – Measure Your Drag CPS?",
-    "answer": "You can play Drag Clicking Test – Measure Your Drag CPS directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={dragClickFaqs}
+        category="UtilityApplication"
       />
 <div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">

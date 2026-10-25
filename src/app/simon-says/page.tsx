@@ -3,11 +3,26 @@ import { SimonSays } from "@/components/games/simon-says";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Simon Says - Audio/Visual Memory Test | CpsSpeedTest",
-  description: "Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?",
-  keywords: ['simon says', 'memory test', 'sequential memory', 'pattern game', 'brain training'],
-  alternates: { canonical: '/simon-says' },
+  title: "Simon Says - Sequential Memory & Pattern Recall | CpsSpeedTest",
+  description: "Test your sequential working memory and pattern recall. Watch the escalating sequence of colored tones and reproduce the sequence with zero mistakes.",
+  keywords: ['simon says', 'memory test', 'sequential memory', 'pattern recall game', 'working memory training'],
+  alternates: { canonical: 'https://www.cpsspeedtest.com/simon-says' },
 };
+
+const simonSaysFaqs = [
+  {
+    question: "How does Simon Says evaluate working memory capacity?",
+    answer: "Each successful round extends the sequence by one step. According to Miller's Law, the average human short-term memory holds 7 ± 2 discrete items. Reaching sequences of 10+ requires pattern chunking."
+  },
+  {
+    question: "What chunking techniques help achieve higher scores?",
+    answer: "Group colored signals into 3-item sub-phrases or geometric patterns (e.g., clockwise triangles or repeated pairs) rather than trying to memorize each step in isolation."
+  },
+  {
+    question: "Are audio tones synchronized with color flashes?",
+    answer: "Yes, dual audio-visual stimulation engages both phonological loop and visuospatial sketchpad memory subsystems simultaneously."
+  }
+];
 
 export default function SimonSaysPage() {
   return (
@@ -16,16 +31,8 @@ export default function SimonSaysPage() {
         name="Simon Says"
         description="Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?"
         url="https://www.cpsspeedtest.com/simon-says"
-        faqs={[
-  {
-    "question": "What is Simon Says?",
-    "answer": "Test your sequential memory. Watch the pattern of lights and repeat it back. How long of a sequence can you remember?"
-  },
-  {
-    "question": "How do I play Simon Says?",
-    "answer": "You can play Simon Says directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={simonSaysFaqs}
+        category="BrainGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

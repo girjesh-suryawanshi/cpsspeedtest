@@ -3,11 +3,26 @@ import { DinoRun } from "@/components/games/dino-run";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dino Run - Classic Endless Runner | CpsSpeedTest",
-  description: "Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score.",
-  keywords: ['dino run', 'dinosaur game', 'endless runner', 'chrome dino', 'offline game'],
-  alternates: { canonical: '/dino-run' },
+  title: "Dino Run - Classic Endless Runner Online | CpsSpeedTest",
+  description: "Play the legendary offline Dino Run game in your browser! Jump over cacti and pterodactyls, time your leaps, and set a new personal high score.",
+  keywords: ['dino run', 'dinosaur game', 'endless runner', 'chrome dino offline', 'arcade runner'],
+  alternates: { canonical: 'https://www.cpsspeedtest.com/dino-run' },
 };
+
+const dinoRunFaqs = [
+  {
+    question: "What are the controls for Dino Run?",
+    answer: "Press the Spacebar or Up Arrow key on desktop, or tap the game screen on mobile and touchscreens to make the dinosaur jump over obstacles."
+  },
+  {
+    question: "How does the game speed increase over time?",
+    answer: "The runner starts at a baseline scrolling speed and accelerates continuously as your survival distance increases. Obstacle spacing tightens, demanding quicker reflex response."
+  },
+  {
+    question: "How is the high score recorded?",
+    answer: "Your highest distance reached is automatically recorded in your browser's local storage so you can challenge your personal best in future sessions."
+  }
+];
 
 export default function DinoRunPage() {
   return (
@@ -16,16 +31,8 @@ export default function DinoRunPage() {
         name="Dino Run"
         description="Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score."
         url="https://www.cpsspeedtest.com/dino-run"
-        faqs={[
-  {
-    "question": "What is Dino Run?",
-    "answer": "Play the legendary offline Dino Run game in your browser! Jump over obstacles and set a new high score."
-  },
-  {
-    "question": "How do I play Dino Run?",
-    "answer": "You can play Dino Run directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={dinoRunFaqs}
+        category="ArcadeGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

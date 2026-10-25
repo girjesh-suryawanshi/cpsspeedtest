@@ -3,10 +3,28 @@ import { TowerOfHanoi } from "@/components/games/tower-of-hanoi";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tower of Hanoi - Algorithmic Logic Puzzle | CPS Test",
-  description: "Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and algorithmic reasoning by moving the disks to the final peg.",
-  keywords: ["tower of hanoi", "hanoi puzzle", "logic puzzle", "math game", "brain training", "algorithms"],
+  title: "Tower of Hanoi - Algorithmic Logic Puzzle | CpsSpeedTest",
+  description: "Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and recursive algorithmic reasoning across 3 to 7 disk configurations.",
+  keywords: ["tower of hanoi", "hanoi puzzle", "logic puzzle", "math game", "brain training", "recursive algorithms"],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/tower-of-hanoi',
+  },
 };
+
+const hanoiFaqs = [
+  {
+    question: "What is the minimum number of moves to solve Tower of Hanoi?",
+    answer: "The theoretical minimum moves required to solve Tower of Hanoi with n disks is exactly `2^n - 1`. For 3 disks it takes 7 moves; for 4 disks, 15 moves; and for 5 disks, 31 moves."
+  },
+  {
+    question: "What are the core rules of Tower of Hanoi?",
+    answer: "Three rules govern movement: only one disk may be moved at a time, each move takes the top disk from one peg to another, and no larger disk may ever rest atop a smaller disk."
+  },
+  {
+    question: "Why is Tower of Hanoi famous in computer science?",
+    answer: "It serves as the quintessential demonstration of recursion. Moving n disks from Source to Target via Auxiliary breaks down into: move n-1 disks to Auxiliary, move the largest disk to Target, then move n-1 disks from Auxiliary to Target."
+  }
+];
 
 export default function TowerOfHanoiPage() {
   return (
@@ -15,16 +33,8 @@ export default function TowerOfHanoiPage() {
         name="Tower of Hanoi"
         description="Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and algorithmic reasoning by moving the disks to the final peg."
         url="https://www.cpsspeedtest.com/tower-of-hanoi"
-        faqs={[
-  {
-    "question": "What is Tower of Hanoi?",
-    "answer": "Play the classic Tower of Hanoi mathematical puzzle. Test your logic, planning, and algorithmic reasoning by moving the disks to the final peg."
-  },
-  {
-    "question": "How do I play Tower of Hanoi?",
-    "answer": "You can play Tower of Hanoi directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={hanoiFaqs}
+        category="BrainGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

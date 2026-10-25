@@ -3,9 +3,28 @@ import { TicTacToe } from "@/components/games/tic-tac-toe";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tic-Tac-Toe - Play Against AI | CpsSpeedTest",
-  description: "Play the classic game of Tic-Tac-Toe against the computer. Can you outsmart the AI?",
+  title: "Tic-Tac-Toe - Play Against AI Online | CpsSpeedTest",
+  description: "Play classic Tic-Tac-Toe (Noughts and Crosses) against computer AI. Test your corner opening strategies and fork traps in your browser.",
+  keywords: ['tic-tac-toe', 'noughts and crosses', 'tic tac toe online', 'play vs ai', 'strategy game'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/tic-tac-toe',
+  },
 };
+
+const ticTacToeFaqs = [
+  {
+    question: "Is there a guaranteed winning strategy in Tic-Tac-Toe?",
+    answer: "Tic-Tac-Toe is a mathematically solved zero-sum game. When both players play optimally, the game always ends in a draw. However, seizing corners first creates fork opportunities against non-optimal opponents."
+  },
+  {
+    question: "What is a 'fork' in Tic-Tac-Toe?",
+    answer: "A fork occurs when a player creates two simultaneous, unblocked winning threats (two lines of two marks). The opposing player can only block one threat, ensuring a win on the subsequent turn."
+  },
+  {
+    question: "Can I play Tic-Tac-Toe on mobile devices?",
+    answer: "Yes, the 3x3 interactive board supports responsive touch inputs across smartphones, tablets, and desktop mice with instant state evaluation."
+  }
+];
 
 export default function TicTacToePage() {
   return (
@@ -14,16 +33,8 @@ export default function TicTacToePage() {
         name="Tic-Tac-Toe"
         description="Play the classic game of Tic-Tac-Toe against the computer. Can you outsmart the AI?"
         url="https://www.cpsspeedtest.com/tic-tac-toe"
-        faqs={[
-  {
-    "question": "What is Tic-Tac-Toe?",
-    "answer": "Play the classic game of Tic-Tac-Toe against the computer. Can you outsmart the AI?"
-  },
-  {
-    "question": "How do I play Tic-Tac-Toe?",
-    "answer": "You can play Tic-Tac-Toe directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={ticTacToeFaqs}
+        category="BoardGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

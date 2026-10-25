@@ -3,9 +3,28 @@ import { TimeGuesser } from "@/components/games/time-guesser";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Time Guesser - 10 Second Reflex Test | CpsSpeedTest",
-  description: "Test your internal clock and reflexes. Can you stop the timer at exactly 10.000 seconds? Try the Time Guesser now.",
+  title: "Time Guesser - 10-Second Internal Clock Test | CpsSpeedTest",
+  description: "Test your internal clock and estimation accuracy. Can you stop the timer at exactly 10.000 seconds? Measure your variance in milliseconds.",
+  keywords: ['time guesser', '10 second test', 'internal clock test', 'chronometric estimation', 'reflex timer'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/time-guesser',
+  },
 };
+
+const timeGuesserFaqs = [
+  {
+    question: "How does the Time Guesser measure accuracy?",
+    answer: "The tool initiates high-precision performance timing on 'Start' and hides the running display. When 'Stop' is clicked, it calculates the absolute difference between your stop timestamp and the exact 10.000-second target."
+  },
+  {
+    question: "What is an excellent score on the 10-second test?",
+    answer: "Stopping within ±100 milliseconds (0.100s) of 10.000s reflects exceptional internal tempo estimation. Most unpracticed participants land within ±300 to 600 milliseconds."
+  },
+  {
+    question: "How can I improve internal cadence counting?",
+    answer: "Subvocal counting using rhythmic syllables (such as 'one-one-thousand, two-one-thousand') calibrated against a 60 BPM metronome significantly tightens internal time estimation."
+  }
+];
 
 export default function TimeGuesserPage() {
   return (
@@ -14,16 +33,8 @@ export default function TimeGuesserPage() {
         name="Time Guesser"
         description="Test your internal clock and reflexes. Can you stop the timer at exactly 10.000 seconds? Try the Time Guesser now."
         url="https://www.cpsspeedtest.com/time-guesser"
-        faqs={[
-  {
-    "question": "What is Time Guesser?",
-    "answer": "Test your internal clock and reflexes. Can you stop the timer at exactly 10.000 seconds? Try the Time Guesser now."
-  },
-  {
-    "question": "How do I play Time Guesser?",
-    "answer": "You can play Time Guesser directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={timeGuesserFaqs}
+        category="CasualGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

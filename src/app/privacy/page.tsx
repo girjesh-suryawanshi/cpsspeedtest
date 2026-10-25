@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>Timestamp:</strong> When the score was submitted (server time).</li>
           </ul>
           <p>
-            This information is stored in our Firebase Firestore database and is <strong>publicly visible</strong> on the
+            This information is securely stored in our PostgreSQL database (managed via Prisma ORM) and is <strong>publicly visible</strong> on the
             leaderboard. Scores cannot be modified or deleted once submitted. By submitting your score, you consent
             to this data being publicly displayed.
           </p>

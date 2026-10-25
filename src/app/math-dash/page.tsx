@@ -4,10 +4,25 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Math Dash - Speed Arithmetic Training | CpsSpeedTest",
-  description: "Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students.",
-  keywords: ["math dash", "mental math", "speed math", "brain training", "math game", "arithmetic practice"],
-  alternates: { canonical: '/math-dash' },
+  description: "Test your mental math speed with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain agility and student training.",
+  keywords: ["math dash", "mental math", "speed math", "brain training", "math game", "arithmetic practice", "calculation speed"],
+  alternates: { canonical: 'https://www.cpsspeedtest.com/math-dash' },
 };
+
+const mathDashFaqs = [
+  {
+    question: "How does Math Dash train mental calculation speed?",
+    answer: "Math Dash presents rapidly cycling arithmetic problems (+, -, *, /) under a 60-second countdown. As correct answers accumulate, problem complexity scales, promoting rapid cognitive number fact retrieval."
+  },
+  {
+    question: "What is considered a high score in the 60-second sprint?",
+    answer: "Solving 20 to 30 equations correctly in 60 seconds reflects strong arithmetic fluency, while scores above 40 indicate competitive mental calculation capability."
+  },
+  {
+    question: "Can I input answers using the keyboard numpad?",
+    answer: "Yes, desktop users can utilize standard keyboard numbers and the Numpad with Enter submission, while mobile users have access to an on-screen digital numeric pad."
+  }
+];
 
 export default function MathDashPage() {
   return (
@@ -16,16 +31,8 @@ export default function MathDashPage() {
         name="Math Dash"
         description="Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students."
         url="https://www.cpsspeedtest.com/math-dash"
-        faqs={[
-  {
-    "question": "What is Math Dash?",
-    "answer": "Test your mental math skills with Math Dash. Solve as many arithmetic equations as you can in 60 seconds! Perfect for brain training and students."
-  },
-  {
-    "question": "How do I play Math Dash?",
-    "answer": "You can play Math Dash directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={mathDashFaqs}
+        category="BrainGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

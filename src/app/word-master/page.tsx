@@ -3,10 +3,28 @@ import { WordMaster } from "@/components/games/word-master";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Word Master - Free Word Guessing Game | CPS Test",
-  description: "Play Word Master, the popular 5-letter word guessing game. Test your vocabulary and deductive reasoning in 6 tries.",
-  keywords: ["word master", "wordle alternative", "word game", "vocabulary game", "brain training"],
+  title: "Word Master - Free 5-Letter Word Guessing Game | CpsSpeedTest",
+  description: "Play Word Master, the popular 5-letter word deduction game. Test your vocabulary and deductive reasoning across 6 attempts with color-coded hints.",
+  keywords: ["word master", "wordle alternative", "word game", "vocabulary game", "brain training", "5 letter word guess"],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/word-master',
+  },
 };
+
+const wordMasterFaqs = [
+  {
+    question: "What do the tile colors mean in Word Master?",
+    answer: "Green indicates the letter is in the target word and in the exact position. Yellow indicates the letter exists in the word but belongs in a different position. Gray signifies the letter does not appear anywhere in the target word."
+  },
+  {
+    question: "What are effective opening words for 5-letter puzzles?",
+    answer: "Optimal opening words feature high-frequency vowels and common consonants (e.g., CRANE, SLATE, AUDIO, or ROAST). These words maximize information entropy to eliminate unpromising candidates on attempt 1."
+  },
+  {
+    question: "Can duplicate letters appear in the secret word?",
+    answer: "Yes, words may contain duplicate letters (such as 'SPEED' or 'APPLE'). If you guess a word with two instances of a letter when only one exists, only one tile will show yellow or green."
+  }
+];
 
 export default function WordMasterPage() {
   return (
@@ -15,16 +33,8 @@ export default function WordMasterPage() {
         name="Word Master"
         description="Play Word Master, the popular 5-letter word guessing game. Test your vocabulary and deductive reasoning in 6 tries."
         url="https://www.cpsspeedtest.com/word-master"
-        faqs={[
-  {
-    "question": "What is Word Master?",
-    "answer": "Play Word Master, the popular 5-letter word guessing game. Test your vocabulary and deductive reasoning in 6 tries."
-  },
-  {
-    "question": "How do I play Word Master?",
-    "answer": "You can play Word Master directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={wordMasterFaqs}
+        category="WordGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

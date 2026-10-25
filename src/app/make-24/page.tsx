@@ -3,10 +3,28 @@ import { Make24 } from "@/components/games/make-24";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Make 24 Math Puzzle - Arithmetic Brain Game | CPS Test",
+  title: "Make 24 Math Puzzle - Arithmetic Brain Game | CpsSpeedTest",
   description: "Play the classic Make 24 math puzzle. Use addition, subtraction, multiplication, and division to make the number 24 from four given numbers.",
-  keywords: ["make 24", "24 puzzle", "math game", "arithmetic puzzle", "brain training", "logical reasoning"],
+  keywords: ["make 24", "24 puzzle", "math game", "arithmetic puzzle", "brain training", "mental math reasoning"],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/make-24',
+  },
 };
+
+const make24Faqs = [
+  {
+    question: "What are the rules of the Make 24 math puzzle?",
+    answer: "You are given four numbers and must combine all four exactly once using basic arithmetic operations (+, -, *, /) and parentheses to equal 24."
+  },
+  {
+    question: "What is the most common tactical approach in Make 24?",
+    answer: "Work backwards from 24 factors: target intermediate products like `8 * 3`, `6 * 4`, or `12 * 2`, or target sums/differences such as `25 - 1` or `20 + 4`."
+  },
+  {
+    question: "Do all 4-number combinations have a solution to reach 24?",
+    answer: "Not all randomly drawn quadruplets have a valid integer solution. The game selects verified solvable card sets to guarantee logical solvability."
+  }
+];
 
 export default function Make24Page() {
   return (
@@ -15,16 +33,8 @@ export default function Make24Page() {
         name="Make 24 Math Puzzle"
         description="Play the classic Make 24 math puzzle. Use addition, subtraction, multiplication, and division to make the number 24 from four given numbers."
         url="https://www.cpsspeedtest.com/make-24"
-        faqs={[
-  {
-    "question": "What is Make 24 Math Puzzle?",
-    "answer": "Play the classic Make 24 math puzzle. Use addition, subtraction, multiplication, and division to make the number 24 from four given numbers."
-  },
-  {
-    "question": "How do I play Make 24 Math Puzzle?",
-    "answer": "You can play Make 24 Math Puzzle directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={make24Faqs}
+        category="BrainGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

@@ -3,10 +3,28 @@ import { Hangman } from "@/components/games/hangman";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hangman - Free Online Word Guessing Game | CPS Test",
-  description: "Play the classic game of Hangman online. Guess the hidden word letter by letter before you run out of attempts.",
-  keywords: ["hangman", "word game", "guessing game", "vocabulary game", "online hangman"],
+  title: "Hangman - Free Online Word Guessing Game | CpsSpeedTest",
+  description: "Play the classic game of Hangman online. Deduce the hidden word letter by letter using vowel frequency analysis before running out of attempts.",
+  keywords: ["hangman", "word game", "guessing game", "vocabulary game", "online hangman", "letter frequency"],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/hangman',
+  },
 };
+
+const hangmanFaqs = [
+  {
+    question: "What is the optimal letter-guessing order in Hangman?",
+    answer: "Statistical analysis of the English language shows that guessing vowels first (E, A, I, O, U) followed by high-frequency consonants (T, N, S, R, H, L, D, C) yields the highest probability of revealing word structures quickly."
+  },
+  {
+    question: "How many mistakes are permitted before losing?",
+    answer: "The game permits 6 incorrect letter guesses (head, torso, left arm, right arm, left leg, right leg) before the round is lost and the secret word is revealed."
+  },
+  {
+    question: "How does Hangman improve vocabulary and spelling?",
+    answer: "Hangman exercises morphological phonics and spelling intuition by forcing players to recognize common letter clusters, prefixes, and suffixes (such as -ING, -TION, and UN-)."
+  }
+];
 
 export default function HangmanPage() {
   return (
@@ -15,16 +33,8 @@ export default function HangmanPage() {
         name="Hangman"
         description="Play the classic game of Hangman online. Guess the hidden word letter by letter before you run out of attempts."
         url="https://www.cpsspeedtest.com/hangman"
-        faqs={[
-  {
-    "question": "What is Hangman?",
-    "answer": "Play the classic game of Hangman online. Guess the hidden word letter by letter before you run out of attempts."
-  },
-  {
-    "question": "How do I play Hangman?",
-    "answer": "You can play Hangman directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={hangmanFaqs}
+        category="WordGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

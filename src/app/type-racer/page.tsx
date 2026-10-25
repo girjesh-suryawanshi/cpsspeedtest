@@ -3,9 +3,28 @@ import { TypeRacer } from "@/components/games/type-racer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Speed Typer - 30s Typing Race | CpsSpeedTest",
-  description: "Test your typing speed! See how many Words Per Minute (WPM) you can type in this 30-second speed typing test.",
+  title: "Speed Typer - 30-Second WPM Typing Speed Test | CpsSpeedTest",
+  description: "Test your keyboard typing speed and accuracy. Find out your true Words Per Minute (WPM) and accuracy percentage in this intense 30-second typing sprint.",
+  keywords: ['typing speed test', 'wpm test', 'speed typer', '30 second typing test', 'keyboard accuracy test'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/type-racer',
+  },
 };
+
+const typeRacerFaqs = [
+  {
+    question: "How is Words Per Minute (WPM) calculated?",
+    answer: "Standard typing speed formula defines one 'word' as 5 keystrokes (including spaces and punctuation). Gross WPM is `(total keystrokes / 5) / (elapsed seconds / 60)`. Net WPM penalizes uncorrected keystroke errors."
+  },
+  {
+    question: "What is considered an above-average typing speed?",
+    answer: "The global average typing speed is roughly 40 WPM. Professional transcribers, programmers, and competitive typists frequently exceed 75 to 100+ WPM with over 95% accuracy."
+  },
+  {
+    question: "How can I improve typing speed without losing accuracy?",
+    answer: "Maintain home-row finger placement (ASDF JKL;) and avoid glancing down at keyboard keycaps. Prioritizing rhythm and 98%+ accuracy allows muscle memory to accelerate naturally over time."
+  }
+];
 
 export default function TypeRacerPage() {
   return (
@@ -14,16 +33,8 @@ export default function TypeRacerPage() {
         name="Speed Typer"
         description="Test your typing speed! See how many Words Per Minute (WPM) you can type in this 30-second speed typing test."
         url="https://www.cpsspeedtest.com/type-racer"
-        faqs={[
-  {
-    "question": "What is Speed Typer?",
-    "answer": "Test your typing speed! See how many Words Per Minute (WPM) you can type in this 30-second speed typing test."
-  },
-  {
-    "question": "How do I play Speed Typer?",
-    "answer": "You can play Speed Typer directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={typeRacerFaqs}
+        category="SkillGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

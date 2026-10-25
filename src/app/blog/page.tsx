@@ -49,7 +49,7 @@ export default async function BlogIndexPage() {
       title: p.title,
       excerpt: p.description,
       category: p.slug.includes("cps") || p.slug.includes("click") ? "Clicking Technique" : p.slug.includes("memory") ? "Brain Training" : "Gaming Guide",
-      author_name: "Alex Chen",
+      author_name: "CpsSpeedTest Editorial Team",
       createdAt: p.date ? new Date(p.date) : new Date(),
       reading_time: 5,
     }));

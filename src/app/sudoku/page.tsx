@@ -3,10 +3,28 @@ import { Sudoku } from "@/components/games/sudoku";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Play Sudoku Free Online - Logic Number Puzzle | CPS Test",
-  description: "Play free online Sudoku. Exercise your brain, improve logical reasoning, and solve challenging number puzzles.",
-  keywords: ["sudoku", "online sudoku", "logic puzzle", "number puzzle", "brain training"],
+  title: "Play Sudoku Free Online - Logic Number Grid Puzzle | CpsSpeedTest",
+  description: "Play free online Sudoku with multiple difficulty tiers. Exercise logical deduction, pencil marking, and grid elimination in your browser.",
+  keywords: ["sudoku", "online sudoku", "logic puzzle", "number puzzle", "brain training", "deductive reasoning"],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/sudoku',
+  },
 };
+
+const sudokuFaqs = [
+  {
+    question: "What are the fundamental rules of Sudoku?",
+    answer: "A standard 9x9 Sudoku grid requires placing digits 1 through 9 such that each digit appears exactly once in every row, column, and 3x3 non-overlapping block without repetition."
+  },
+  {
+    question: "Does solving Sudoku require arithmetic or math?",
+    answer: "No. Although digits 1-9 are traditionally used, Sudoku is purely a game of deductive logic and spatial elimination. Letters, symbols, or distinct colors could mathematically substitute for the numbers."
+  },
+  {
+    question: "What basic techniques help beginners solve cells?",
+    answer: "Scanning rows and columns for 'naked singles' (cells with only one candidate remaining) and 'hidden singles' (digits that can only fit in one specific cell within a block) solves most introductory boards."
+  }
+];
 
 export default function SudokuPage() {
   return (
@@ -15,16 +33,8 @@ export default function SudokuPage() {
         name="Play Sudoku Free Online"
         description="Play free online Sudoku. Exercise your brain, improve logical reasoning, and solve challenging number puzzles."
         url="https://www.cpsspeedtest.com/sudoku"
-        faqs={[
-  {
-    "question": "What is Play Sudoku Free Online?",
-    "answer": "Play free online Sudoku. Exercise your brain, improve logical reasoning, and solve challenging number puzzles."
-  },
-  {
-    "question": "How do I play Play Sudoku Free Online?",
-    "answer": "You can play Play Sudoku Free Online directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={sudokuFaqs}
+        category="BrainGame"
       />
 <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col gap-8">

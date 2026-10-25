@@ -192,19 +192,92 @@ Select option `2` to redirect HTTP traffic automatically to HTTPS.
 
 ---
 
-## 🧹 Maintenance Commands
+---
 
-* **View App Logs:**
+## 🔄 Step 9: Updating an Existing Deployment on Hostinger VPS
+
+When pushing new code updates (like our AdSense remediation and static SSG build), you can update the running production container in **under 2 minutes** without losing any existing database records.
+
+### 🛡️ Database Safety Guarantee:
+The PostgreSQL database is persisted in the separate named Docker volume `cpsspeedtest_pgdata`. Rebuilding or updating `cpsspeedtest_app` **does not affect or wipe the database**.
+
+---
+
+### Option A: Updating via Git (Recommended)
+
+1. **On your local machine**, commit and push your changes to GitHub/GitLab:
+   ```bash
+   git add .
+   git commit -m "feat: complete AdSense remediation, static SSG build, and unique FAQs"
+   git push origin master
+   ```
+
+2. **SSH into your Hostinger VPS**:
+   ```bash
+   ssh root@YOUR_HOSTINGER_VPS_IP
+   ```
+
+3. **Navigate to project directory & run the automated update script**:
+   ```bash
+   cd /var/www/cpsspeedtest
+   chmod +x update-production.sh
+   ./update-production.sh
+   ```
+
+   *Or run the manual update commands:*
+   ```bash
+   cd /var/www/cpsspeedtest
+   git pull origin master
+   docker compose build --no-cache cpsspeedtest_app
+   docker compose up -d --no-deps --remove-orphans cpsspeedtest_app
+   docker exec cpsspeedtest_app npx prisma db push --skip-generate
+   ```
+
+---
+
+### Option B: Updating via Direct File Transfer (SCP / SFTP / FileZilla)
+
+If you do not use Git on your VPS, upload your local project files directly:
+
+1. **Upload files to your VPS** (exclude `node_modules` and `.next`):
+   From your local terminal (Windows PowerShell):
+   ```powershell
+   # Using scp (or use FileZilla/Cyberduck)
+   scp -r src public prisma Dockerfile docker-compose.yml next.config.mjs package.json tsconfig.json root@YOUR_HOSTINGER_VPS_IP:/var/www/cpsspeedtest/
+   ```
+
+2. **SSH into your VPS and rebuild**:
+   ```bash
+   ssh root@YOUR_HOSTINGER_VPS_IP
+   cd /var/www/cpsspeedtest
+   docker compose build --no-cache cpsspeedtest_app
+   docker compose up -d --no-deps --remove-orphans cpsspeedtest_app
+   docker exec cpsspeedtest_app npx prisma db push --skip-generate
+   ```
+
+---
+
+## 🧹 Maintenance & Troubleshooting Commands
+
+* **View live app logs:**
   ```bash
   docker compose logs -f cpsspeedtest_app
   ```
-* **Restart App Container:**
+* **View database logs:**
+  ```bash
+  docker compose logs -f cpsspeedtest_db
+  ```
+* **Verify local container health:**
+  ```bash
+  curl -I http://127.0.0.1:4013
+  curl http://127.0.0.1:4013/ads.txt
+  ```
+* **Restart the application:**
   ```bash
   docker compose restart cpsspeedtest_app
   ```
-* **Re-deploy Code Updates:**
+* **Check Docker resource usage:**
   ```bash
-  git pull
-  docker compose build --no-cache
-  docker compose up -d
+  docker stats
   ```
+

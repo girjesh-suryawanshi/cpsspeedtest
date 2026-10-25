@@ -6,13 +6,28 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Stroop Test – Color vs Text Challenge',
-  description: 'Take the classic Stroop Test to measure your cognitive control, focus, and mental processing speed. Can you click the color of the word, not the word itself?',
-  keywords: ['stroop test', 'cognitive test', 'brain game', 'focus test', 'processing speed'],
-   alternates: {
-    canonical: '/stroop-test',
+  title: 'Stroop Test – Cognitive Control & Color-Word Interference | CpsSpeedTest',
+  description: 'Take the classic Stroop Test to measure cognitive inhibition, selective attention, and mental processing speed under semantic interference.',
+  keywords: ['stroop test', 'cognitive interference test', 'color word test', 'selective attention', 'processing speed test'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/stroop-test',
   },
 };
+
+const stroopFaqs = [
+  {
+    question: "What is the cognitive principle behind the Stroop Test?",
+    answer: "The Stroop effect demonstrates semantic interference: reading written words is an automated cognitive process for literate adults. When word text conflicts with ink color (e.g., 'RED' in blue ink), the brain must actively suppress automatic reading to identify the font color, causing measurable response latency."
+  },
+  {
+    question: "How does this test measure cognitive reaction time?",
+    answer: "The test measures response latency in milliseconds between stimulus display and button actuation, factoring in accuracy and error rate to compute cognitive inhibition efficiency."
+  },
+  {
+    question: "How can someone improve their Stroop Test score?",
+    answer: "Focusing on narrow visual cues (such as looking at an isolated corner or character shape rather than processing the entire word) can reduce involuntary semantic reading interference."
+  }
+];
 
 export default function StroopTestPage() {
   return (
@@ -21,16 +36,8 @@ export default function StroopTestPage() {
         name="Stroop Test – Color vs Text Challenge"
         description="Take the classic Stroop Test to measure your cognitive control, focus, and mental processing speed. Can you click the color of the word, not the word itself?"
         url="https://www.cpsspeedtest.com/stroop-test"
-        faqs={[
-  {
-    "question": "What is Stroop Test – Color vs Text Challenge?",
-    "answer": "Take the classic Stroop Test to measure your cognitive control, focus, and mental processing speed. Can you click the color of the word, not the word itself?"
-  },
-  {
-    "question": "How do I play Stroop Test – Color vs Text Challenge?",
-    "answer": "You can play Stroop Test – Color vs Text Challenge directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={stroopFaqs}
+        category="BrainGame"
       />
 <div className="w-full">
       <header className="w-full max-w-2xl mx-auto mb-8">

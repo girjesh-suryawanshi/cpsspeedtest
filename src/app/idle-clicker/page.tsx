@@ -4,8 +4,27 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Idle Clicker - Incremental Upgrade Game | CpsSpeedTest",
-  description: "Click to earn coins, buy upgrades, and build an auto-clicking empire. The ultimate incremental idle clicker game.",
+  description: "Click to earn coins, buy production upgrades, and build an automated clicking empire. Browser-based incremental clicker game.",
+  keywords: ['idle clicker', 'cookie clicker game', 'incremental game', 'browser clicker', 'upgrade game'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/idle-clicker',
+  },
 };
+
+const idleClickerFaqs = [
+  {
+    question: "How do upgrades work in Idle Clicker?",
+    answer: "Manual click upgrades increase the coin yield per click, while Auto-Clickers produce continuous passive income each second without requiring player input."
+  },
+  {
+    question: "Is game progress saved automatically?",
+    answer: "Yes, your coins, click power multiplier, and automated production upgrades are continuously persisted to your browser's local storage so you can resume anytime."
+  },
+  {
+    question: "What is the best early-game strategy?",
+    answer: "Focus initial manual clicks on buying the first tier of Auto-Clickers. Once passive coin generation starts, balance purchasing click multipliers with higher efficiency automation buildings."
+  }
+];
 
 export default function IdleClickerPage() {
   return (
@@ -14,16 +33,8 @@ export default function IdleClickerPage() {
         name="Idle Clicker"
         description="Click to earn coins, buy upgrades, and build an auto-clicking empire. The ultimate incremental idle clicker game."
         url="https://www.cpsspeedtest.com/idle-clicker"
-        faqs={[
-  {
-    "question": "What is Idle Clicker?",
-    "answer": "Click to earn coins, buy upgrades, and build an auto-clicking empire. The ultimate incremental idle clicker game."
-  },
-  {
-    "question": "How do I play Idle Clicker?",
-    "answer": "You can play Idle Clicker directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={idleClickerFaqs}
+        category="CasualGame"
       />
 <div className="container max-w-4xl py-12 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">

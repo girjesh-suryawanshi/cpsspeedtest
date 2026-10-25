@@ -6,13 +6,28 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Double Click Test – Check Your Mouse for Issues',
-  description: 'Use our Double Click Test to check if your mouse is registering unintentional double clicks or to measure your double-clicking speed.',
-  keywords: ['double click test', 'mouse test', 'unwanted double clicks', 'mouse hardware test'],
-   alternates: {
-    canonical: '/double-click-test',
+  title: 'Double Click Test – Check Mouse Switches for Chatter & Issues | CpsSpeedTest',
+  description: 'Use our Double Click Test to detect hardware switch chatter, unintentional double-clicks, and verify mouse debounce responsiveness.',
+  keywords: ['double click test', 'mouse switch test', 'unwanted double clicks', 'mouse hardware debounce test', 'switch chatter'],
+  alternates: {
+    canonical: 'https://www.cpsspeedtest.com/double-click-test',
   },
 };
+
+const doubleClickFaqs = [
+  {
+    question: "How does this tool detect unintentional double-clicking?",
+    answer: "The test monitors raw pointerdown events. If a second click occurs within a window under 80 milliseconds without an intentional mechanical release and repress, the event is flagged as hardware switch bounce (chatter)."
+  },
+  {
+    question: "What causes mechanical mouse switches to double-click?",
+    answer: "Mechanical microswitches (such as standard Omron or Huano switches) rely on metallic spring contacts. Over millions of actuations, contact oxidation, dust, or metal fatigue cause the contact leaf to bounce, registering two electrical signals from a single physical press."
+  },
+  {
+    question: "Can mouse debounce settings fix switch chatter?",
+    answer: "Many gaming mice allow adjusting the debounce delay (e.g., from 4ms to 10ms) in their companion software. Increasing debounce time can mask minor switch bounce, though severe switch degradation will eventually require switch replacement or cleaning."
+  }
+];
 
 export default function DoubleClickTestPage() {
   return (
@@ -21,16 +36,8 @@ export default function DoubleClickTestPage() {
         name="Double Click Test – Check Your Mouse for Issues"
         description="Use our Double Click Test to check if your mouse is registering unintentional double clicks or to measure your double-clicking speed."
         url="https://www.cpsspeedtest.com/double-click-test"
-        faqs={[
-  {
-    "question": "What is Double Click Test – Check Your Mouse for Issues?",
-    "answer": "Use our Double Click Test to check if your mouse is registering unintentional double clicks or to measure your double-clicking speed."
-  },
-  {
-    "question": "How do I play Double Click Test – Check Your Mouse for Issues?",
-    "answer": "You can play Double Click Test – Check Your Mouse for Issues directly in your browser on CpsSpeedTest without any downloads. Just click start and follow the on-screen instructions!"
-  }
-]}
+        faqs={doubleClickFaqs}
+        category="UtilityApplication"
       />
 <div className="w-full">
         <header className="w-full max-w-2xl mx-auto mb-8">
