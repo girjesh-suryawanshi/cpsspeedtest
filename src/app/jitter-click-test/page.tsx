@@ -2,13 +2,13 @@ import { GameSEO } from "@/components/game-seo";
 import { CpsTest } from "@/components/cps-test";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Metadata } from 'next';
-import { Wind, ShieldAlert, Activity, HelpCircle, CheckCircle2 } from "lucide-react";
+import { Wind, ShieldAlert, Activity, Cpu, CheckCircle2, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Jitter Click Test (10s) - Measure Jitter Speed & Technique',
-  description: 'Measure your jitter clicking speed on our 10-second test. Learn the biomechanics of forearm vibration clicking, ergonomic safety, and tracking trade-offs.',
-  keywords: ['jitter click test', 'jitter clicking', 'how to jitter click', 'increase cps', 'jitter click technique'],
+  title: 'Jitter Click Test (10s) – Forearm Vibration Technique & Ergonomics | CpsSpeedTest',
+  description: 'Measure your jitter clicking speed on our 10-second test. Learn the biomechanics of forearm tremor clicking, mouse grip positioning, and ergonomic injury prevention.',
+  keywords: ['jitter click test', 'jitter clicking', 'how to jitter click', 'increase cps', 'jitter click technique', 'forearm clicking'],
   alternates: {
     canonical: 'https://www.cpsspeedtest.com/jitter-click-test',
   },
@@ -26,6 +26,10 @@ const jitterFaqs = [
   {
     question: "Why is it difficult to aim while jitter clicking?",
     answer: "Because the forearm vibration shakes the entire hand, mouse sensor stability is compromised. Crosshair micro-adjustments become difficult, which is why competitive players typically only jitter click when target lock is already established or during close-quarters knockback trades."
+  },
+  {
+    question: "What is an average jitter click speed?",
+    answer: "Beginners usually start around 8–10 CPS. With practice and proper muscle conditioning, experienced jitter clickers sustain 11 to 14 CPS over a full 10-second test."
   }
 ];
 
@@ -34,9 +38,10 @@ export default function JitterClickTestPage() {
     <>
       <GameSEO 
         name="Jitter Click Test"
-        description="Measure your jitter clicking speed on our 10-second test. Learn the biomechanics of forearm vibration clicking, ergonomic safety, and tracking trade-offs."
+        description="Measure your jitter clicking speed on our 10-second test. Learn the biomechanics of forearm tremor clicking, ergonomic safety, and tracking trade-offs."
         url="https://www.cpsspeedtest.com/jitter-click-test"
         faqs={jitterFaqs}
+        category="UtilityApplication"
       />
 
       <div className="w-full max-w-4xl mx-auto py-4 px-2 sm:px-4 space-y-10">
@@ -61,61 +66,131 @@ export default function JitterClickTestPage() {
           <CardHeader className="pb-2">
             <CardTitle className="text-base font-bold flex items-center gap-2 text-amber-500">
               <ShieldAlert className="w-5 h-5 shrink-0" />
-              Ergonomic & Health Safety Warning
+              Ergonomic &amp; Health Safety Warning
             </CardTitle>
           </CardHeader>
           <CardContent className="text-xs sm:text-sm text-muted-foreground space-y-2 leading-relaxed">
             <p>
-              Jitter clicking requires prolonged isometric contraction of your forearm. <strong>Stop immediately</strong> if you feel pain, tingling, or wrist soreness.
+              Jitter clicking requires prolonged isometric contraction of your forearm flexor muscles. <strong>Stop immediately</strong> if you feel sharp pain, burning, tingling, or wrist numbness.
             </p>
             <p>
-              Many competitive players now prefer <Link href="/butterfly-click-test" className="text-primary hover:underline font-semibold">Butterfly Clicking</Link> as an alternative, as it utilizes two alternating relaxed fingers and produces comparable or higher CPS with significantly less muscular tension.
+              Many competitive players now prefer <Link href="/butterfly-click-test" className="text-primary hover:underline font-semibold">Butterfly Clicking</Link> as an alternative, as it utilizes two alternating relaxed fingers and produces comparable or higher CPS (15–20+) with significantly less muscular tension.
             </p>
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Activity className="w-4 h-4 text-primary" />
-                Biomechanical Breakdown
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <p>
-                Unlike standard clicking which averages 6–8 CPS, jitter clicking can reach 11–14 CPS. The limiting factor is not finger agility, but neurological tremor frequency and the mechanical reset spring inside your mouse switch.
-              </p>
-              <p>
-                A mouse with stiff switches (such as heavy Huano switches) makes jittering fatiguing, whereas lighter switches (like Omron 20M or Kailh 8.0) actuate with less required downward force.
-              </p>
-            </CardContent>
-          </Card>
+        {/* ── Section 1: Biomechanics & Grip Technique (AEO) ── */}
+        <Card className="bg-card/70 border-border/20 backdrop-blur-sm shadow-md">
+          <CardHeader>
+            <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2.5">
+              <Activity className="w-5 h-5 text-primary" />
+              The Biomechanics of Jitter Clicking: How to Learn the Technique
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p>
+              Unlike standard clicking which relies on isolated finger joint flexion, <strong>jitter clicking</strong> channels involuntary muscle tremors:
+            </p>
+            <ol className="list-decimal pl-5 space-y-2 text-sm">
+              <li>
+                <strong className="text-foreground">Forearm Muscle Co-Contraction:</strong> You simultaneously contract both the <em>flexor digitorum</em> (which closes fingers) and <em>extensor digitorum</em> (which opens fingers). When opposing muscles pull against each other with high tension, they produce an involuntary physiological oscillation (shiver).
+              </li>
+              <li>
+                <strong className="text-foreground">The Claw or Fingertip Grip:</strong> Rest your wrist on the mousepad and arch your index finger into a rigid, claw-like curve. The finger acts as a stiff transmission rod, delivering the wrist vibration directly into the left mouse switch.
+              </li>
+              <li>
+                <strong className="text-foreground">Thumb &amp; Pinky Anchoring:</strong> Squeeze the sides of the mouse firmly with your thumb and ring/pinky finger to keep the mouse sensor from sliding wildly across your mousepad during vibrations.
+              </li>
+            </ol>
+          </CardContent>
+        </Card>
 
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Wind className="w-4 h-4 text-primary" />
-                The Aim Trade-Off
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <p>
-                A high CPS score is counterproductive if you cannot keep your crosshair on target. In fast-paced FPS or combat titles, smooth mouse tracking is more valuable than erratic 13 CPS bursts.
-              </p>
-              <p>
-                Test your tracking accuracy alongside your clicking speed on our dedicated <Link href="/aim-trainer" className="text-primary hover:underline font-semibold">Aim Trainer</Link>.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        {/* ── Section 2: GEO Score Tiers & Benchmark Table ── */}
+        <Card className="bg-card/70 border-border/20 shadow-md">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
+              <Activity className="w-5 h-5 text-primary" />
+              Jitter Click Speed Tiers (10-Second Test)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              How does your jitter clicking compare to experienced players? Here is the community performance distribution:
+            </p>
 
-        {/* FAQs */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
+                <div className="text-2xl">🌱</div>
+                <div className="font-bold text-foreground">7.0 – 9.9 CPS</div>
+                <div className="text-xs font-semibold text-emerald-500 uppercase">Beginner Jitter</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">Inconsistent muscle shiver. The player experiences rapid forearm fatigue after 3–4 seconds.</p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
+                <div className="text-2xl">⚔️</div>
+                <div className="font-bold text-foreground">10.0 – 11.9 CPS</div>
+                <div className="text-xs font-semibold text-blue-500 uppercase">Competent Jitterer</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">Steady oscillation frequency. Capable of maintaining consistent speed for the full 10-second duration.</p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
+                <div className="text-2xl">🔥</div>
+                <div className="font-bold text-foreground">12.0 – 13.9 CPS</div>
+                <div className="text-xs font-semibold text-purple-500 uppercase">Advanced PvP Tier</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">Excellent muscle conditioning. Delivers powerful hit registration and combo locks in Minecraft 1.8.</p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
+                <div className="text-2xl">⚡</div>
+                <div className="font-bold text-foreground">14.0+ CPS</div>
+                <div className="text-xs font-semibold text-amber-500 uppercase">Elite Master</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">Top 2% jitter speed. Extreme tremor frequency combined with lightweight mechanical microswitches.</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ── Section 3: Hardware & Aim Trade-Offs (GEO Matrix) ── */}
+        <Card className="bg-card/70 border-border/20 shadow-md">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
+              <Cpu className="w-5 h-5 text-primary" />
+              Hardware Compatibility &amp; The Aiming Trade-Off
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              Not all gaming mice are suitable for jitter clicking. Stiff switches (like standard Huano Blue or Zowie mice) require 70–80 grams of force, making sustained vibrations exhausting.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h4 className="font-bold text-foreground text-sm">Optimal Mice for Jittering</h4>
+                <p className="text-xs text-muted-foreground">
+                  Mice featuring light mechanical switches (such as Omron 20M, Kailh GM 8.0, or Razer Optical Gen-3) with short pre-travel actuate with minimal downward pressure, allowing your hand to stay relaxed longer.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h4 className="font-bold text-foreground text-sm">Tracking Accuracy Compromise</h4>
+                <p className="text-xs text-muted-foreground">
+                  Because whole-arm vibration introduces micro-tremors to the mouse sensor, fine crosshair tracking becomes difficult. Practice target acquisition on our <Link href="/aim-trainer" className="text-primary hover:underline font-semibold">Aim Trainer</Link> to ensure your aim remains true while clicking fast.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs text-muted-foreground pt-2">
+              Want to test overall clicking stamina? Take the classic <Link href="/kohi-click-test" className="text-primary hover:underline font-semibold">Kohi Click Test</Link> or measure your drag burst rate on the <Link href="/drag-click-test" className="text-primary hover:underline font-semibold">Drag Click Test</Link>.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* ── Section 4: Frequently Asked Questions (AEO) ── */}
         <Card className="bg-card/70 border-border/20 shadow-md">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2.5">
               <HelpCircle className="w-5 h-5 text-primary" />
-              Jitter Clicking FAQs
+              Frequently Asked Questions (FAQ)
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

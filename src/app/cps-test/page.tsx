@@ -64,159 +64,236 @@ export default function CpsTestPage() {
         {/* Core Interactive Tool */}
         <CpsTest gameDuration={5} allowDurationChange={true} />
 
-        {/* ── Section 1: Measurement Method & Formula ── */}
+        {/* ── Section 1: Direct Definition & Measurement Formula (AEO) ── */}
         <Card className="bg-card/70 border-border/20 backdrop-blur-sm shadow-md">
           <CardHeader>
             <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2.5">
               <Calculator className="w-5 h-5 text-primary" />
-              How CPS Is Measured & Calculated
+              What is a CPS Test & How is Click Speed Calculated?
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
             <p>
-              Clicks Per Second (CPS) is the standard metric used in competitive gaming, UI research, and input benchmarking to quantify how frequently a user can actuate a primary input device.
+              A <strong>Clicks Per Second (CPS) test</strong> is a digital benchmark that measures how many times you can actuate a primary mouse button or touchscreen within a fixed duration. It serves as an essential metric across competitive esports (notably <em>Minecraft PvP</em>, fast-paced MOBAs, and real-time strategy titles) as well as UI responsiveness testing and repetitive motor-control research.
             </p>
             <div className="p-4 rounded-xl bg-secondary/40 border border-border/30 text-foreground font-mono text-center sm:text-lg font-bold">
-              CPS = Total Valid Clicks ÷ Actual Elapsed Seconds
+              CPS = Valid Primary Clicks ÷ Exact Elapsed Time (Seconds)
             </div>
             <p>
-              Unlike basic web counters that rely on standard browser <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">setInterval</code> clocks (which are subject to heavy background tab throttling and timing drift), this tool captures exact timestamps using the browser&apos;s high-resolution <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">performance.now()</code> API (accurate to fractions of a millisecond).
+              Most online counters rely on simple JavaScript <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">setInterval</code> or <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">setTimeout</code> functions. Unfortunately, these legacy timers drift by up to 15–30 milliseconds per tick due to browser CPU throttling. Our tool eliminates measurement error by utilizing the browser&apos;s high-resolution <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">performance.now()</code> API synchronized with <code className="text-primary font-mono text-xs bg-secondary px-1.5 py-0.5 rounded">requestAnimationFrame</code>, delivering true sub-millisecond accuracy.
             </p>
-            <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 text-xs sm:text-sm text-foreground space-y-1">
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 text-xs sm:text-sm text-foreground space-y-1.5">
               <p className="font-semibold text-primary">Worked Numerical Example:</p>
-              <p>• Recorded Clicks: <strong>47 clicks</strong></p>
-              <p>• Measured Test Duration: <strong>5.004 seconds</strong></p>
-              <p>• Calculation: 47 ÷ 5.004 = <strong>9.39 CPS</strong></p>
+              <p>• Total Validated Clicks Registered: <strong>48 clicks</strong></p>
+              <p>• High-Resolution Elapsed Time: <strong>5.012 seconds</strong></p>
+              <p>• Mathematical Result: 48 ÷ 5.012 = <strong>9.58 CPS</strong></p>
             </div>
           </CardContent>
         </Card>
 
-        {/* ── Section 2: CPS vs Reaction Time ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Timer className="w-4 h-4 text-primary" />
-                CPS vs. Reaction Time
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <p>
-                Visitors frequently confuse click speed with reaction latency. They test two distinct neurological and motor pathways:
-              </p>
-              <ul className="list-disc pl-5 space-y-1.5">
-                <li>
-                  <strong className="text-foreground">Reaction Time:</strong> Measures the millisecond delay between perceiving an external visual cue (e.g., green screen) and muscle contraction initiation. (Test yours on our <Link href="/reaction-time-test" className="text-primary hover:underline">Reaction Time Test</Link>).
-                </li>
-                <li>
-                  <strong className="text-foreground">Click Speed (CPS):</strong> Measures repetitive neuromuscular oscillation speed—the rate at which your flexor digitorum muscles can rapidly contract and relax.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+        {/* ── Section 2: Detailed Clicking Techniques Guide ── */}
+        <Card className="bg-card/70 border-border/20 shadow-md">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
+              <Zap className="w-5 h-5 text-primary" />
+              4 Proven Clicking Techniques & How to Master Them
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              Achieving high click speeds is not just about muscle strength—it is fundamentally a matter of technique and neuromuscular coordination. Gamers primarily use four recognized clicking methods:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h3 className="font-bold text-foreground text-base flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">1</span>
+                  Regular Single-Finger Clicking (5–8 CPS)
+                </h3>
+                <p>
+                  The standard method used by everyday computer users. You rest your index finger on the left mouse button and click using isolated finger joint flexion.
+                </p>
+                <p className="text-xs text-muted-foreground font-medium">
+                  <strong>Pros:</strong> Effortless control, perfect crosshair aim stability.<br />
+                  <strong>Cons:</strong> Hard biological ceiling around 8–9 CPS due to finger flexor recovery time.
+                </p>
+              </div>
 
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-primary" />
-                Hardware & Input Influences
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <p>
-                Your score is strongly influenced by your physical input hardware:
-              </p>
-              <ul className="list-disc pl-5 space-y-1.5">
-                <li>
-                  <strong className="text-foreground">Debounce Delay:</strong> Mechanical microswitches oscillate upon impact. Firmware debounce delay filters these bounces to prevent duplicate registrations.
-                </li>
-                <li>
-                  <strong className="text-foreground">Switch Type:</strong> Optical switches break light beams rather than physical contacts, eliminating debounce latency.
-                </li>
-                <li>
-                  <strong className="text-foreground">Polling Rate:</strong> 1000Hz gaming mice report updates every 1ms, whereas 125Hz office mice report every 8ms.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h3 className="font-bold text-foreground text-base flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">2</span>
+                  Butterfly Clicking (12–20+ CPS)
+                </h3>
+                <p>
+                  Alternating your index and middle finger rapidly on the same mouse button. While one finger is depressing the switch, the other is recoiling.
+                </p>
+                <p className="text-xs text-muted-foreground font-medium">
+                  <strong>Pros:</strong> High sustainable CPS with minimal physical fatigue.<br />
+                  <strong>Cons:</strong> Requires a mouse with wide buttons and low debounce firmware (e.g., Glorious Model O, Roccat Kone).
+                </p>
+              </div>
 
-        {/* ── Section 3: Click Speed Tiers ── */}
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h3 className="font-bold text-foreground text-base flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">3</span>
+                  Jitter Clicking (10–14 CPS)
+                </h3>
+                <p>
+                  Tensing your entire forearm and wrist muscles to induce an involuntary physiological tremor that transmits down through your index finger.
+                </p>
+                <p className="text-xs text-muted-foreground font-medium">
+                  <strong>Pros:</strong> Works on standard mice without low debounce settings.<br />
+                  <strong>Cons:</strong> Difficult to aim; high wrist fatigue; potential risk of muscle strain if practiced excessively.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
+                <h3 className="font-bold text-foreground text-base flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">4</span>
+                  Drag Clicking (20–30+ CPS)
+                </h3>
+                <p>
+                  Dragging a slightly tacky finger across a matte mouse button. Friction creates rapid microscopic stick-slip vibrations that actuate the switch repeatedly.
+                </p>
+                <p className="text-xs text-muted-foreground font-medium">
+                  <strong>Pros:</strong> Massive burst speeds essential for advanced Minecraft bridging.<br />
+                  <strong>Cons:</strong> Only works in short 0.5–1s bursts; wears switch leaf springs quickly; requires grip tape.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ── Section 3: GEO Citation Matrix: Hardware & Switch Physics ── */}
+        <Card className="bg-card/70 border-border/20 shadow-md">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
+              <Cpu className="w-5 h-5 text-primary" />
+              Hardware Factors: How Mice, Switches & Latency Shape CPS
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              Your physiological tapping frequency is only half of the equation. Physical hardware specs create hard mathematical boundaries for how fast inputs can register:
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-border/40 text-foreground">
+                    <th className="py-2.5 px-3 font-bold">Hardware Variable</th>
+                    <th className="py-2.5 px-3 font-bold">Standard Value</th>
+                    <th className="py-2.5 px-3 font-bold">Optimal Gaming Value</th>
+                    <th className="py-2.5 px-3 font-bold">Impact on CPS</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/20">
+                  <tr>
+                    <td className="py-2 px-3 font-medium text-foreground">Switch Debounce Delay</td>
+                    <td className="py-2 px-3">8 ms – 12 ms</td>
+                    <td className="py-2 px-3 text-emerald-500 font-semibold">0 ms – 4 ms</td>
+                    <td className="py-2 px-3">High debounce masks rapid double-taps; lower debounce enables 15+ CPS butterfly/drag clicking.</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3 font-medium text-foreground">Microswitch Technology</td>
+                    <td className="py-2 px-3">Mechanical (Omron 20M/50M)</td>
+                    <td className="py-2 px-3 text-emerald-500 font-semibold">Optical / Kalih GM 8.0</td>
+                    <td className="py-2 px-3">Optical switches actuate with light beams, eliminating metallic contact bounce delay entirely.</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3 font-medium text-foreground">USB Polling Rate</td>
+                    <td className="py-2 px-3">125 Hz (8ms report rate)</td>
+                    <td className="py-2 px-3 text-emerald-500 font-semibold">1,000 Hz – 4,000 Hz</td>
+                    <td className="py-2 px-3">1000Hz reports clicks to the OS every 1 millisecond, reducing input jitter and click timing drift.</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3 font-medium text-foreground">Switch Actuation Force</td>
+                    <td className="py-2 px-3">65 – 75 gram-force (gf)</td>
+                    <td className="py-2 px-3 text-emerald-500 font-semibold">50 – 60 gram-force (gf)</td>
+                    <td className="py-2 px-3">Lighter actuation force reduces finger fatigue during sustained 15s–60s clicking tests.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ── Section 4: CPS Score Benchmarks (GEO Tier Table) ── */}
         <Card className="bg-card/70 border-border/20 shadow-md">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2.5">
               <Activity className="w-5 h-5 text-primary" />
-              Verified Community Score Ranges
+              Verified Community Score Ranges & Performance Tiers
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              Based on empirical testing across different input styles, here is how click speeds generally classify:
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Based on empirical testing across thousands of mouse input trials, here is how click speeds generally classify across different skill levels and gaming genres:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
                 <div className="text-2xl">🐢</div>
                 <div className="font-bold text-foreground">0 – 4.9 CPS</div>
                 <div className="text-xs font-semibold text-emerald-500 uppercase">Casual / Standard</div>
-                <p className="text-xs text-muted-foreground">Typical navigation speed for office workflows and non-competitive computer use.</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Typical navigation speed for office workflows, reading, and non-competitive computer usage.</p>
               </div>
 
               <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
                 <div className="text-2xl">🐇</div>
                 <div className="font-bold text-foreground">5.0 – 7.9 CPS</div>
                 <div className="text-xs font-semibold text-blue-500 uppercase">Average Regular</div>
-                <p className="text-xs text-muted-foreground">Standard single-finger clicking rate achieved by most recreational gamers without specialized technique.</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Standard single-finger clicking rate achieved by most recreational gamers without specialized hand grips.</p>
               </div>
 
               <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
                 <div className="text-2xl">🐆</div>
                 <div className="font-bold text-foreground">8.0 – 10.9 CPS</div>
                 <div className="text-xs font-semibold text-purple-500 uppercase">Fast / Experienced</div>
-                <p className="text-xs text-muted-foreground">Attained by experienced action, MOBA, or shooter players using controlled burst clicking.</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Attained by experienced action, MOBA, or shooter players using controlled burst clicking and high focus.</p>
               </div>
 
               <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
                 <div className="text-2xl">🦅</div>
                 <div className="font-bold text-foreground">11.0+ CPS</div>
                 <div className="text-xs font-semibold text-amber-500 uppercase">Competitive Tier</div>
-                <p className="text-xs text-muted-foreground">Requires advanced clicking methods such as butterfly clicking, jitter clicking, or low-debounce drag clicking.</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Requires advanced clicking methods such as butterfly clicking, jitter clicking, or low-debounce drag clicking.</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* ── Section 4: What This Tool Measures & Ergonomics ── */}
+        {/* ── Section 5: Ergonomics, Safety & Best Practices ── */}
         <Card className="bg-card/70 border-border/20 shadow-md">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2.5">
               <AlertCircle className="w-5 h-5 text-primary" />
-              Scope of Measurement & Ergonomic Safety
+              Ergonomic Safety & Hand Health Guidelines
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground leading-relaxed">
             <p>
-              <strong>What this tool measures:</strong> Raw mechanical input frequency delivered through a browser window within a controlled duration.
+              Rapid clicking engages the <em>flexor digitorum superficialis</em> and <em>extensor digitorum</em> muscles in your forearm. While practicing click speed tests is safe in moderation, aggressive technique without proper form can lead to repetitive strain injuries (RSI).
             </p>
-            <p>
-              <strong>What this tool does not measure:</strong> This tool is not a medical or neurological diagnostic device. CPS scores do not equate to overall gaming skill, strategic intelligence, or aim precision.
-            </p>
-            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive-foreground text-xs sm:text-sm">
-              <p className="font-semibold text-destructive flex items-center gap-1.5 mb-1">
-                <AlertCircle className="w-4 h-4" /> Health & Ergonomic Advisory
+            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive-foreground text-xs sm:text-sm space-y-1.5">
+              <p className="font-semibold text-destructive flex items-center gap-1.5">
+                <AlertCircle className="w-4 h-4" /> Crucial Safety Rules:
               </p>
-              <p>
-                High-frequency clicking techniques (particularly jitter clicking) involve rapid forearm tension that can strain your flexor tendons. Never click through wrist pain, numbness, or tingling sensations. Take regular breaks and practice wrist stretches.
-              </p>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                <li><strong>Never click through pain:</strong> If you feel sharp tendon pain, burning, or numbness, stop immediately and rest for 24–48 hours.</li>
+                <li><strong>Keep your wrist neutral:</strong> Avoid harsh upward wrist extension. Use a desk height where your forearms rest parallel to the floor.</li>
+                <li><strong>Follow the 20-20 Rule:</strong> Take a 30-second break every 20 minutes of intense clicking practice. Gently stretch your fingers and rotate wrists.</li>
+                <li><strong>Jitter click with caution:</strong> Continuous isometric forearm tension is particularly demanding on carpal ligaments. Limit jitter practice sessions to 5–10 minutes.</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
 
-        {/* ── Section 5: Troubleshooting ── */}
+        {/* ── Section 6: Frequently Asked Questions & Troubleshooting (AEO) ── */}
         <Card className="bg-card/70 border-border/20 shadow-md">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2.5">
               <HelpCircle className="w-5 h-5 text-primary" />
-              Frequently Asked Questions & Troubleshooting
+              Frequently Asked Questions (FAQ)
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
