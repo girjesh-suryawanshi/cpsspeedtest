@@ -346,13 +346,6 @@ export default function Home() {
         <CpsTest gameDuration={5} allowDurationChange={true} />
       </section>
 
-      {/* ── Policy-Compliant Safe Ad Slot 1 (With 40px+ Buffer from Interactive Zone) ── */}
-      <div className="w-full max-w-4xl mx-auto my-8 p-3 rounded-xl border border-dashed border-border/40 text-center text-xs text-muted-foreground flex flex-col items-center justify-center min-h-[90px] bg-muted/20">
-        <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 mb-1">Advertisement</span>
-        <div className="w-full text-center text-xs text-muted-foreground/50 py-2">
-          Responsive Google AdSense Display Banner (Auto-Optimized)
-        </div>
-      </div>
 
       {/* ── Platform Architecture & Precision Metrics ── */}
       <section className="w-full max-w-4xl mx-auto mb-14 md:mb-18">
@@ -495,13 +488,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Policy-Compliant Safe Ad Slot 2 ── */}
-      <div className="w-full max-w-4xl mx-auto my-6 p-3 rounded-xl border border-dashed border-border/40 text-center text-xs text-muted-foreground flex flex-col items-center justify-center min-h-[90px] bg-muted/20">
-        <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 mb-1">Advertisement</span>
-        <div className="w-full text-center text-xs text-muted-foreground/50 py-2">
-          Responsive Google AdSense Display Banner (Mid-Article Placement)
-        </div>
-      </div>
 
       {/* ── Ergonomic Safety Guidelines & Responsible Gaming ── */}
       <section className="w-full max-w-5xl mx-auto mb-14 md:mb-20">
@@ -617,13 +603,7 @@ export default function Home() {
         </Card>
       </section>
 
-      {/* ── Policy-Compliant Safe Ad Slot 3 (Above Footer) ── */}
-      <div className="w-full max-w-4xl mx-auto my-6 p-3 rounded-xl border border-dashed border-border/40 text-center text-xs text-muted-foreground flex flex-col items-center justify-center min-h-[90px] bg-muted/20">
-        <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 mb-1">Advertisement</span>
-        <div className="w-full text-center text-xs text-muted-foreground/50 py-2">
-          Responsive Google AdSense Display Banner (Pre-Footer Slot)
-        </div>
-      </div>
+
     </div>
   );
 }
