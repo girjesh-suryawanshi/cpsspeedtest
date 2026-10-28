@@ -19,15 +19,53 @@ export function CookieConsent() {
         const t = setTimeout(() => setVisible(true), 1200);
         return () => clearTimeout(t);
       }
+      // If previously accepted, enable personalized ads
+      if (stored === "accepted") {
+        enablePersonalizedAds();
+      }
     } catch {
       // localStorage unavailable (e.g., privacy mode) — hide banner
     }
   }, []);
 
+  const enablePersonalizedAds = () => {
+    // Signal to Google AdSense that personalized ads are allowed
+    if (typeof window !== "undefined") {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      // If gtag is available, grant ad and analytics storage
+      if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      }
+    }
+  };
+
+  const disablePersonalizedAds = () => {
+    // Signal to Google AdSense to show non-personalized ads only
+    if (typeof window !== "undefined") {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle.requestNonPersonalizedAds = 1;
+      // If gtag is available, deny ad and analytics storage
+      if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("consent", "update", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+        });
+      }
+    }
+  };
+
   const accept = () => {
     try {
       localStorage.setItem(CONSENT_KEY, "accepted");
     } catch {}
+    enablePersonalizedAds();
     setVisible(false);
   };
 
@@ -35,6 +73,7 @@ export function CookieConsent() {
     try {
       localStorage.setItem(CONSENT_KEY, "declined");
     } catch {}
+    disablePersonalizedAds();
     setVisible(false);
   };
 
@@ -61,7 +100,8 @@ export function CookieConsent() {
             We and our partners (including Google AdSense) use cookies to
             personalise content and ads, to provide social media features, and
             to analyse our traffic. By clicking &ldquo;Accept All&rdquo; you
-            consent to our use of cookies.{" "}
+            consent to personalized advertising. Selecting &ldquo;Reject
+            Non-Essential&rdquo; will show non-personalized ads only.{" "}
             <Link
               href="/privacy"
               className="text-primary underline underline-offset-2 hover:text-primary/80"

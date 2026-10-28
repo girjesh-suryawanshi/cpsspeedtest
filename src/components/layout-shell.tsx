@@ -459,6 +459,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
               <Link href="/privacy" className="text-sm hover:underline">Privacy</Link>
               <Link href="/terms" className="text-sm hover:underline">Terms</Link>
               <Link href="/disclaimer" className="text-sm hover:underline">Disclaimer</Link>
+              <Link href="/dmca" className="text-sm hover:underline">DMCA</Link>
             </nav>
           </div>
         </footer>

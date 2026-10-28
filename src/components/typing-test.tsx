@@ -26,10 +26,10 @@ type TextKey = keyof typeof TEXT_SAMPLES;
 type GameState = 'idle' | 'running' | 'finished';
 
 interface TypingTestProps {
-  gameDuration: number;
+  gameDuration?: number;
 }
 
-export function TypingTest({ gameDuration: initialDuration }: TypingTestProps) {
+export function TypingTest({ gameDuration: initialDuration = 60 }: TypingTestProps) {
   const [gameState, setGameState] = useState<GameState>('idle');
   const [gameDuration, setGameDuration] = useState(initialDuration);
   const [textKey, setTextKey] = useState<TextKey>("1");

@@ -1,14 +1,33 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Games - Browse 30+ Free Skill Games',
-  description: 'Browse our complete collection of 30+ free browser-based skill games. Clicking tests, typing games, memory challenges, aim trainers, puzzles, and more.',
-  keywords: ['free games', 'skill games', 'cps test', 'typing test', 'memory game', 'aim trainer', 'reaction time'],
+  title: "All Games & Tools – Browse 45+ Free Browser Skill Games | CpsSpeedTest",
+  description:
+    "Explore CpsSpeedTest's complete collection of 45+ free browser games and tools — click speed tests, typing challenges, memory benchmarks, puzzles, and creative sandboxes. No downloads, no accounts required.",
+  keywords: [
+    "free browser games",
+    "click speed games",
+    "typing games online",
+    "memory test games",
+    "puzzle games online",
+    "cps test games",
+    "brain games free",
+  ],
   alternates: {
-    canonical: '/games',
+    canonical: "https://www.cpsspeedtest.com/games",
+  },
+  openGraph: {
+    title: "All Games & Tools – 45+ Free Browser Skill Games | CpsSpeedTest",
+    description:
+      "Browse CpsSpeedTest's full catalog: click speed tests, typing challenges, cognitive benchmarks, strategy puzzles, and creative tools — all free, in-browser, no account needed.",
+    url: "https://www.cpsspeedtest.com/games",
   },
 };
 
-export default function GamesLayout({ children }: { children: React.ReactNode }) {
+export default function GamesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return children;
 }

@@ -24,7 +24,7 @@ const GAME_ROUTES = [
   '/verbal-memory-test', '/word-memory-test', '/memory-game', '/stroop-test',
   '/drawing-pad', '/block-builder', '/connect-the-dots', '/jigsaw-puzzle',
   '/sliding-puzzle',
-  '/games', '/leaderboard', '/about', '/contact', '/privacy', '/terms', '/disclaimer', '/blog',
+  '/games', '/leaderboard', '/about', '/contact', '/privacy', '/terms', '/disclaimer', '/dmca', '/blog',
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

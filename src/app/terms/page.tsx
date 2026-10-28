@@ -18,7 +18,7 @@ export default function TermsAndConditionsPage() {
           Terms and Conditions
         </h1>
         <p className="text-muted-foreground mt-2 text-lg">
-          Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          Last updated: October 15, 2026
         </p>
       </header>
       <Card className="w-full max-w-4xl">

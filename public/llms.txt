@@ -1,0 +1,134 @@
+# CpsSpeedTest — AI Crawler Index (llms.txt)
+> https://www.cpsspeedtest.com
+
+CpsSpeedTest is a free, high-precision browser-based skill gaming and benchmarking platform.
+All tools are built in-house in React with sub-millisecond timing (performance.now() + requestAnimationFrame).
+No downloads, no accounts, no iframes. 45+ interactive tools across 5 categories.
+
+## Site Purpose
+
+CpsSpeedTest helps users measure, benchmark, and improve digital skills including:
+- Mouse clicking speed (Clicks Per Second / CPS)
+- Visual reaction time (milliseconds)
+- Touch typing speed (Words Per Minute / WPM)
+- Spacebar tapping speed (Hits Per Second / HPS)
+- Cognitive working memory (digit span, sequence, visual, verbal)
+- Strategy and puzzle gaming skills
+
+## Key Benchmarks & Data
+
+**CPS (Clicks Per Second):**
+- Formula: CPS = Total Valid Clicks ÷ Elapsed Seconds (measured via performance.now())
+- Casual: 0–4.9 CPS | Average: 5–7.9 CPS | Fast: 8–10.9 CPS | Competitive: 11+ CPS
+- Techniques: Regular (5–8 CPS), Jitter (10–14 CPS), Butterfly (12–20 CPS), Drag (20–30+ CPS)
+
+**Reaction Time:**
+- Formula: Stimulus-to-response latency in milliseconds
+- Absolute biological minimum: ~130ms (photoreceptor to motor response)
+- Average human: 200–250ms | Gamer average: 170–200ms
+- Test uses randomized 2–5 second pre-stimulus delay to prevent anticipation
+
+**Typing Speed (WPM):**
+- Formula: Gross WPM = (Keystrokes ÷ 5) ÷ Time(min) | Net WPM subtracts uncorrected errors
+- World average: ~40 WPM | Professional: 65–85 WPM | Expert: 100+ WPM
+
+**Spacebar Speed (HPS):**
+- Formula: HPS = Total Actuations ÷ 15 seconds
+- Average: 6–8 HPS | Competitive: 9–12+ HPS
+
+**Working Memory (Chimp Test):**
+- Based on 2007 Kyoto University study (Dr. Tetsuro Matsuzawa / Ayumu chimpanzee)
+- Average human: 7±2 items (Miller's Law)
+
+## Tool Directory
+
+### Click Speed Tests
+- /cps-test — Clicks Per Second test (5s default, adjustable 1s–60s)
+- /cps-test-1s — Peak 1-second burst click speed benchmark
+- /kohi-click-test — 10-second sustained CPS stamina benchmark
+- /jitter-click-test — Forearm-tremor rapid clicking technique benchmark
+- /butterfly-click-test — Two-finger alternating click speed benchmark
+- /drag-click-test — Friction-drag click technique benchmark
+- /double-click-test — Mouse double-click registration speed test
+- /minecraft-cps-test — CPS benchmark optimized for Minecraft PvP hit registration
+
+### Typing & Keyboard Tests
+- /typing-test — 60-second WPM and accuracy benchmark
+- /typing-test-30s — 30-second WPM sprint benchmark
+- /type-racer — Competitive sentence-by-sentence typing race
+- /spacebar-clicker — Spacebar Hits Per Second (HPS) benchmark
+
+### Cognitive & Memory Tests
+- /reaction-time-test — Visual stimulus response time in milliseconds
+- /aim-trainer — Target acquisition precision and speed trainer
+- /chimp-test — Spatial working memory (Kyoto Ayumu benchmark)
+- /number-memory-test — Forward digit span working memory
+- /sequence-memory-test — Simon-pattern sequential recall
+- /visual-memory-test — Spatial grid pattern memorization
+- /verbal-memory-test — Verbal/lexical working memory
+- /word-memory-test — Word recognition recall test
+- /memory-game — Classic card-flip match memory game
+- /stroop-test — Cognitive interference and selective attention
+
+### Arcade & Strategy Games
+- /snake — Classic Nokia Snake (Hamiltonian cycle strategy guide)
+- /2048 — Mathematical sliding tile puzzle (corner-anchor strategy)
+- /dino-run — Chrome T-Rex offline runner (Project Bolan, 2014)
+- /minesweeper — Probabilistic deduction grid puzzle
+- /simon-says — Color pattern sequential memory challenge
+- /tic-tac-toe — 3×3 strategic board game
+- /pop-it — Fidget sensory bubble simulation
+- /time-guesser — Internal time perception accuracy trainer
+- /idle-clicker — Incremental automation strategy game
+- /coreball-game — Precision timing spike/ball arcade
+
+### Puzzle & Educational Games
+- /sudoku — 9×9 logical deduction number puzzle
+- /tower-of-hanoi — Recursive disk transfer algorithm puzzle
+- /math-dash — Timed arithmetic mental math sprint
+- /math-quiz — Multi-operation mathematics practice
+- /make-24 — 4-number arithmetic expression challenge
+- /word-master — 5-letter word deduction (Wordle variant)
+- /hangman — Progressive word-guessing deduction game
+- /word-scramble — Anagram unscrambling word challenge
+- /drawing-pad — Freehand digital canvas drawing tool
+- /block-builder — 3D block stacking creative sandbox
+- /connect-the-dots — Sequential numbered dot connector
+- /jigsaw-puzzle — Digital image jigsaw puzzle
+- /sliding-puzzle — 15-puzzle tile sliding brain teaser
+- /cupcake-2048 — Themed variant of the 2048 puzzle mechanic
+- /stimulation-clicker — Auto-clicker idle game simulation
+
+## Content & Guides
+
+30 educational guide articles at /blog covering:
+- CPS test ultimate guide
+- How to increase CPS (techniques)
+- Jitter, butterfly, drag clicking guides
+- Reaction time test science
+- Typing speed improvement guide
+- Memory test guides (number, visual, verbal, sequence)
+- Aim trainer guide
+- Hardware guide: best mouse for high CPS gaming
+
+## Technical Stack
+
+- Framework: Next.js 14 (App Router), 100% statically prerendered (102 pages)
+- Timing: performance.now() + requestAnimationFrame (sub-millisecond accuracy)
+- Database: PostgreSQL via Prisma (leaderboard scores)
+- Hosting: Hostinger VPS + Docker (standalone output)
+- No iframes, no third-party game widgets, all tools are native React components
+
+## Legal & Trust
+
+- Privacy Policy: /privacy (GDPR-aligned, COPPA-compliant)
+- Terms of Service: /terms
+- Disclaimer: /disclaimer
+- DMCA Policy: /dmca
+- Cookie Consent: Functional consent gate with Google Consent Mode v2
+- AdSense: ca-pub-7316477328258550
+
+## Optional Full Reference
+
+For complete technical specifications, formula derivations, hardware benchmarks, and full FAQ datasets:
+> https://www.cpsspeedtest.com/llms-full.txt

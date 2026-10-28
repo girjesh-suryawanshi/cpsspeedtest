@@ -2,228 +2,445 @@ import { GameSEO } from "@/components/game-seo";
 import { TypeRacer } from "@/components/games/type-racer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Metadata } from "next";
-import { Keyboard, Zap, Award, HelpCircle, CheckCircle2, Activity, Cpu } from "lucide-react";
+import {
+  Keyboard, Zap, Award, HelpCircle, CheckCircle2,
+  Activity, Cpu, Trophy, Flag, TrendingUp, Sparkles,
+  ArrowRight, ShieldCheck, Layers
+} from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Speed Typer – 30-Second WPM Typing Sprint & Accuracy Benchmark | CpsSpeedTest",
-  description: "Test your keyboard typing speed and accuracy in a 30-second WPM sprint. Benchmark your Words Per Minute, character accuracy percentage, and typing mechanics.",
-  keywords: ['typing speed test', 'wpm test', 'speed typer', '30 second typing test', 'keyboard accuracy test', 'type racer test', 'burst wpm benchmark'],
+  description:
+    "Test your keyboard typing speed and accuracy in a high-intensity 30-second WPM sprint. Benchmark your Words Per Minute, character accuracy, keyboard layout efficiency, and typing mechanics.",
+  keywords: [
+    "typing speed test",
+    "wpm test",
+    "speed typer",
+    "30 second typing test",
+    "keyboard accuracy test",
+    "type racer test",
+    "burst wpm benchmark",
+    "sentence typing test",
+    "typing race online",
+  ],
   alternates: {
-    canonical: 'https://www.cpsspeedtest.com/type-racer',
+    canonical: "https://www.cpsspeedtest.com/type-racer",
   },
   openGraph: {
-    title: "Speed Typer – 30-Second WPM Typing Sprint",
+    title: "Speed Typer – 30-Second WPM Typing Sprint & Accuracy Benchmark",
     description: "Benchmark your typing speed, Words Per Minute (WPM), and key accuracy in this 30-second high-intensity keyboard sprint.",
-    url: 'https://www.cpsspeedtest.com/type-racer',
-    type: 'website',
+    url: "https://www.cpsspeedtest.com/type-racer",
+    type: "website",
   },
 };
+
+const typeRacerHowToSteps = [
+  {
+    name: "Inspect the starting text passage",
+    text: "Read the opening sentence of the test passage to mentally prepare for capitalization, punctuation, and uncommon vocabulary.",
+  },
+  {
+    name: "Position hands on standard home row",
+    text: "Anchor your index fingers on the F and J tactile markers. Relax your shoulders and elevate your palms slightly off the desk.",
+  },
+  {
+    name: "Type the first character to launch the race",
+    text: "The timer triggers automatically on your initial stroke. Type fluidly without hesitating between word spaces.",
+  },
+  {
+    name: "Correct mistakes instantly to resume progress",
+    text: "If you mistype a letter, the text highlights red. Backspace and correct the keystroke immediately, as the racer requires valid input to advance.",
+  },
+  {
+    name: "Cross the finish line and analyze WPM",
+    text: "Review your final Net Words Per Minute, gross keystroke count, total errors, and overall accuracy percentage.",
+  },
+  {
+    name: "Analyze problem words and retry",
+    text: "Identify words or punctuation sequences that interrupted your typing flow, stretch your fingers, and race again to set a new personal record.",
+  },
+];
 
 const typeRacerFaqs = [
   {
     question: "How is Words Per Minute (WPM) calculated mathematically?",
-    answer: "Standardized typing algorithms standardize one 'word' as exactly 5 keystrokes (including letters, spaces, and punctuation). Gross WPM is calculated as: `(Total Keystrokes ÷ 5) ÷ (Elapsed Seconds ÷ 60)`. Net WPM penalizes uncorrected keystroke errors: `((Total Keystrokes ÷ 5) - Uncorrected Errors) ÷ (Elapsed Seconds ÷ 60)`."
+    answer:
+      "Standardized typing engines define one 'word' as exactly 5 keystrokes (including alphanumeric letters, spaces, and punctuation). Gross WPM is calculated as: `(Total Keystrokes ÷ 5) ÷ (Elapsed Seconds ÷ 60)`. Net WPM penalizes uncorrected errors: `((Total Keystrokes ÷ 5) - Uncorrected Errors) ÷ (Elapsed Seconds ÷ 60)`. In a 30-second sprint, this simplifies to `(Corrected Words) × 2`.",
   },
   {
-    question: "What is considered a fast typing speed on a 30-second test?",
-    answer: "While the worldwide office average is roughly 40 WPM, a 30-second sprint measures anaerobic burst capability. Speeds of 60–79 WPM represent competent typists, 80–99 WPM represent advanced transcription speed, and 100+ WPM places you in the top 2% of competitive typists."
+    question: "What is considered a fast typing speed on a 30-second sprint?",
+    answer:
+      "While the global office average is approximately 40 WPM, a 30-second sprint measures anaerobic burst capability. Speeds of 60–79 WPM represent competent typists, 80–99 WPM represent advanced transcription fluency, and 100+ WPM places you in the top 2% of competitive typists worldwide.",
   },
   {
-    question: "Why is burst WPM typically higher than sustained 60-second typing speed?",
-    answer: "A 30-second sprint minimizes muscular lactic acid buildup in the forearm flexors and requires less sustained attentional vigilance. Typists can aggressively push their raw finger velocity without encountering the micro-stamina drops characteristic of 2-to-5 minute transcription blocks."
+    question: "How is Speed Typer different from a standard random-word typing test?",
+    answer:
+      "A standard typing test presents random unconnected words (e.g., 'cat dog blue run'). Speed Typer challenges you with coherent grammatical sentences containing proper capitalization, commas, periods, and realistic syntactic rhythm. This mirrors real-world document writing, coding, and chat communication far more accurately than disconnected word lists.",
   },
   {
-    question: "How can I break through a typing speed plateau?",
-    answer: "Focus 100% on accuracy rather than speed. Typing at 98–100% accuracy prevents the catastrophic time penalty of error recognition, backspacing, and re-striking. Once muscle memory locks in zero-error pathways, finger speed accelerates naturally without conscious effort."
+    question: "Why is burst WPM typically higher than sustained 5-minute typing speed?",
+    answer:
+      "A 30-second sprint minimizes muscular lactic acid buildup in the forearm flexors and requires less sustained attentional stamina. Typists can aggressively push their raw finger velocity without encountering the micro-stamina drops and cognitive fatigue characteristic of prolonged transcription blocks.",
+  },
+  {
+    question: "How can I break through a stubborn typing speed plateau?",
+    answer:
+      "Focus 100% on accuracy rather than speed. Typing at 98–100% accuracy eliminates the catastrophic time penalty of error recognition, backspacing, and re-striking. Once muscle memory locks in zero-error pathways, finger speed accelerates naturally without conscious effort.",
   },
   {
     question: "Which keyboard switch type is best for competitive speed typing?",
-    answer: "Most speed typists prefer light linear mechanical switches (like Cherry MX Red, Gateron Yellow, or optical switches with 45g actuation force) or light tactile switches (like Cherry MX Brown). Linear switches provide zero tactile resistance, facilitating effortless finger gliding across rapid word sequences."
-  }
+    answer:
+      "Most competitive typists prefer light linear mechanical switches (like Cherry MX Red, Gateron Yellow, or optical switches with 45g actuation force) or light tactile switches (like Cherry MX Brown). Linear switches provide zero tactile resistance, facilitating effortless finger gliding across rapid word sequences.",
+  },
+  {
+    question: "Do alternative keyboard layouts like Colemak or Dvorak improve typing speed?",
+    answer:
+      "Yes. The QWERTY layout was engineered in the 1870s for mechanical typewriters to prevent mechanical arm jams by separating common letter pairs. Modern layouts like Colemak and Dvorak concentrate 70%+ of keystrokes on the home row, reducing finger travel distance by over 60% and significantly lowering fatigue during rapid typing.",
+  },
 ];
 
 export default function TypeRacerPage() {
   return (
     <>
-      <GameSEO 
-        name="Speed Typer"
+      <GameSEO
+        name="Speed Typer – 30-Second WPM Sprint"
         description="Test your keyboard typing speed and accuracy in a 30-second WPM sprint. Benchmark your Words Per Minute and accuracy percentage."
         url="https://www.cpsspeedtest.com/type-racer"
         faqs={typeRacerFaqs}
+        howToSteps={typeRacerHowToSteps}
         category="SkillGame"
+        lastUpdated="October 2026"
+        benefits="Master grammatical sentence typing rhythm, eliminate backspacing latency, improve touch typing accuracy, and benchmark Words Per Minute against global standards."
+        speakableSelector=".speakable-content"
       />
 
       <div className="w-full max-w-4xl mx-auto py-4 px-2 sm:px-4 space-y-10">
+        {/* Header */}
         <header className="text-center space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold">
             <Keyboard className="w-3.5 h-3.5" />
-            <span>High-Velocity 30-Second WPM Sprint</span>
+            <span>High-Intensity Sentence Typing Benchmark</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight">
             Speed Typer
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            How fast can your fingers fly across the keys? Test your raw burst Words Per Minute (WPM), character accuracy, and keystroke rhythm in this intense 30-second typing sprint.
+            Test your keyboard typing speed and accuracy in a 30-second WPM sprint. Type realistic sentences, maintain accuracy, and benchmark your Words Per Minute.
           </p>
         </header>
 
-        {/* Speed Typer Component */}
-        <div className="py-2">
-          <TypeRacer />
-        </div>
+        {/* Game Component */}
+        <TypeRacer />
 
-        {/* ── Section 1: Standardized WPM Formula & Mechanics (AEO) ── */}
-        <Card className="bg-card/70 border-border/20 backdrop-blur-sm shadow-md">
-          <CardHeader>
-            <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2.5">
-              <Activity className="w-5 h-5 text-primary" />
-              The Science of Words Per Minute (WPM) &amp; Keystroke Dynamics
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            <p>
-              In typing ergonomics and standardized keyboard certification, human language contains words of radically varying lengths—from two-letter prepositions (&quot;in&quot;, &quot;at&quot;) to multisyllabic scientific terms (&quot;photosynthesis&quot;). To establish a rigorous scientific benchmark, international typing standards define <strong>one standard word as exactly 5 keystrokes</strong>.
+        {/* Section 1: What is Speed Typer? (AEO Definition) */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-primary" />
+            What Is the Speed Typer Test?
+          </h2>
+          <div className="p-4 rounded-xl border border-border bg-card/60 text-card-foreground text-sm sm:text-base leading-relaxed space-y-3">
+            <p className="speakable-content">
+              <strong>Speed Typer</strong> is a competitive 30-second sentence typing benchmark that measures your typing velocity in <strong>Words Per Minute (WPM)</strong> using real, grammatically structured English passages. Unlike tests using isolated random words, Speed Typer tests your ability to handle natural capitalization, commas, apostrophes, and word transitions under strict real-time accuracy enforcement.
             </p>
-            <p>
-              If you type 250 characters in 30 seconds with zero errors:
-            </p>
-            <div className="p-3.5 rounded-xl border border-border/20 bg-background/50 font-mono text-xs sm:text-sm text-foreground">
-              Gross WPM = (250 characters ÷ 5 characters/word) ÷ (30 seconds ÷ 60 seconds/min) = 50 ÷ 0.5 = 100 WPM
-            </div>
-            <p className="text-xs">
-              Every keystroke error carries a severe double penalty: not only is the character discounted, but the mental pause required to detect the error and actuate Backspace consumes between 250ms and 450ms of valuable sprint time.
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* ── Section 2: GEO Score Tiers & Benchmark Distribution ── */}
-        <Card className="bg-card/70 border-border/20 shadow-md">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
-              <Award className="w-5 h-5 text-primary" />
-              Typing Speed Tiers &amp; Global Distribution (30-Second Sprint)
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Where does your typing speed rank compared to millions of computer users and competitive gamers worldwide?
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
-                <div className="text-2xl">🌱</div>
-                <div className="font-bold text-foreground">Under 40 WPM</div>
-                <div className="text-xs font-semibold text-muted-foreground uppercase">Hunt &amp; Peck Typist</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Relies on visual keyboard searching. Uses 2 to 4 fingers without fixed home-row spatial awareness.
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="p-3 rounded-lg bg-background border border-border text-center">
+                <span className="text-xs text-muted-foreground uppercase font-semibold block">Metric Standard</span>
+                <span className="text-lg font-black text-primary">Net WPM</span>
+                <span className="text-xs text-muted-foreground block mt-0.5">Penalizes uncorrected typos</span>
               </div>
-
-              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
-                <div className="text-2xl">⚡</div>
-                <div className="font-bold text-foreground">41 – 65 WPM</div>
-                <div className="text-xs font-semibold text-blue-500 uppercase">Proficient Office Standard</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Solid touch-typing foundation. Can transcribe emails, essays, and code without constantly glancing at keycaps.
-                </p>
+              <div className="p-3 rounded-lg bg-background border border-border text-center">
+                <span className="text-xs text-muted-foreground uppercase font-semibold block">Text Format</span>
+                <span className="text-lg font-black text-emerald-500">Sentence Syntax</span>
+                <span className="text-xs text-muted-foreground block mt-0.5">Real punctuation &amp; casing</span>
               </div>
-
-              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
-                <div className="text-2xl">🔥</div>
-                <div className="font-bold text-foreground">66 – 90 WPM</div>
-                <div className="text-xs font-semibold text-purple-500 uppercase">Advanced Speed Typist</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Excellent muscle memory. Instantaneous word chunking and automatic finger rolling across common letter n-grams.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-border/20 bg-background/50 space-y-1">
-                <div className="text-2xl">👑</div>
-                <div className="font-bold text-foreground">91+ WPM</div>
-                <div className="text-xs font-semibold text-amber-500 uppercase">Elite / Competitive Typist</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Top 2% of all computer users. Flawless 98%+ accuracy with rapid sub-100ms inter-keystroke intervals.
-                </p>
+              <div className="p-3 rounded-lg bg-background border border-border text-center">
+                <span className="text-xs text-muted-foreground uppercase font-semibold block">Sprint Duration</span>
+                <span className="text-lg font-black text-amber-500">30 Seconds</span>
+                <span className="text-xs text-muted-foreground block mt-0.5">High-intensity burst benchmark</span>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        {/* ── Section 3: Motor Learning & Ergonomics ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Keyboard className="w-4 h-4 text-primary" />
-                Touch Typing Mechanics &amp; Word Chunking
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <p>
-                Elite typists do not read and type individual letters. Instead, they practice <strong>lexical chunking</strong>:
-              </p>
-              <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
-                <li>
-                  <strong className="text-foreground">N-Gram Automation:</strong> Frequent character combinations (such as &quot;the&quot;, &quot;ing&quot;, &quot;tion&quot;, &quot;and&quot;) are executed as a single fluid motor reflex (finger roll) rather than individual decisions.
-                </li>
-                <li>
-                  <strong className="text-foreground">Preview Buffering:</strong> While your fingers are typing word N, your eyes should be reading word N+2. This optical lookahead buffers words into working memory, eliminating stop-and-go stuttering.
-                </li>
-                <li>
-                  <strong className="text-foreground">Home-Row Anchoring:</strong> Keep index fingers resting lightly on the F and J tactile homing bumps.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-card/70 border-border/20 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-primary" />
-                Hardware &amp; Switch Considerations
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-              <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
-                <li>
-                  <strong className="text-foreground">N-Key Rollover (NKRO):</strong> Gaming keyboards register all simultaneous keypresses without ghosting or dropped inputs.
-                </li>
-                <li>
-                  <strong className="text-foreground">Actuation Distance:</strong> Speed switches (like Cherry MX Speed Silver with 1.2mm actuation) trigger 40% faster than standard 2.0mm switches.
-                </li>
-                <li>
-                  <strong className="text-foreground">Complementary Key Benchmarks:</strong> Test your single-key burst speed on our <Link href="/spacebar-clicker" className="text-primary hover:underline">Spacebar Clicker</Link> or measure full endurance on the <Link href="/typing-test" className="text-primary hover:underline">60-Second Typing Test</Link>.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* ── Section 4: AEO FAQ Accordion ── */}
-        <Card className="bg-card/70 border-border/20 shadow-md">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold flex items-center gap-2.5">
-              <HelpCircle className="w-5 h-5 text-primary" />
-              Frequently Asked Questions About Typing Speed
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="divide-y divide-border/20">
-              {typeRacerFaqs.map((faq, index) => (
-                <div key={index} className="py-3.5 space-y-1.5 first:pt-0 last:pb-0">
-                  <h3 className="font-semibold text-foreground text-sm sm:text-base flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-1 shrink-0" />
-                    <span>{faq.question}</span>
+        {/* Section 2: How to Play (HowTo Steps) */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-primary" />
+            How to Race and Benchmark Your WPM
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {typeRacerHowToSteps.map((step, index) => (
+              <div
+                key={index}
+                className="p-4 rounded-xl border border-border/80 bg-card/40 flex items-start gap-3.5"
+              >
+                <div className="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 border border-primary/20">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base">
+                    {step.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground pl-6 leading-relaxed">
-                    {faq.answer}
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 leading-relaxed">
+                    {step.text}
                   </p>
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 3: Why Speed Typer Matters (Benefits & Real-World Value) */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <Zap className="w-5 h-5 text-amber-500" />
+            Why Sentence Typing Sprints Matter: Real-World Gains
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card className="border-border/70 bg-card/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-primary">
+                  <Flag className="w-4 h-4" />
+                  Realistic Syntactic Fluency
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Typing random words like &quot;apple dog stone&quot; fails to train your hands for shift-key capitalization, punctuation transitions, or sentence cadence. Speed Typer trains the exact muscle memory you need when writing professional emails, reports, or articles.
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/70 bg-card/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-emerald-500">
+                  <ShieldCheck className="w-4 h-4" />
+                  Instant Error Correction Discipline
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Because you cannot proceed past a mistyped character without fixing it, Speed Typer builds the reflex of immediate typo recognition and rapid pinky backspacing, preventing error cascades from ruining your output.
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/70 bg-card/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-cyan-500">
+                  <Activity className="w-4 h-4" />
+                  Visual Text Buffering
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Competitive typists maintain an eye-to-finger buffer of 8 to 15 characters ahead of their active stroke. Sentence racing forces your ocular system to scan full phrases in chunks rather than letter-by-letter, dramatically accelerating processing speed.
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/70 bg-card/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-amber-500">
+                  <Trophy className="w-4 h-4" />
+                  Gamified Daily Improvement
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Competing against the 30-second clock provides immediate gamified feedback. Tracking your personal bests creates a rewarding daily practice habit that translates directly into measurable career productivity gains.
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Section 4: Deep Dive — Keyboard Layout Comparison */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <Cpu className="w-5 h-5 text-indigo-500" />
+            Keyboard Layout Efficiency: QWERTY vs Colemak vs Dvorak
+          </h2>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card/50">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-muted/60 text-foreground border-b border-border font-semibold">
+                <tr>
+                  <th className="p-3">Layout</th>
+                  <th className="p-3">Home Row %</th>
+                  <th className="p-3">Daily Finger Travel (Miles)</th>
+                  <th className="p-3">Same-Finger Bigrams</th>
+                  <th className="p-3">Ergonomic Rating</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/60 text-muted-foreground">
+                <tr>
+                  <td className="p-3 font-medium text-foreground">Colemak</td>
+                  <td className="p-3 text-emerald-400 font-semibold">74% of keystrokes</td>
+                  <td className="p-3 text-emerald-400 font-bold">~1.1 miles</td>
+                  <td className="p-3 text-emerald-400 font-bold">1.6% (Lowest)</td>
+                  <td className="p-3 text-emerald-400 font-bold">★★★★★ (Optimal for speed)</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">Dvorak Simplified</td>
+                  <td className="p-3 text-cyan-400 font-semibold">70% of keystrokes</td>
+                  <td className="p-3">~1.4 miles</td>
+                  <td className="p-3">2.6%</td>
+                  <td className="p-3 text-cyan-400 font-bold">★★★★☆ (High hand alternation)</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">QWERTY Standard</td>
+                  <td className="p-3 text-rose-400 font-semibold">32% of keystrokes</td>
+                  <td className="p-3 text-rose-400 font-bold">~2.8 miles</td>
+                  <td className="p-3 text-rose-400 font-bold">6.4% (Frequent strain)</td>
+                  <td className="p-3 text-amber-400 font-bold">★★★☆☆ (Universal standard)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Section 5: Score Benchmarks */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <Award className="w-5 h-5 text-emerald-500" />
+            Speed Typer Performance Tiers
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="p-4 rounded-xl border border-border/80 bg-card/40 space-y-2">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Casual Typist</div>
+              <div className="text-2xl font-black text-foreground">25 – 44 WPM</div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Normal conversational typing speed. Relies on visual feedback and takes frequent pauses between clauses.
+              </p>
             </div>
-          </CardContent>
-        </Card>
+
+            <div className="p-4 rounded-xl border border-border/80 bg-card/40 space-y-2">
+              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Skilled Typist</div>
+              <div className="text-2xl font-black text-primary">45 – 69 WPM</div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Proficient touch typist. Handles common sentence punctuation smoothly with an accuracy rate above 94%.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-border/80 bg-card/40 space-y-2">
+              <div className="text-xs font-semibold text-amber-500 uppercase tracking-wide">Advanced Racer</div>
+              <div className="text-2xl font-black text-amber-500">70 – 94 WPM</div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Fast, rhythmic typing execution. Continuous word buffering with minimal backspace usage and 97%+ accuracy.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-border/80 bg-card/40 space-y-2">
+              <div className="text-xs font-semibold text-rose-500 uppercase tracking-wide">Elite Racer</div>
+              <div className="text-2xl font-black text-rose-500">95 – 125+ WPM</div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Competitive speed typist tier. Near-instantaneous word recognition, zero visual checking, and top 2% global ranking.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: Actionable Improvement Tips */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-primary" />
+            How to Increase Your Speed Typer WPM
+          </h2>
+          <div className="p-5 rounded-xl border border-border bg-card/50 space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div className="flex gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                <div>
+                  <strong className="text-foreground block">Eliminate Staccato Typing Rhythm</strong>
+                  <span className="text-muted-foreground leading-relaxed">
+                    Avoid typing fast bursts followed by long hesitations. Aim for a smooth, metronome-like keystroke rhythm across every word and space.
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                <div>
+                  <strong className="text-foreground block">Use Opposite-Hand Shift Keys</strong>
+                  <span className="text-muted-foreground leading-relaxed">
+                    When capitalizing a left-hand letter (like &apos;T&apos; or &apos;A&apos;), press the right Shift key with your right pinky. Never contort one hand to press Shift and a letter simultaneously.
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs shrink-0">3</div>
+                <div>
+                  <strong className="text-foreground block">Master the Ctrl + Backspace Shortcut</strong>
+                  <span className="text-muted-foreground leading-relaxed">
+                    If you make multiple typos in a long word, pressing Ctrl + Backspace deletes the entire word in a single stroke, saving valuable seconds compared to single-character deletion.
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs shrink-0">4</div>
+                <div>
+                  <strong className="text-foreground block">Target 100% Accuracy First</strong>
+                  <span className="text-muted-foreground leading-relaxed">
+                    Speed naturally develops from effortless muscle memory. Every typo resets your momentum. Maintain 98%+ accuracy, and speed will follow automatically.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: FAQs */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+            <HelpCircle className="w-5 h-5 text-primary" />
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {typeRacerFaqs.map((faq, index) => (
+              <Card key={index} className="border-border/70 bg-card/40">
+                <CardHeader className="py-3.5 px-4 sm:px-5">
+                  <CardTitle className="text-sm sm:text-base font-semibold text-foreground flex items-start gap-2.5">
+                    <span className="text-primary font-bold">Q:</span>
+                    <span>{faq.question}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="py-0 pb-4 px-4 sm:px-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Cross-linking Related Tools */}
+        <section className="pt-4 border-t border-border">
+          <h2 className="text-base font-bold text-foreground mb-3">Explore Related Typing &amp; Reflex Tests</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <Link
+              href="/typing-test"
+              className="p-3 rounded-lg border border-border bg-card/40 hover:border-primary/40 transition-colors group flex items-center justify-between"
+            >
+              <span className="text-xs font-medium text-foreground group-hover:text-primary">60s Typing Test</span>
+              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/typing-test-30s"
+              className="p-3 rounded-lg border border-border bg-card/40 hover:border-primary/40 transition-colors group flex items-center justify-between"
+            >
+              <span className="text-xs font-medium text-foreground group-hover:text-primary">30s Typing Sprint</span>
+              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/spacebar-clicker"
+              className="p-3 rounded-lg border border-border bg-card/40 hover:border-primary/40 transition-colors group flex items-center justify-between"
+            >
+              <span className="text-xs font-medium text-foreground group-hover:text-primary">Spacebar Clicker</span>
+              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/reaction-time-test"
+              className="p-3 rounded-lg border border-border bg-card/40 hover:border-primary/40 transition-colors group flex items-center justify-between"
+            >
+              <span className="text-xs font-medium text-foreground group-hover:text-primary">Reaction Time Test</span>
+              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );
