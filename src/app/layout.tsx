@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Outfit, Lora } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -12,6 +12,16 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 
 const lora = Lora({ subsets: ['latin'], variable: '--font-lora', display: 'swap' });
 
 const siteUrl = 'https://www.cpsspeedtest.com';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#090d16' },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

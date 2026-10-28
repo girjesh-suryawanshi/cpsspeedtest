@@ -73,6 +73,14 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
     }
   }, [gameState]);
 
+  const handlePointerDown = useCallback((event: React.PointerEvent) => {
+    if (gameState === 'running') {
+      event.preventDefault();
+      setClickCount((prev) => prev + 1);
+      setClickTimestamps((prev) => [...prev, Date.now()]);
+    }
+  }, [gameState]);
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -130,10 +138,10 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
         );
       case 'running':
         return (
-          <div className="text-center relative w-full h-full flex flex-col justify-center items-center">
+          <div className="text-center relative w-full h-full flex flex-col justify-center items-center select-none">
              <div className="absolute top-4 right-4 text-2xl font-semibold text-primary">{gameTimer}s</div>
              <p className="text-8xl font-bold font-headline text-primary">{clickCount}</p>
-             <div className="text-lg text-muted-foreground mt-2 flex items-center gap-2">Press <Keyboard className="w-6 h-6 inline-block border rounded-md p-1" /> !</div>
+             <div className="text-lg text-muted-foreground mt-2 flex items-center gap-2">Press <Keyboard className="w-6 h-6 inline-block border rounded-md p-1" /> or Tap Here!</div>
           </div>
         );
       case 'finished':
@@ -142,7 +150,7 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
             <p className="text-lg text-muted-foreground">Your Score</p>
             <p className="text-7xl font-bold font-headline text-primary">{cps}</p>
             <p className="text-muted-foreground">Hits Per Second</p>
-            <p className="mt-4 text-lg">You hit the spacebar <span className="font-bold text-foreground">{clickCount}</span> times in {gameDuration} seconds.</p>
+            <p className="mt-4 text-lg">You hit <span className="font-bold text-foreground">{clickCount}</span> times in {gameDuration} seconds.</p>
           </div>
         );
     }
@@ -150,11 +158,14 @@ export function SpacebarTest({ gameDuration }: SpacebarTestProps) {
 
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8">
-      <Card className="w-full shadow-lg overflow-hidden">
+      <Card className="w-full shadow-lg overflow-hidden select-none">
         <CardContent 
           className="p-0"
         >
-          <div className={`flex items-center justify-center min-h-[350px] transition-colors ${gameState === 'running' ? 'bg-primary/5' : ''}`}>
+          <div 
+            onPointerDown={handlePointerDown}
+            className={`flex items-center justify-center min-h-[350px] transition-colors touch-manipulation select-none cursor-pointer ${gameState === 'running' ? 'bg-primary/5 active:bg-primary/10' : ''}`}
+          >
             {renderContent()}
           </div>
         </CardContent>

@@ -29,7 +29,12 @@ export function ReactionTimeTest() {
     }, randomDelay);
   }, []);
   
-  const handleClick = () => {
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (gameState === 'tooSoon') {
+      handleStart();
+      return;
+    }
     if (gameState === 'ready') {
       const endTime = Date.now();
       setResult(endTime - startTimeRef.current);
@@ -49,34 +54,34 @@ export function ReactionTimeTest() {
     switch (gameState) {
       case 'idle':
         return (
-          <div className="text-center p-6 flex flex-col items-center justify-center">
+          <div className="text-center p-6 flex flex-col items-center justify-center select-none">
             <Hand className="w-16 h-16 text-primary mb-4" />
             <h2 className="text-2xl font-semibold text-foreground/90">Reaction Test</h2>
-            <p className="text-muted-foreground mt-2">When the screen turns green, click as fast as you can.</p>
+            <p className="text-muted-foreground mt-2">When the screen turns green, click or tap as fast as you can.</p>
           </div>
         );
       case 'waiting':
         return (
-          <div className="text-center p-6 flex flex-col items-center justify-center">
+          <div className="text-center p-6 flex flex-col items-center justify-center select-none">
             <h2 className="text-3xl font-bold text-white">Wait for green...</h2>
           </div>
         );
       case 'ready':
          return (
-          <div className="text-center p-6 flex flex-col items-center justify-center">
-            <h2 className="text-4xl font-bold text-white">Click!</h2>
+          <div className="text-center p-6 flex flex-col items-center justify-center select-none">
+            <h2 className="text-4xl font-bold text-white">Tap or Click!</h2>
           </div>
         );
        case 'tooSoon':
         return (
-          <div className="text-center p-6 flex flex-col items-center justify-center">
+          <div className="text-center p-6 flex flex-col items-center justify-center select-none">
             <h2 className="text-3xl font-bold text-white">Too Soon!</h2>
-            <p className="text-white/80 mt-2">Click to try again.</p>
+            <p className="text-white/80 mt-2">Tap or click to try again.</p>
           </div>
         );
       case 'finished':
         return (
-          <div className="text-center p-6">
+          <div className="text-center p-6 select-none">
             <p className="text-lg text-muted-foreground">Your Reaction Time</p>
             <p className="text-7xl font-bold font-headline text-primary">{result}ms</p>
           </div>
@@ -95,13 +100,13 @@ export function ReactionTimeTest() {
 
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8">
-      <Card className="w-full shadow-xl overflow-hidden bg-card/60 backdrop-blur-sm border-border/20 transition-all duration-500 hover:border-primary/30 relative group">
+      <Card className="w-full shadow-xl overflow-hidden bg-card/60 backdrop-blur-sm border-border/20 transition-all duration-500 hover:border-primary/30 relative group select-none">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         <CardContent 
-          className="p-0"
-          onClick={gameState === 'tooSoon' ? handleStart : handleClick}
+          className="p-0 select-none touch-manipulation"
+          onPointerDown={handlePointerDown}
         >
-          <div className={`flex items-center justify-center min-h-[350px] transition-colors duration-100 cursor-pointer ${getBackgroundColor()}`}>
+          <div className={`flex items-center justify-center min-h-[350px] transition-colors duration-100 cursor-pointer select-none touch-manipulation ${getBackgroundColor()}`}>
             {renderContent()}
           </div>
         </CardContent>

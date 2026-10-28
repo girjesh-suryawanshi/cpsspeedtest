@@ -102,11 +102,11 @@ export function AimTrainer() {
         );
       case 'running':
         return (
-          <div className="relative w-full h-full cursor-crosshair" onClick={handleMiss}>
+          <div className="relative w-full h-full cursor-crosshair select-none touch-manipulation" onClick={handleMiss}>
             {targets.map(target => (
               <div
                 key={target.id}
-                className="absolute rounded-full bg-primary flex items-center justify-center transition-all duration-100"
+                className="absolute rounded-full bg-primary flex items-center justify-center transition-all duration-100 select-none touch-manipulation cursor-pointer"
                 style={{
                   left: `${target.x}%`,
                   top: `${target.y}%`,
@@ -123,7 +123,7 @@ export function AimTrainer() {
         );
       case 'finished':
         return (
-          <div className="text-center flex flex-col items-center justify-center h-full p-6">
+          <div className="text-center flex flex-col items-center justify-center h-full p-6 select-none">
             <h2 className="text-3xl font-bold">Game Over!</h2>
             <div className="grid grid-cols-2 gap-4 mt-6 text-center w-full max-w-sm">
                 <div className="p-4 rounded-lg bg-muted">
@@ -151,13 +151,13 @@ export function AimTrainer() {
       <Card className="w-full shadow-lg overflow-hidden">
         {gameState === 'running' && (
           <CardHeader className="p-4 border-b flex-row justify-between items-center">
-            <div className="text-lg">Score: <span className="font-bold text-primary">{score}</span></div>
-            <div className="text-lg">Time: <span className="font-bold text-primary">{timer}s</span></div>
-            <div className="text-lg">Misses: <span className="font-bold text-destructive">{misses}</span></div>
+            <div className="text-base sm:text-lg">Score: <span className="font-bold text-primary">{score}</span></div>
+            <div className="text-base sm:text-lg">Time: <span className="font-bold text-primary">{timer}s</span></div>
+            <div className="text-base sm:text-lg">Misses: <span className="font-bold text-destructive">{misses}</span></div>
           </CardHeader>
         )}
         <CardContent className="p-0">
-          <div className="w-full h-[500px] bg-accent/10 relative">
+          <div className="w-full h-[360px] sm:h-[450px] md:h-[500px] bg-accent/10 relative select-none touch-manipulation">
             {renderGameContent()}
           </div>
         </CardContent>

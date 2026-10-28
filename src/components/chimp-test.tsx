@@ -137,8 +137,8 @@ export function ChimpTest() {
                     key={i}
                     onClick={() => tile && handleTileClick(i, tile.value)}
                     className={cn(
-                        "aspect-square rounded-md transition-colors duration-150 flex items-center justify-center font-bold text-xl",
-                        tile ? "bg-card border-2 cursor-pointer" : "bg-transparent",
+                        "aspect-square rounded-md transition-colors duration-150 flex items-center justify-center font-bold text-xl select-none touch-manipulation",
+                        tile ? "bg-card border-2 cursor-pointer active:scale-95" : "bg-transparent",
                         tile && !tile.visible && lives > 0 ? "bg-card" : "",
                         tile && lives <= 0 && "bg-destructive",
                     )}
