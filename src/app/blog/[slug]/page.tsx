@@ -34,6 +34,11 @@ const DEFAULT_FAQS: Record<string, Array<{ question: string; answer: string }>> 
   'cps-test-ultimate-guide': [
     { question: "What is a normal CPS for gamers?", answer: "The average person clicks at 6-7 CPS. Regular gamers typically achieve 7-10 CPS, while competitive PvP players achieve 10-15+ CPS with specialized techniques." },
     { question: "How is CPS calculated?", answer: "CPS (Clicks Per Second) is calculated by dividing total registered clicks by the exact measured elapsed seconds: CPS = Total Clicks ÷ Elapsed Seconds." }
+  ],
+  'optical-vs-mechanical-switches-gaming-cps': [
+    { question: "Can you butterfly click on an optical mouse?", answer: "Yes, but you will only get 1 click per finger strike (~10-12 CPS). You cannot achieve the 18-25 CPS numbers seen on mechanical mice because optical switches never bounce to produce double-clicks." },
+    { question: "Do optical switches improve reaction time in gaming?", answer: "Yes. Optical switches eliminate the mandatory 2ms to 8ms firmware debounce delay required by mechanical switches, delivering true sub-millisecond actuation." },
+    { question: "Why do mechanical mouse switches double click after a while?", answer: "Over millions of clicks, moisture, dust, and electrical arcing oxidize the metal spring leaves, causing the firmware debounce filter to fail to suppress contact bounce." }
   ]
 };
 

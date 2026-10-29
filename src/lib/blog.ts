@@ -32,6 +32,7 @@ import HowToIncreaseCps, { frontmatter as HowToIncreaseCpsFrontmatter } from '@/
 import BestMouseForCps, { frontmatter as BestMouseForCpsFrontmatter } from '@/app/blog/content/best-mouse-for-cps-gaming.mdx';
 import DragVsButterfly, { frontmatter as DragVsButterflyFrontmatter } from '@/app/blog/content/drag-clicking-vs-butterfly-clicking.mdx';
 import AverageCps, { frontmatter as AverageCpsFrontmatter } from '@/app/blog/content/how-fast-is-average-cps.mdx';
+import OpticalVsMechanical, { frontmatter as OpticalVsMechanicalFrontmatter } from '@/app/blog/content/optical-vs-mechanical-switches-gaming-cps.mdx';
 
 
 export interface Post {
@@ -192,6 +193,11 @@ export const postMetas: Record<string, Omit<Post, 'slug' | 'content'>> = {
         title: AverageCpsFrontmatter.title,
         description: AverageCpsFrontmatter.description,
         date: '2026-10-20',
+    },
+    'optical-vs-mechanical-switches-gaming-cps': {
+        title: OpticalVsMechanicalFrontmatter.title,
+        description: OpticalVsMechanicalFrontmatter.description,
+        date: '2026-10-29',
     },
 };
 
@@ -405,6 +411,13 @@ export const allPosts: Post[] = [
         description: postMetas['how-fast-is-average-cps'].description,
         date: postMetas['how-fast-is-average-cps'].date,
         content: AverageCps,
+    },
+    {
+        slug: 'optical-vs-mechanical-switches-gaming-cps',
+        title: postMetas['optical-vs-mechanical-switches-gaming-cps'].title,
+        description: postMetas['optical-vs-mechanical-switches-gaming-cps'].description,
+        date: postMetas['optical-vs-mechanical-switches-gaming-cps'].date,
+        content: OpticalVsMechanical,
     },
 ];
 
