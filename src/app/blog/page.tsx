@@ -66,12 +66,12 @@ export default async function BlogIndexPage() {
     // Database fallback silently catches if DB is not configured
   }
 
-  // Merge posts avoiding duplicates by slug
+  // Merge posts avoiding duplicates by slug and sort with latest date first
   const dbSlugs = new Set(dbPosts.map((p) => p.slug));
   const combinedPosts = [
     ...dbPosts,
     ...staticPosts.filter((p) => !dbSlugs.has(p.slug)),
-  ];
+  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   return (
     <div className="w-full max-w-6xl mx-auto py-8 px-4 sm:px-6">
