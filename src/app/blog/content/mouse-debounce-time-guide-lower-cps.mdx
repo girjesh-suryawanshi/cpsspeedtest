@@ -13,9 +13,11 @@ This guide unpacks the mechanical physics of switch bounce, firmware filtering a
 
 ---
 
-## Direct Answer: What is Mouse Debounce Time?
+## What Debounce Time Actually Does
 
-> **AEO Key Takeaway:** **Mouse debounce time is a firmware delay (measured in milliseconds) that prevents a mechanical switch from registering multiple clicks from a single physical press.** When two metal contact leaves collide, they bounce microscopically for 2ms to 10ms. The debounce algorithm ignores subsequent electrical contacts during this window. Lowering debounce time allows these micro-bounces to register as separate clicks, enabling high CPS techniques.
+In simple terms, **mouse debounce time is a tiny safety buffer (measured in milliseconds)** programmed into your mouse firmware. When you click a mechanical mouse, two metal contacts slam together. Because they are made of springy metal, they physically bounce against each other for a few milliseconds before resting flat. 
+
+Without a debounce filter, your computer would register that single physical click as 3 or 4 rapid, unintended clicks. Mouse manufacturers add a debounce delay (usually 8ms to 12ms) that instructs the onboard processor: *"Once a click is registered, ignore any additional contact signals for the next few milliseconds."*
 
 ---
 
