@@ -33,6 +33,18 @@ import BestMouseForCps, { frontmatter as BestMouseForCpsFrontmatter } from '@/ap
 import DragVsButterfly, { frontmatter as DragVsButterflyFrontmatter } from '@/app/blog/content/drag-clicking-vs-butterfly-clicking.mdx';
 import AverageCps, { frontmatter as AverageCpsFrontmatter } from '@/app/blog/content/how-fast-is-average-cps.mdx';
 import OpticalVsMechanical, { frontmatter as OpticalVsMechanicalFrontmatter } from '@/app/blog/content/optical-vs-mechanical-switches-gaming-cps.mdx';
+import MouseDebounceGuide, { frontmatter as MouseDebounceFrontmatter } from '@/app/blog/content/mouse-debounce-time-guide-lower-cps.mdx';
+import BestMouseGripGuide, { frontmatter as BestMouseGripFrontmatter } from '@/app/blog/content/best-mouse-grip-styles-cps-aim.mdx';
+import RobloxClickingGuide, { frontmatter as RobloxClickingFrontmatter } from '@/app/blog/content/roblox-blade-ball-bedwars-clicking-guide.mdx';
+import MonitorRefreshRateGuide, { frontmatter as MonitorRefreshRateFrontmatter } from '@/app/blog/content/monitor-refresh-rate-human-reaction-time.mdx';
+import TrainReactionTimeGuide, { frontmatter as TrainReactionTimeFrontmatter } from '@/app/blog/content/how-to-train-reaction-time-esports.mdx';
+import StroopEffectGuide, { frontmatter as StroopEffectFrontmatter } from '@/app/blog/content/stroop-effect-cognitive-interference-test.mdx';
+import Type100WpmGuide, { frontmatter as Type100WpmFrontmatter } from '@/app/blog/content/how-to-type-100-wpm-progression-guide.mdx';
+import KeyboardSwitchesGuide, { frontmatter as KeyboardSwitchesFrontmatter } from '@/app/blog/content/linear-vs-tactile-vs-clicky-switches-gaming.mdx';
+import SpacebarPhysicsGuide, { frontmatter as SpacebarPhysicsFrontmatter } from '@/app/blog/content/spacebar-actuation-physics-bhop-guide.mdx';
+import KyotoChimpGuide, { frontmatter as KyotoChimpFrontmatter } from '@/app/blog/content/kyoto-chimp-test-working-memory-science.mdx';
+import MillerLawGuide, { frontmatter as MillerLawFrontmatter } from '@/app/blog/content/miller-law-digit-span-working-memory.mdx';
+import GamerCarpalTunnelGuide, { frontmatter as GamerCarpalTunnelFrontmatter } from '@/app/blog/content/gamer-guide-preventing-carpal-tunnel-rsi.mdx';
 
 
 export interface Post {
@@ -198,6 +210,66 @@ export const postMetas: Record<string, Omit<Post, 'slug' | 'content'>> = {
         title: OpticalVsMechanicalFrontmatter.title,
         description: OpticalVsMechanicalFrontmatter.description,
         date: '2026-10-29',
+    },
+    'mouse-debounce-time-guide-lower-cps': {
+        title: MouseDebounceFrontmatter.title,
+        description: MouseDebounceFrontmatter.description,
+        date: '2026-10-30',
+    },
+    'best-mouse-grip-styles-cps-aim': {
+        title: BestMouseGripFrontmatter.title,
+        description: BestMouseGripFrontmatter.description,
+        date: '2026-10-31',
+    },
+    'roblox-blade-ball-bedwars-clicking-guide': {
+        title: RobloxClickingFrontmatter.title,
+        description: RobloxClickingFrontmatter.description,
+        date: '2026-11-01',
+    },
+    'monitor-refresh-rate-human-reaction-time': {
+        title: MonitorRefreshRateFrontmatter.title,
+        description: MonitorRefreshRateFrontmatter.description,
+        date: '2026-11-02',
+    },
+    'how-to-train-reaction-time-esports': {
+        title: TrainReactionTimeFrontmatter.title,
+        description: TrainReactionTimeFrontmatter.description,
+        date: '2026-11-03',
+    },
+    'stroop-effect-cognitive-interference-test': {
+        title: StroopEffectFrontmatter.title,
+        description: StroopEffectFrontmatter.description,
+        date: '2026-11-04',
+    },
+    'how-to-type-100-wpm-progression-guide': {
+        title: Type100WpmFrontmatter.title,
+        description: Type100WpmFrontmatter.description,
+        date: '2026-11-05',
+    },
+    'linear-vs-tactile-vs-clicky-switches-gaming': {
+        title: KeyboardSwitchesFrontmatter.title,
+        description: KeyboardSwitchesFrontmatter.description,
+        date: '2026-11-06',
+    },
+    'spacebar-actuation-physics-bhop-guide': {
+        title: SpacebarPhysicsFrontmatter.title,
+        description: SpacebarPhysicsFrontmatter.description,
+        date: '2026-11-07',
+    },
+    'kyoto-chimp-test-working-memory-science': {
+        title: KyotoChimpFrontmatter.title,
+        description: KyotoChimpFrontmatter.description,
+        date: '2026-11-08',
+    },
+    'miller-law-digit-span-working-memory': {
+        title: MillerLawFrontmatter.title,
+        description: MillerLawFrontmatter.description,
+        date: '2026-11-09',
+    },
+    'gamer-guide-preventing-carpal-tunnel-rsi': {
+        title: GamerCarpalTunnelFrontmatter.title,
+        description: GamerCarpalTunnelFrontmatter.description,
+        date: '2026-11-10',
     },
 };
 
@@ -418,6 +490,90 @@ export const allPosts: Post[] = [
         description: postMetas['optical-vs-mechanical-switches-gaming-cps'].description,
         date: postMetas['optical-vs-mechanical-switches-gaming-cps'].date,
         content: OpticalVsMechanical,
+    },
+    {
+        slug: 'mouse-debounce-time-guide-lower-cps',
+        title: postMetas['mouse-debounce-time-guide-lower-cps'].title,
+        description: postMetas['mouse-debounce-time-guide-lower-cps'].description,
+        date: postMetas['mouse-debounce-time-guide-lower-cps'].date,
+        content: MouseDebounceGuide,
+    },
+    {
+        slug: 'best-mouse-grip-styles-cps-aim',
+        title: postMetas['best-mouse-grip-styles-cps-aim'].title,
+        description: postMetas['best-mouse-grip-styles-cps-aim'].description,
+        date: postMetas['best-mouse-grip-styles-cps-aim'].date,
+        content: BestMouseGripGuide,
+    },
+    {
+        slug: 'roblox-blade-ball-bedwars-clicking-guide',
+        title: postMetas['roblox-blade-ball-bedwars-clicking-guide'].title,
+        description: postMetas['roblox-blade-ball-bedwars-clicking-guide'].description,
+        date: postMetas['roblox-blade-ball-bedwars-clicking-guide'].date,
+        content: RobloxClickingGuide,
+    },
+    {
+        slug: 'monitor-refresh-rate-human-reaction-time',
+        title: postMetas['monitor-refresh-rate-human-reaction-time'].title,
+        description: postMetas['monitor-refresh-rate-human-reaction-time'].description,
+        date: postMetas['monitor-refresh-rate-human-reaction-time'].date,
+        content: MonitorRefreshRateGuide,
+    },
+    {
+        slug: 'how-to-train-reaction-time-esports',
+        title: postMetas['how-to-train-reaction-time-esports'].title,
+        description: postMetas['how-to-train-reaction-time-esports'].description,
+        date: postMetas['how-to-train-reaction-time-esports'].date,
+        content: TrainReactionTimeGuide,
+    },
+    {
+        slug: 'stroop-effect-cognitive-interference-test',
+        title: postMetas['stroop-effect-cognitive-interference-test'].title,
+        description: postMetas['stroop-effect-cognitive-interference-test'].description,
+        date: postMetas['stroop-effect-cognitive-interference-test'].date,
+        content: StroopEffectGuide,
+    },
+    {
+        slug: 'how-to-type-100-wpm-progression-guide',
+        title: postMetas['how-to-type-100-wpm-progression-guide'].title,
+        description: postMetas['how-to-type-100-wpm-progression-guide'].description,
+        date: postMetas['how-to-type-100-wpm-progression-guide'].date,
+        content: Type100WpmGuide,
+    },
+    {
+        slug: 'linear-vs-tactile-vs-clicky-switches-gaming',
+        title: postMetas['linear-vs-tactile-vs-clicky-switches-gaming'].title,
+        description: postMetas['linear-vs-tactile-vs-clicky-switches-gaming'].description,
+        date: postMetas['linear-vs-tactile-vs-clicky-switches-gaming'].date,
+        content: KeyboardSwitchesGuide,
+    },
+    {
+        slug: 'spacebar-actuation-physics-bhop-guide',
+        title: postMetas['spacebar-actuation-physics-bhop-guide'].title,
+        description: postMetas['spacebar-actuation-physics-bhop-guide'].description,
+        date: postMetas['spacebar-actuation-physics-bhop-guide'].date,
+        content: SpacebarPhysicsGuide,
+    },
+    {
+        slug: 'kyoto-chimp-test-working-memory-science',
+        title: postMetas['kyoto-chimp-test-working-memory-science'].title,
+        description: postMetas['kyoto-chimp-test-working-memory-science'].description,
+        date: postMetas['kyoto-chimp-test-working-memory-science'].date,
+        content: KyotoChimpGuide,
+    },
+    {
+        slug: 'miller-law-digit-span-working-memory',
+        title: postMetas['miller-law-digit-span-working-memory'].title,
+        description: postMetas['miller-law-digit-span-working-memory'].description,
+        date: postMetas['miller-law-digit-span-working-memory'].date,
+        content: MillerLawGuide,
+    },
+    {
+        slug: 'gamer-guide-preventing-carpal-tunnel-rsi',
+        title: postMetas['gamer-guide-preventing-carpal-tunnel-rsi'].title,
+        description: postMetas['gamer-guide-preventing-carpal-tunnel-rsi'].description,
+        date: postMetas['gamer-guide-preventing-carpal-tunnel-rsi'].date,
+        content: GamerCarpalTunnelGuide,
     },
 ];
 

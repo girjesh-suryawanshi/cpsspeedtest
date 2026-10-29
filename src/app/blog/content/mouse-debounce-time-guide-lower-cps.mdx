@@ -1,0 +1,118 @@
+export const frontmatter = {
+  title: 'The Science of Mouse Debounce Time: How to Lower Debounce Delay for High CPS',
+  description: 'Understand mouse debounce time, contact chatter physics, and how lowering debounce delay in software unlocks 20+ CPS butterfly and drag clicking without ruining your mouse.',
+}
+
+# The Science of Mouse Debounce Time: How to Lower Debounce Delay for High CPS
+
+If you have ever researched how competitive Minecraft players achieve 20+ Clicks Per Second (CPS) with butterfly clicking or 30+ CPS with drag clicking, you have inevitably encountered one critical hardware term: **Debounce Time** (or debounce delay).
+
+What exactly is debounce time? Why is it set high by default on ordinary office mice, and how does lowering it in your mouse configuration software unlock double-clicking capabilities?
+
+This guide unpacks the mechanical physics of switch bounce, firmware filtering algorithms, and how to configure optimal debounce settings safely.
+
+---
+
+## Direct Answer: What is Mouse Debounce Time?
+
+> **AEO Key Takeaway:** **Mouse debounce time is a firmware delay (measured in milliseconds) that prevents a mechanical switch from registering multiple clicks from a single physical press.** When two metal contact leaves collide, they bounce microscopically for 2ms to 10ms. The debounce algorithm ignores subsequent electrical contacts during this window. Lowering debounce time allows these micro-bounces to register as separate clicks, enabling high CPS techniques.
+
+---
+
+## The Physics of Switch Chatter: Why Metal Bounces
+
+Inside every standard mechanical mouse switch (such as Kailh GM 8.0, Omron 20M, or Huano Blue Shell), there are two flexible metal leaves.
+
+```
+       [Mouse Button Depressed]
+                  ↓
+          [Moving Metal Leaf]
+                  ↓ (Collision)
+        [Stationary Contact Leaf]
+                  ↓ 
+   ⚡ Electrical Current Closes ⚡
+                  ↓
+   (Microscopic Rebound / Chatter)
+   ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+```
+
+1. **The Impact:** When you press the mouse button, the moving spring leaf strikes the stationary contact leaf.
+2. **The Elastic Rebound:** Because metal is elastic, the leaf bounces off the contact point 2 to 5 times over a span of several milliseconds before resting firmly in place.
+3. **The Unwanted Double-Click:** To a microchip processor running at megahertz speeds, each micro-bounce looks like a separate click. Without a debounce filter, one gentle press would launch multiple clicks, ruining web browsing and desktop productivity.
+4. **Testing for Chatter:** You can evaluate whether your mouse has contact bounce using our free **[Double Click Test](/double-click-test)** tool.
+
+---
+
+## How Debounce Algorithms Work
+
+Mouse engineers implement debounce algorithms in the onboard microcontroller firmware. There are two primary debounce architectures:
+
+### 1. Defer / Delay Debouncing
+The firmware waits for the switch signal to stabilize for a preset duration (e.g., 10ms) before sending the click report over USB. While reliable against accidental double-clicks, this adds noticeable input lag to your gameplay.
+
+### 2. Eager / Instant-Trigger Debouncing
+The firmware dispatches the click event to your computer immediately on the very first electrical contact, then starts a lockout timer (the debounce delay). Any additional contact closures during this window are discarded.
+
+---
+
+## Optimal Debounce Time Settings for Different Games
+
+| Gaming Scenario | Recommended Debounce Time | Best Technique | Expected CPS Range |
+| :--- | :--- | :--- | :--- |
+| **Normal Gaming / Office Work** | 10 ms – 16 ms | Normal Clicking | 5 – 8 CPS |
+| **FPS / Tactical Shooters (Valorant, CS2)** | 4 ms – 8 ms | Precision Tapping | 6 – 9 CPS |
+| **Minecraft 1.8 PvP Combat** | 2 ms – 4 ms | Butterfly Clicking | 14 – 22 CPS |
+| **Minecraft God-Bridging / Bedwars** | 0 ms – 2 ms | Drag Clicking | 25 – 40+ CPS |
+
+---
+
+## How to Lower Debounce Time in Popular Gaming Mice
+
+Most mice designed for high CPS include debounce sliders in their official driver software:
+
+### 1. Glorious Gaming Mice (Model O, Model D, Model I)
+1. Download and open the **Glorious Core** software.
+2. Navigate to the **Performance** tab on the left sidebar.
+3. Locate the **Debounce Time** slider at the bottom right.
+4. Slide the value down from the default 10ms to **4ms** (for butterfly clicking) or **0ms–2ms** (for drag clicking).
+5. Click **Save** to flash the setting directly to your mouse's onboard memory.
+
+### 2. Roccat Mice (Kone Pro, Kain 120, Burst Pro)
+1. Launch **Roccat Swarm**.
+2. Go to the **Settings** tab.
+3. Find the **Zero Debounce** toggle switch.
+4. Enabling Zero Debounce removes firmware filtering, allowing maximum friction vibration for drag clicking.
+
+---
+
+## What Happens If You Set Debounce Time Too Low?
+
+While setting debounce time to 0ms sounds enticing, it introduces real drawbacks outside of Minecraft PvP:
+
+* **Accidental Desktop Dragging:** Clicking to highlight text or dragging folders in Windows may drop or double-click erratically.
+* **Accidental Weapon Firing in FPS:** In games like Counter-Strike or Valorant, an unintended double-click can cause you to fire two bullets when you only intended a single burst, ruining weapon spray control.
+* **Server Anti-Cheat Flags:** Some Minecraft competitive servers (such as Hypixel or Minemen Club) run anti-cheat heuristics that flag unnatural click cadence spikes. Keeping debounce at **4ms** ensures consistent CPS without triggering false-positive alerts.
+
+---
+
+## Benchmarking Your New Debounce Settings
+
+Once you have adjusted your debounce sliders, test your real-world clicking throughput:
+
+* Benchmark your instant burst speed on our **[1-Second CPS Test](/cps-test-1s)**.
+* Check your endurance on the **[Kohi Click Test](/kohi-click-test)**.
+* Measure your butterfly rhythm on the **[Butterfly Click Test](/butterfly-click-test)**.
+* Verify switch health on our **[Double Click Test](/double-click-test)**.
+
+---
+
+## Frequently Asked Questions
+
+### What is the best debounce time for butterfly clicking?
+The sweet spot for butterfly clicking is **4ms to 6ms**. This provides enough double-registering to hit 16–20 CPS while maintaining aim stability and preventing erratic drag drops.
+
+### Does lowering debounce time increase mouse wear?
+No. Lowering debounce time does not harm the physical switch. It simply instructs the mouse microcontroller to listen more attentively to electrical contact signals.
+
+### Can optical mice change debounce time?
+No. Optical mice (like Razer DeathAdder V3 or Viper) do not use metal leaves that chatter. Because they actuate using light beams, their debounce time is effectively 0ms by default with zero risk of switch bounce double-clicking.

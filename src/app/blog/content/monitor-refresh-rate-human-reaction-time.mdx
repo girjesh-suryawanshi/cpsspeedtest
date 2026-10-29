@@ -1,0 +1,99 @@
+export const frontmatter = {
+  title: 'How Monitor Refresh Rate (60Hz to 360Hz) Impacts Human Reaction Time',
+  description: 'Understand the mathematical and neurological link between monitor refresh rates (60Hz, 144Hz, 240Hz, 360Hz) and human reaction times in competitive gaming benchmarks.',
+}
+
+# How Monitor Refresh Rate (60Hz to 360Hz) Impacts Human Reaction Time
+
+If you spend time in the competitive gaming community, you have heard players claim that switching from a standard 60Hz office monitor to a 144Hz, 240Hz, or 360Hz esports display "makes everything feel like slow motion" and instantly boosts your scores on the **[Reaction Time Test](/reaction-time-test)**.
+
+Is this purely marketing hype, or does display refresh rate mathematically shorten the interval between what happens in a game and when your eyes register it?
+
+In this guide, we break down frame display intervals, end-to-end system latency, human optical processing, and empirical test results.
+
+---
+
+## Direct Answer: Does a Higher Refresh Rate Improve Reaction Time?
+
+> **AEO Key Takeaway:** **Yes, upgrading from 60Hz to 144Hz or 240Hz objectively improves measured reaction time by 10ms to 20ms.** A 60Hz display introduces an average frame persistence delay of ~8.3ms (16.6ms frame time), whereas a 240Hz monitor displays frames in 4.1ms (averaging ~2ms latency). Higher refresh rates deliver visual stimulus information to your retina sooner.
+
+---
+
+## The Mathematics of Frame Intervals
+
+```
+Frame Time (ms) = 1000 / Refresh Rate (Hz)
+```
+
+```
+   60Hz Display:  [   Frame 1 (16.6ms)   ] [   Frame 2 (16.6ms)   ]
+   144Hz Display: [F1 (6.9ms)][F2 (6.9ms)][F3 (6.9ms)][F4 (6.9ms)]
+   240Hz Display: [F1 (4.1ms)][F2 (4.1ms)][F3 (4.1ms)][F4 (4.1ms)]
+   360Hz Display: [2.7ms][2.7ms][2.7ms][2.7ms][2.7ms][2.7ms][2.7ms]
+```
+
+* **At 60Hz:** A new frame appears every **16.67 milliseconds**. If a visual cue (such as the red-to-green transition on a reflex test) occurs right after a refresh scan, you must wait up to 16ms before your screen physically reveals the change.
+* **At 144Hz:** A new frame appears every **6.94 milliseconds**. Maximum frame delay drops by nearly 10ms.
+* **At 240Hz:** A new frame appears every **4.17 milliseconds**. Maximum frame delay drops to just 4ms.
+* **At 360Hz:** A new frame appears every **2.78 milliseconds**.
+
+---
+
+## Empirical Display Latency Comparison Table
+
+| Display Refresh Rate | Frame Time (Interval) | Average Frame Delivery Delay | Typical Human Benchmark Score | Perceptual Motion Clarity |
+| :--- | :--- | :--- | :--- | :--- |
+| **60 Hz** | 16.67 ms | ~8.33 ms | 215 ms – 250 ms | Noticeable motion blur, stuttered cursor tracking |
+| **120 Hz** | 8.33 ms | ~4.16 ms | 195 ms – 220 ms | Smooth scrolling, sharp cursor path |
+| **144 Hz** | 6.94 ms | ~3.47 ms | 190 ms – 215 ms | High clarity, substantial reflex advantage |
+| **240 Hz** | 4.17 ms | ~2.08 ms | 175 ms – 195 ms | Extremely fluid, near-zero visual ghosting |
+| **360 Hz – 540 Hz** | 2.78 ms – 1.85 ms | ~1.00 ms | 170 ms – 185 ms | Diminishing returns; elite esports competition |
+
+---
+
+## The Neurological Factor: Visual Tracking & Motion Smoothness
+
+The advantage of high refresh rates extends beyond raw frame delivery mathematics:
+
+### 1. Reduced Saccadic Masking
+When human eyes track a moving object (like a target on our **[Aim Trainer](/aim-trainer)**), your brain performs miniature saccadic eye movements. 
+On a 60Hz screen, fast-moving objects appear to "teleport" across pixel clusters, forcing your brain to reconstruct the missing motion path. On a 240Hz screen, continuous fluid motion allows your visual cortex to track trajectories effortlessly.
+
+### 2. Muscle Tension & Confidence
+When display input lag drops below 5ms, the interaction between your hand on the mouse and the cursor on the screen feels instantaneous. This direct physical feedback reduces muscular hesitation, allowing faster, more confident clicking on the **[CPS Test](/cps-test)**.
+
+---
+
+## Diminishing Returns: Where Does the Benefit Stop?
+
+While the leap from 60Hz to 144Hz saves **~9.7ms of latency**, jumping from 144Hz to 240Hz only saves an additional **~2.8ms**, and jumping from 240Hz to 360Hz saves just **~1.4ms**.
+
+```
+   60Hz → 144Hz:  ████████████████ (9.73ms saved) — HUGE LEAP
+   144Hz → 240Hz: ████ (2.77ms saved) — NOTICEABLE
+   240Hz → 360Hz: █ (1.39ms saved) — SUBTLE
+```
+
+For most competitive gamers, a **144Hz to 240Hz display** represents the ideal sweet spot between cost and reflex optimization.
+
+---
+
+## Benchmark Your Display and Reflexes Today
+
+Are you curious how fast your reflexes measure right now?
+* Test your raw response latency on the **[Reaction Time Test](/reaction-time-test)**.
+* Benchmark your temporal estimation skills on the **[Time Guesser](/time-guesser)**.
+* Drill your target flick reflexes on the **[Aim Trainer](/aim-trainer)**.
+
+---
+
+## Frequently Asked Questions
+
+### Does 240Hz make your eyes react faster?
+No. Your biological nervous system processes information at the same neurological speed. However, a 240Hz monitor presents visual information to your eyes ~6ms to 12ms sooner than a 60Hz screen, resulting in faster real-world reaction scores.
+
+### Can HDMI cables support 144Hz?
+Modern HDMI 2.0 and HDMI 2.1 cables support 144Hz and 240Hz at 1080p and 1440p resolutions. However, for maximum stability and variable refresh rate (G-Sync/FreeSync) support, **DisplayPort 1.4** is the gold standard for PC gaming.
+
+### Why do some people score 150ms on reaction tests?
+Scores under 160ms are typically achieved by young competitive gamers using 240Hz+ gaming monitors, optical gaming mice with sub-0.5ms switch latency, and wired high-speed mechanical setups.

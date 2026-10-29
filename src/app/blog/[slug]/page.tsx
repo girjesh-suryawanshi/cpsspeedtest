@@ -39,6 +39,66 @@ const DEFAULT_FAQS: Record<string, Array<{ question: string; answer: string }>> 
     { question: "Can you butterfly click on an optical mouse?", answer: "Yes, but you will only get 1 click per finger strike (~10-12 CPS). You cannot achieve the 18-25 CPS numbers seen on mechanical mice because optical switches never bounce to produce double-clicks." },
     { question: "Do optical switches improve reaction time in gaming?", answer: "Yes. Optical switches eliminate the mandatory 2ms to 8ms firmware debounce delay required by mechanical switches, delivering true sub-millisecond actuation." },
     { question: "Why do mechanical mouse switches double click after a while?", answer: "Over millions of clicks, moisture, dust, and electrical arcing oxidize the metal spring leaves, causing the firmware debounce filter to fail to suppress contact bounce." }
+  ],
+  'mouse-debounce-time-guide-lower-cps': [
+    { question: "What is mouse debounce time?", answer: "Debounce time is a firmware delay (measured in milliseconds) programmed into mechanical gaming mice to ignore false contact bounces produced when metal switch leaves collide." },
+    { question: "Does lowering debounce time increase CPS?", answer: "Yes. Lowering debounce time below 4ms allows rapid vibrations from butterfly clicking or drag clicking to register as separate clicks, dramatically boosting CPS." },
+    { question: "Can lowering debounce time cause double clicking?", answer: "Yes. If debounce time is set below the switch's mechanical bounce duration, normal single clicks will register as unintentional double clicks during desktop use or inventory management." }
+  ],
+  'best-mouse-grip-styles-cps-aim': [
+    { question: "What is the best mouse grip style for high CPS?", answer: "Claw grip and fingertip grip are the best styles for high CPS because they isolate finger muscles from the palm, enabling rapid butterfly and jitter clicking movements." },
+    { question: "Which grip style is best for tactical FPS aiming?", answer: "Palm grip offers the highest tracking stability for tactical shooters like CS2 and Valorant, but limits maximum clicking speed to 6-8 CPS." },
+    { question: "Can fingertip grip cause wrist fatigue?", answer: "Fingertip grip relies on micro-finger adjustments and arm movement. When paired with an ultra-lightweight mouse under 60g, it significantly minimizes wrist strain compared to forceful jitter clicking." }
+  ],
+  'roblox-blade-ball-bedwars-clicking-guide': [
+    { question: "What CPS do you need for Roblox Blade Ball?", answer: "Blade Ball prioritizes reaction timing and spatial anticipation over raw CPS. While 8-12 CPS ensures safe parry registration during high-speed clash volleys, sub-200ms visual reaction time is far more critical." },
+    { question: "How much CPS is needed for Roblox Bedwars?", answer: "In Bedwars, 12-16 CPS allows you to maintain hit advantage and combo locks during sword fights, while drag clicking enables fast block bridging across islands." },
+    { question: "Does Roblox cap mouse clicks per second?", answer: "Roblox physics tick rate operates at 60 Hz, meaning input events are processed in 16.6ms intervals. Extremely erratic clicking above 30 CPS can occasionally drop clicks if unsynchronized with engine frames." }
+  ],
+  'monitor-refresh-rate-human-reaction-time': [
+    { question: "Does a 240Hz monitor improve human reaction time?", answer: "A 240Hz monitor reduces display frame latency from 16.6ms (at 60Hz) down to 4.16ms, saving approximately 12.5ms of end-to-end hardware latency. While it does not alter human biological nerve conduction speed, you perceive target motion earlier." },
+    { question: "Is upgrading from 144Hz to 240Hz noticeable?", answer: "The jump from 60Hz to 144Hz saves ~9.7ms of frame delay, whereas 144Hz to 240Hz saves only ~2.8ms. Most competitive players feel the smoother motion clarity and lower motion blur, but reaction improvements are incremental." },
+    { question: "How can I measure my true human reaction time?", answer: "You can test your visual reaction baseline using an online reaction speed test. Testing across different monitor refresh rates lets you quantify display lag improvements." }
+  ],
+  'how-to-train-reaction-time-esports': [
+    { question: "Can you permanently improve your reaction time?", answer: "Yes. While raw simple visual reaction time has biological limits (180-220ms), esports reaction time involves cognitive choice reaction, target recognition, and motor execution, which can be improved by 30-50ms through deliberate practice." },
+    { question: "What factors slow down gamer reflexes?", answer: "Sleep deprivation, high cortisol, chronic eye fatigue, physical dehydration, and input lag from unoptimized hardware significantly degrade human reaction speed." },
+    { question: "What tools should I use to practice reflexes?", answer: "Combine target acquisition drills on an aim trainer with color-change reaction time tests to build both neuro-visual processing speed and precise muscle memory." }
+  ],
+  'stroop-effect-cognitive-interference-test': [
+    { question: "What causes the Stroop effect?", answer: "The Stroop effect occurs because word reading is an automatic, deeply ingrained cognitive process. When the ink color conflicts with the printed word, the brain's anterior cingulate cortex must expend extra processing time to suppress the conflicting reading response." },
+    { question: "What is a normal Stroop effect interference delay?", answer: "Most healthy adults experience an incongruent delay of 50 to 150 milliseconds compared to congruent stimuli where the word and ink color match." },
+    { question: "Can you train your brain to overcome the Stroop effect?", answer: "Repeated cognitive inhibition training can reduce your Stroop interference latency by strengthening executive control and selective visual attention." }
+  ],
+  'how-to-type-100-wpm-progression-guide': [
+    { question: "How long does it take to reach 100 WPM?", answer: "Typists with 40-50 WPM baseline typically require 2 to 4 months of consistent daily 15-minute deliberate practice focusing on touch typing fundamentals and 98%+ accuracy." },
+    { question: "What is the key difference between 60 WPM and 100 WPM typists?", answer: "Typists at 60 WPM read and process text word-by-word. 100+ WPM typists read 2-3 words ahead in buffer memory and execute n-gram character combinations as fluid, single motor chunks." },
+    { question: "Should I prioritize speed or accuracy when typing?", answer: "Always prioritize accuracy. Aim for 98% or higher accuracy. Typing fast with frequent errors forces constant backspacing, which severely destroys typing rhythm and overall WPM." }
+  ],
+  'linear-vs-tactile-vs-clicky-switches-gaming': [
+    { question: "Which switch type is fastest for competitive gaming?", answer: "Linear switches (like Cherry MX Red or Hall effect magnetic switches) are the fastest because they feature smooth, uninterrupted travel with no tactile bump or click hysteresis to slow down rapid key actuation." },
+    { question: "Are clicky switches bad for gaming?", answer: "Clicky switches (like Cherry MX Blue) have separate slider mechanisms with higher reset hysteresis, making rapid double-tapping slightly slower and generating audible noise on microphone streams." },
+    { question: "What are magnetic Hall effect switches?", answer: "Hall effect switches use magnetic field sensors instead of physical metal contacts, enabling rapid trigger technology where keys reset the instant your finger moves upward by as little as 0.1mm." }
+  ],
+  'spacebar-actuation-physics-bhop-guide': [
+    { question: "Why is bunny hopping harder on a heavy spacebar?", answer: "Bunny hopping requires jumping on the exact ground-touch frame. Heavy spacebars with stiff springs (60g+) and unlubricated wire stabilizers have sluggish return velocity, causing missed jump inputs." },
+    { question: "What is the average Spacebar CPS score?", answer: "Average users hit 6-8 clicks per second on a spacebar using single-thumb tapping. Using two-thumb alternating flutter clicking can achieve 11-14 CPS." },
+    { question: "How do stabilizers affect spacebar tapping speed?", answer: "Poorly balanced or rattling wire stabilizers introduce mechanical binding and extra friction at the edges, slowing down switch rebound and reducing actuation consistency." }
+  ],
+  'kyoto-chimp-test-working-memory-science': [
+    { question: "Can chimpanzees really beat humans at working memory tasks?", answer: "Yes. In the Kyoto University primate research experiments, young chimpanzee Ayumu memorized the spatial locations of numerals 1 through 9 presented for only 210 milliseconds with over 80% accuracy, outperforming human adults." },
+    { question: "Why is chimpanzee working memory faster than human memory?", answer: "The cognitive trade-off hypothesis suggests early human evolution sacrificed rapid photographic visual working memory to develop complex symbolic language and abstract reasoning." },
+    { question: "How high can a normal human score on the Chimp Test?", answer: "Most untrained human adults can consistently recall 6 to 8 numbers before short-term memory chunking limits cause sequencing errors under rapid exposure times." }
+  ],
+  'miller-law-digit-span-working-memory': [
+    { question: "What is Miller's Law in cognitive psychology?", answer: "Formulated in 1956 by George A. Miller, Miller's Law states that human short-term working memory capacity is limited to 7 ± 2 discrete informational chunks." },
+    { question: "What is a normal forward digit span score?", answer: "A typical healthy adult forward digit span score is 7 digits (with a normal range of 5 to 9 digits). Practiced individuals using mnemonic chunking techniques can retain 12+ digits." },
+    { question: "What is chunking and how does it improve memory?", answer: "Chunking is the cognitive process of grouping individual data points into meaningful larger units (like grouping a phone number into 3-digit and 4-digit blocks), allowing you to store far more information within your 7 memory slots." }
+  ],
+  'gamer-guide-preventing-carpal-tunnel-rsi': [
+    { question: "What are the earliest warning signs of gamer RSI?", answer: "Early indicators include dull forearm aching, tingling or numbness in the thumb, index, and middle fingers, morning wrist stiffness, and localized burning sensations after extended gaming sessions." },
+    { question: "Does high-CPS clicking cause carpal tunnel syndrome?", answer: "Forceful, sustained high-CPS techniques like jitter clicking create extreme continuous muscular tension in the forearm flexor tendons. Without proper rest, warmups, and ergonomic posture, this increases the risk of tendon inflammation and median nerve compression." },
+    { question: "How often should gamers take breaks during sessions?", answer: "Apply the 50/10 rule or the 20-20-20 rule: every 50 minutes of intense gaming or typing, take a 5 to 10 minute rest break to shake out hands, stretch forearm flexors, and reset posture." }
   ]
 };
 
